@@ -1,5 +1,4 @@
-# <ここにアプリ名を入力>
-SKATE AND 銭湯
+# SKATE AND 銭湯
 ## サイト概要
 ### サイトテーマ
 特定の地域(大阪、京都）での各スケートボードのパーク情報とそれに付随したパーク付近の銭湯情報の閲覧、お気に入り登録、コメントができ、
@@ -15,6 +14,10 @@ SKATE AND 銭湯
 
 ### 主な利用シーン
 どこのパークに行こうか悩ん時やスケート後などに銭湯に行きたくなった時。
+
+### 実装機能リストURL
+https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-MTw/edit?usp=sharing
+
 
 ## 設計書
 <...>
