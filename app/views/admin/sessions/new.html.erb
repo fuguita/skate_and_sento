@@ -1,0 +1,35 @@
+<div class="container">
+ <div class="row">
+   <h4 class="mt-4 bg-light">管理者ログイン</h4>
+  </div>
+     <div class="row">
+       <div class="col-8 px-5 mx-auto">
+          <%= form_with model: @admin, url: admin_session_path do |f| %>
+            <table class="table table-borderless">
+               <tbody>
+                   <tr>
+                       <div class="form_group">
+                         <td>メールアドレス</td>
+                         <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %> </td>
+                       </div>
+                    </tr>
+  
+                    <tr>
+                       <div class="form_group pt-4">
+                         <td>パスワード</td>
+                         <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form_group pt-4">
+                          <td></td>
+                          <td><%= f.submit "ログイン", class: "btn btn-md btn-primary" %></td>
+                        </div>
+                    </tr>
+               </tbody>
+            </table>
+          <% end %>
+        <%= render "admin/shared/links" %>
+    </div>
+ </div>
+</div>

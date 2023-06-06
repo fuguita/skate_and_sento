@@ -12,12 +12,12 @@ class CreateSentos < ActiveRecord::Migration[6.1]
       t.string :holiday, null: false
       t.integer :price, null: false
       t.string :parking, null: false
-      t.string :sauna, null: false
+      t.boolean :sauna, null: false, default: true
       t.integer :temperature, null: false
       t.string :towel, null: false
       t.string :soap, null: false
-      t.string :open_air_bath, null: false
-      t.string :cold_bath, null: false
+      t.boolean :open_air_bath, null: false, default: true
+      t.boolean :cold_bath, null: false, default: true
       t.boolean :is_active, null: false, default: true
       # t.string :near_sento, null: false
       
