@@ -1,0 +1,2 @@
+class SentoFavorite < ApplicationRecord
+end

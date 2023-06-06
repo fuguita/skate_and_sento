@@ -1,0 +1,2 @@
+class ParkReview < ApplicationRecord
+end

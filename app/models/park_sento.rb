@@ -1,0 +1,2 @@
+class ParkSento < ApplicationRecord
+end

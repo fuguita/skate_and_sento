@@ -1,0 +1,2 @@
+class Sento < ApplicationRecord
+end

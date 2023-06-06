@@ -1,0 +1,2 @@
+class SentoReview < ApplicationRecord
+end

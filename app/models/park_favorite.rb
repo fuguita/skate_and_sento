@@ -1,0 +1,2 @@
+class ParkFavorite < ApplicationRecord
+end

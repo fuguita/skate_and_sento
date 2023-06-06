@@ -1,0 +1,2 @@
+class ParkSection < ApplicationRecord
+end
