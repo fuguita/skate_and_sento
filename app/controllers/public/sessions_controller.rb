@@ -3,6 +3,37 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+before_action :customer_state, only: [:create]
+
+def after_sign_in_path_for(resource)
+  '/'
+end
+
+def after_sign_out_path_for(resource)
+  '/'
+end
+
+def guest_sign_in
+  user = User.guest
+  sign_in user
+  redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+end
+
+protected
+
+  def customer_state
+    @user = User.find_by(email: params[:user][:email])
+    return if !@customer
+
+    if @user.valid_password?(params[:user][:password])
+      # is_deletedがtrueだったら処理を終了する
+      if @user.is_deleted == true
+        redirect_to new_user_session_path
+      end
+    end
+  end
+end
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -24,4 +55,3 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-end

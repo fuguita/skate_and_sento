@@ -13,7 +13,7 @@
                          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %> </td>
                        </div>
                     </tr>
-  
+
                     <tr>
                        <div class="form_group pt-4">
                          <td>パスワード</td>
@@ -22,8 +22,8 @@
                     </tr>
                     <tr>
                         <div class="form_group pt-4">
-                          <td></td>
                           <td><%= f.submit "ログイン", class: "btn btn-md btn-primary" %></td>
+                          <td><%#= link_to 'ゲストユーザーとしてログイン',  homes_guest_sign_in_path, method: :post %></td>
                         </div>
                     </tr>
                </tbody>
