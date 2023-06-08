@@ -1,8 +1,11 @@
-<%= form_with model: @post do |f| %>
+<%= form_with model: post do |f| %>
       <table class="table table-borderless">
             <tbody>
               <tr>
-                  <td>パークの写真を選択<%= f.file_field :post_skate_image, accept: "image/*" %></td>
+                  <td><%= f.select :prefecture_id, Post.prefecture_ids.keys, {} %></td>
+              </tr>
+              <tr>
+                  <td>パークの写真を選択<%= f.file_field :post_park_image, accept: "image/*" %></td>
                   <td></td>
                   <td>銭湯の写真を選択<%= f.file_field :post_sento_image, accept: "image/*" %></td>
               </tr>

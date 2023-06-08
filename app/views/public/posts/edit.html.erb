@@ -1,2 +1,29 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<h1>投稿編集</h1>
+    <%= form_with model: @post do |f| %>
+          <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                      <td><%= f.select :prefecture_id, Post.prefecture_ids.keys, {} %></td>
+                  </tr>
+                  <tr>
+                      <td>パークの写真を選択<%= f.file_field :post_park_image, accept: "image/*" %></td>
+                      <td></td>
+                      <td>銭湯の写真を選択<%= f.file_field :post_sento_image, accept: "image/*" %></td>
+                  </tr>
+                      <td>パーク名<%= f.text_field :park %></td>
+                      <td></td>
+                      <td>銭湯名<%= f.text_field :sento %></td>
+                  </tr>
+                  <tr>
+                      <td>コメント<%= f.text_area :park_caption %></td>
+                      <td></td>
+                      <td>コメント<%= f.text_area :sento_caption %></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td><%= f.submit 'SKATE AND SENTOを変更' %></td>
+                      <td></td>
+                  </tr>
+                </tbody>
+            </table>
+      <% end %>

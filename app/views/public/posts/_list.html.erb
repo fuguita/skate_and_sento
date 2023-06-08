@@ -1,0 +1,24 @@
+<table class="table table-borderless">
+    <tbody>
+      <% posts.each do |post| %>
+      <tr>
+          <td>エリア:<%= post.prefecture_id %> 投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
+          <td></td>
+          <td><%= l post.created_at, format: :short %></td>
+      </tr>
+      <tr>
+          <td><%= image_tag post.get_post_park_image, size: '200x200' %></td>
+          <td>パーク名<br>コメント</td>
+          <td><%= post.park %><br><%= post.park_caption %></td>
+      </tr>
+      <tr>
+          <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
+          <td>銭湯名<br>コメント</td>
+          <td><%= post.sento %><br><%= post.sento_caption %></td>
+          <% if post.user == current_user %>
+          <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
+          <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+</table>

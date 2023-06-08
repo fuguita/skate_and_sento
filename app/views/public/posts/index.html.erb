@@ -1,57 +1,6 @@
 <h2>他エリアのSKATE AND SENTOを登録</h2>
-
-  <%= form_with model: @post do |f| %>
-      <table class="table table-borderless">
-            <tbody>
-              <tr>
-                  <td><%= f.select :prefecture_id, Post.prefecture_ids.keys, {} %></td>
-              </tr>
-              <tr>
-                  <td>パークの写真を選択<%= f.file_field :post_park_image, accept: "image/*" %></td>
-                  <td></td>
-                  <td>銭湯の写真を選択<%= f.file_field :post_sento_image, accept: "image/*" %></td>
-              </tr>
-                  <td>パーク名<%= f.text_field :park %></td>
-                  <td></td>
-                  <td>銭湯名<%= f.text_field :sento %></td>
-              </tr>
-              <tr>
-                  <td>コメント<%= f.text_area :park_caption %></td>
-                  <td></td>
-                  <td>コメント<%= f.text_area :sento_caption %></td>
-              </tr>
-              <tr>
-                  <td></td>
-                  <td><%= f.submit 'SKATE AND SENTOを投稿する' %></td>
-                  <td></td>
-              </tr>
-            </tbody>
-        </table>
-  <% end %>
+  <%= render 'public/posts/form', post: @post %>
 
   <h2>他エリアのSKATE AND SENTO</h2>
-<table class="table table-borderless">
-    <tbody>
-      <% @posts.each do |post| %>
-      <tr>
-          <td>エリア:<%= post.prefecture_id %> 投稿者：<%= post.user.name %></td>
-          <td></td>
-          <td><%= l post.created_at, format: :short %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag post.get_post_park_image, size: '200x200' %></td>
-          <td>パーク名<br>コメント</td>
-          <td><%= post.park %><br><%= post.park_caption %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
-          <td>銭湯名<br>コメント</td>
-          <td><%= post.sento %><br><%= post.sento_caption %></td>
-          <% if post.user == current_user %>
-          <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
-          <% end %>
-      </tr>
-      <% end %>
-    </tbody>
-</table>
+  <%= render 'public/posts/list', posts: @posts, user: @user %>
 
