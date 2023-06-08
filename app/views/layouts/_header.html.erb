@@ -13,6 +13,7 @@
               <% else %>
               <% if user_signed_in? %>
                   HELLO!!<%= current_user.name %>!
+                  <%= link_to "NEW POST", posts_path %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   <%= link_to "マイページ", my_page_users_path %>
               <% else %>

@@ -30,14 +30,13 @@ Rails.application.routes.draw do
       end
     end
         get 'users//information/edit' => "users#edit", as: 'edit_information_user'
-
     resources :sentos
-
     resources :parks, only: [:index, :show] do
       member do
         get 'reviews'
       end
     end
+    resources :posts, only: [:create, :index, :edit, :update, :destroy]
   end
 
   namespace :admin do
