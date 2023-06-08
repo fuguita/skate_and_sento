@@ -1,0 +1,30 @@
+<h2><%= @user.name %>の詳細</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <td>ユーザーネーム</td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>会員ステータス</td>
+          <% if @user.is_deleted == false %>
+      <td>有効</td>
+          <% else %>
+      <td>無効</td>
+          <% end %>
+    </tr>
+    <tr>
+      <td><%= link_to "編集する", edit_admin_user_path %></td>
+      <td>このユーザーの投稿履歴一覧を見る</td>
+
+    </tr>
+  </tbody>
+</table>

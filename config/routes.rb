@@ -38,13 +38,14 @@ Rails.application.routes.draw do
         get 'reviews'
       end
     end
-
-
   end
 
-
-
   namespace :admin do
+    resources :users, only: [:show, :index, :edit, :update, :destroy] do
+      member do
+        get 'posts'
+      end
+    end
   end
 
 

@@ -5,9 +5,10 @@
 <!--          <ul class="navbar-nav ml-auto">-->
             <% if request.fullpath.include? "admin" %>
               <% if admin_signed_in? %>
+                  <%= link_to "会員一覧", admin_users_path %>
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
               <% else %>
-                  <%= link_to "ログインする", new_admin_session %>
+                  <%= link_to "ログインする", new_admin_session_path %>
               <% end %>
               <% else %>
               <% if user_signed_in? %>
