@@ -22,14 +22,14 @@ Rails.application.routes.draw do
         get 'unsubscribe'
         get 'park_favorites'
         get 'sento_favorites'
-      end
-      member do
-        get 'posts'
         patch 'update'
         patch 'withdraw'
       end
+      member do
+        get 'posts'
+      end
     end
-        get 'users/:id/information/edit' => "users#edit", as: 'edit_information_user'
+        get 'users//information/edit' => "users#edit", as: 'edit_information_user'
 
     resources :sentos
 

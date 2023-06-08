@@ -1,0 +1,19 @@
+<h2>MY PAGE</h2>
+
+<h4>登録情報</h4>
+<div>
+  <p>アカウント名
+    <%= current_user.name %></p>
+    <p>メールアドレス
+    <%= current_user.email %></p>
+</div>
+<div>
+  <p>My Favotite Park</p>
+  <p>My Favotite 銭湯</p>
+  <p><%= link_to "会員情報を変更", edit_information_user_path(current_user) %></p>
+  <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
+</div>
+
+<h3>My Skate And Sento Posts</h3>
+
+
