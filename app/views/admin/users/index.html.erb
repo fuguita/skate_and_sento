@@ -19,7 +19,7 @@
         <% end %>
         </td>
         <td><%= user.email %></td>
-        <td><%= user.posts.count %><%= link_to "投稿一覧", posts_admin_user_path(user.id) %></td>
+        <td><%= link_to posts_admin_user_path(user.id) do %><%= user.posts.count %><% end %></td>
       <% if user.is_deleted  == false %>
         <td>有効</td>
       <% else %>

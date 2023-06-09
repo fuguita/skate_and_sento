@@ -1,0 +1,2 @@
+module Admin::SentosHelper
+end
