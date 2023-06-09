@@ -42,9 +42,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:show, :index, :edit, :update, :destroy] do
       member do
-        get 'posts'
+        get 'post_all'
       end
     end
+        # get 'admin/users/:id/post' => "admin/users#post", as: post_admin_user
+    resources :posts, only: [:index, :show, :destroy]
   end
 
 
