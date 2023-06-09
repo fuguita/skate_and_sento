@@ -45,10 +45,10 @@ Rails.application.routes.draw do
         get 'posts'
       end
     end
-    resources :posts, only: [:indx, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
     resources :sentos, only: [:new, :create, :index, :show, :edit, :update]
   end
-  
+
 end
 
 

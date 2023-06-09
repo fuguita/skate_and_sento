@@ -1,13 +1,13 @@
 <h2>銭湯新規登録</h2>
   <h3>基本情報</h3>
 
-      <%= form_with model: @sento url: admin_sentos_path method: :post do |f| %>
+      <%= form_with model: @sento, url: admin_sentos_path, method: :post do |f| %>
         <table class="table table-borderless">
            <tbody>
               <tr>
                   <div class="form_group">
                     <td>エリアを選択</td>
-                    <td><%= f.select :prefecture_id, Post.prefecture_ids.keys, {} %></td>
+                    <td><%= f.select :prefecture_id, Sento.prefecture_ids.keys, {} %></td>
                   </div>
               </tr>
               <tr>
@@ -19,13 +19,13 @@
               <tr>
                   <div class="form_group">
                     <td>銭湯名</td>
-                    <td><%= f,text_field :name %></td>
+                    <td><%= f.text_field :name %></td>
                   </div>
               </tr>
               <tr>
                   <div class="form_group">
                     <td>紹介</td>
-                    <td><%= f.text_field :introduction %></td>
+                    <td><%= f.text_area :introduction %></td>
                   </div>
               </tr>
               <tr>
@@ -37,7 +37,7 @@
               <tr>
                   <div class="form_group">
                     <td>郵便番号</td>
-                    <td><%= f,text_field :postal_code %></td>
+                    <td>〒<%= f.text_field :postal_code %></td>
                   </div>
               </tr>
               <tr>
@@ -49,13 +49,13 @@
               <tr>
                   <div class="form_group">
                     <td>定休日</td>
-                    <td><%= f.file_field :holiday %></td>
+                    <td><%= f.text_field :holiday %></td>
                   </div>
               </tr>
               <tr>
                   <div class="form_group">
                     <td>TEL</td>
-                    <td><%= f,text_field :telephone_number %></td>
+                    <td><%= f.text_field :telephone_number %></td>
                   </div>
               </tr>
               <tr>

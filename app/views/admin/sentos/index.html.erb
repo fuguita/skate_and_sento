@@ -1,0 +1,25 @@
+<h2>銭湯 LIST</h2>
+  <h4><%= link_to "銭湯新規登録", new_admin_sento_path %></h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>銭湯名</th>
+          <th>エリア</th>
+          <th>お気に入り数</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sentos.each do |sento| %>
+          <tr>
+            <td><%= sento.id %></td>
+            <td><%= sento.name %></td>
+            <td><%= sento.prefecture_id %></td>
+            <td>件</td>
+            <td><%= sento.active_status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= paginate @sentos %>
