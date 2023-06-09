@@ -22,8 +22,8 @@
           <% end %>
     </tr>
     <tr>
-      <td><%= link_to "編集する", edit_admin_user_path %></td>
-      <td>このユーザーの投稿履歴一覧を見る</td>
+      <td><%= link_to "編集する", edit_admin_user_path(@user) %></td>
+      <td><%= link_to "このユーザーの投稿履歴一覧を見る", posts_admin_user_path(@user) %> </td>
 
     </tr>
   </tbody>

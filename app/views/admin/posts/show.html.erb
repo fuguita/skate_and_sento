@@ -1,5 +1,8 @@
 <h2><%= @post.user.name %>の投稿詳細</h2>
 
+<%= link_to "会員情報詳細画面へ", admin_user_path(@user) %>
+<%= link_to "この会員の投稿一覧へ", posts_admin_user_path(@user) %>
+
 <table class="table table-borderless">
     <tbody>
       <tr>
