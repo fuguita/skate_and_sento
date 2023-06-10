@@ -1,7 +1,4 @@
-<h2>銭湯情報編集</h2>
-  <h3>基本情報</h3>
-    <%= form_with model: @sento, url: admin_sento_path, method: :patch do |f| %>
-      <table class="table table-borderless">
+<table class="table table-borderless">
            <tbody>
               <tr>
                   <div class="form_group">
@@ -60,7 +57,7 @@
               <tr>
                   <div class="form_group">
                     <td>料金</td>
-                    <td><%= f.text_field :price, placeholder: '大人:490円、子供:390円、サウナ:100円' %></td>
+                    <td>￥<%= f.text_field :price %></td>
                   </div>
               </tr>
               <tr>
@@ -130,5 +127,3 @@
               </tr>
         </tbody>
       </table>
-                        <%= f.submit "新規登録" %>
-    <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_06_151815) do
+ActiveRecord::Schema.define(version: 2023_06_10_062529) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -137,6 +137,21 @@ ActiveRecord::Schema.define(version: 2023_06_06_151815) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sento_sento_tags", force: :cascade do |t|
+    t.integer "sento_id", null: false
+    t.integer "sento_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sento_id"], name: "index_sento_sento_tags_on_sento_id"
+    t.index ["sento_tag_id"], name: "index_sento_sento_tags_on_sento_tag_id"
+  end
+
+  create_table "sento_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sentos", force: :cascade do |t|
     t.integer "prefecture_id", null: false
     t.string "name", null: false
@@ -146,7 +161,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_151815) do
     t.string "telephone_number", null: false
     t.string "business_hour", null: false
     t.string "holiday", null: false
-    t.integer "price", null: false
     t.string "parking", null: false
     t.boolean "sauna", default: true, null: false
     t.integer "temperature", null: false
@@ -157,6 +171,7 @@ ActiveRecord::Schema.define(version: 2023_06_06_151815) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "price"
   end
 
   create_table "users", force: :cascade do |t|
@@ -175,4 +190,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_151815) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sento_sento_tags", "sento_tags"
+  add_foreign_key "sento_sento_tags", "sentos"
 end

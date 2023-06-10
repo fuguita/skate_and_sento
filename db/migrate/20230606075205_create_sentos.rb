@@ -10,7 +10,7 @@ class CreateSentos < ActiveRecord::Migration[6.1]
       t.string :telephone_number, null: false
       t.string :business_hour, null: false
       t.string :holiday, null: false
-      t.integer :price, null: false
+      t.text :price, null: false
       t.string :parking, null: false
       t.boolean :sauna, null: false, default: true
       t.integer :temperature, null: false

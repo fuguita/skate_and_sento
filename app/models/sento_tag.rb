@@ -1,0 +1,3 @@
+class SentoTag < ApplicationRecord
+ 
+end

@@ -6,8 +6,11 @@ class Admin::SentosController < ApplicationController
 
   def create
     @sento = Sento.new(sento_params)
-    @sento.save
-    redirect_to admin_sentos_path
+   if @sento.save
+    redirect_to admin_sento_path(@sento)
+   else
+    render :new
+   end
   end
 
   def index
@@ -15,17 +18,23 @@ class Admin::SentosController < ApplicationController
   end
 
   def show
+    @sento = Sento.find(params[:id])
+
   end
 
   def edit
+    @sento = Sento.find(params[:id])
   end
 
   def update
+    @sento = Sento.find(params[:id])
+    @sento.update(sento_params)
+    redirect_to admin_sento_path(@sento)
   end
 
   private
   def sento_params
-    params.require(:sento).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :sauna, :temperature, :towel, :soap, :open_air_bath, :cold_bath, :is_active, sento_image: [])
+    params.require(:sento).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :sauna, :temperature, :towel, :soap, :open_air_bath, :cold_bath, :is_active, sento_images: [])
   end
 
 end

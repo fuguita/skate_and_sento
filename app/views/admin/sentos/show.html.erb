@@ -1,0 +1,83 @@
+<h2><%= @sento.name %></h2>
+  <% @sento.sento_images.each do |sento_image| %>
+      <%= image_tag sento_image, size: '200x200' %>
+  <% end %>
+ <table class="table table-borderless">
+           <tbody>
+              <tr>
+                  <td>エリア</td>
+                  <td><%= @sento.prefecture_id %></td>
+              </tr>
+              <tr>
+
+                  <td>銭湯名</td>
+                  <td><%= @sento.name %></td>
+              </tr>
+              <tr>
+                  <td>紹介</td>
+                  <td><%= @sento.introduction %></td>
+              </tr>
+              <tr>
+                  <td>住所</td>
+                  <td><%= @sento.address %></td>
+              </tr>
+              <tr>
+                  <td>郵便番号</td>
+                  <td>〒<%= @sento.postal_code %></td>
+              </tr>
+              <tr>
+                  <td>営業時間</td>
+                  <td><%= @sento.business_hour %></td>
+              </tr>
+              <tr>
+                  <td>定休日</td>
+                  <td><%= @sento.holiday %></td>
+              </tr>
+              <tr>
+                  <td>TEL</td>
+                  <td><%= @sento.telephone_number %></td>
+              </tr>
+              <tr>
+                  <td>料金</td>
+                  <td>￥<%= @sento.price %></td>
+              </tr>
+              <tr>
+                  <td>無料パーキング</td>
+                  <td><%= @sento.parking %></td>
+              </tr>
+          </tbody>
+        </table>
+  <h3>設備情報</h3>
+        <table class="table table-borderless">
+          <tbody>
+              <tr>
+                  <td>サウナ</td>
+                  <td><%= @sento.sauna_status %>
+              </tr>
+              <tr>
+                  <td>サウナの温度</td>
+                  <td>約<%= @sento.temperature %>℃</td>
+              </tr>
+              <tr>
+                  <td>貸しタオル</td>
+                  <td><%= @sento.towel %></td>
+              </tr>
+              <tr>
+                  <td>石鹸類</td>
+                  <td><%= @sento.soap %></td>
+              </tr>
+              <tr>
+                  <td>露天風呂</td>
+                  <td><%= @sento.open_air_bath_status %>
+              </tr>
+              <tr>
+                  <td>水風呂</td>
+                  <td><%= @sento.cold_bath_status %>
+              </tr>
+        </tbody>
+      </table>
+    <%= link_to "最寄りパークを追加、詳細を編集する", edit_admin_sento_path(@sento) %>
+
+
+
+
