@@ -19,7 +19,7 @@
               <tr>
                   <div class="form_group">
                     <td>エリアを選択</td>
-                    <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {} %></td>
+                    <td><%= f.collection_check_boxes :prefecture_id, Park.prefecture_ids.keys, {} %></td>
                   </div>
               </tr>
               <tr>
@@ -82,12 +82,18 @@
                     <td><%= f.text_field :parking %></td>
                   </div>
               </tr>
+               <tr>
+                  <div class="form_group">
+                    <td>ヘルメット義務</td>
+                    <td><%= f.text_field :parking %></td>
+                  </div>
+              </tr>
           </tbody>
         </table>
   <h3>設備情報</h3>
                   <div class="form-group">
                     <%= f.fields_for :park_sections do |park_section| %>
-                      <%= park_section.collection_checkboxes :park_id, Section.all %>
+                      <%= park_section.collection_check_boxes :section_id, Section.all, :id, :name %>
                     <% end %>
                   </div>
 

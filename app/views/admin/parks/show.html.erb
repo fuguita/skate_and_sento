@@ -1,0 +1,62 @@
+<h2><%= @park.name %></h2>
+  <% @park.park_images.each do |park_image| %>
+      <%= image_tag park_image, size: '200x200' %>
+  <% end %>
+ <table class="table table-borderless">
+           <tbody>
+              <tr>
+                  <td>エリア</td>
+                  <td><%= @park.prefecture_id %></td>
+              </tr>
+              <tr>
+
+                  <td>パーク名</td>
+                  <td><%= @park.name %></td>
+              </tr>
+              <tr>
+                  <td>紹介</td>
+                  <td><%= @park.introduction %></td>
+              </tr>
+              <tr>
+                  <td>住所</td>
+                  <td><%= @park.address %></td>
+              </tr>
+              <tr>
+                  <td>郵便番号</td>
+                  <td>〒<%= @park.postal_code %></td>
+              </tr>
+              <tr>
+                  <td>オープン時間</td>
+                  <td><%= @park.business_hour %></td>
+              </tr>
+              <tr>
+                  <td>定休日</td>
+                  <td><%= @park.holiday %></td>
+              </tr>
+              <tr>
+                  <td>TEL</td>
+                  <td><%= @park.telephone_number %></td>
+              </tr>
+              <tr>
+                  <td>料金</td>
+                  <td>￥<%= @park.price %></td>
+              </tr>
+              <tr>
+                  <td>無料パーキング</td>
+                  <td><%= @park.parking %></td>
+              </tr>
+              <tr>
+                  <td>ヘルメット義務</td>
+                  <td><%= @park.helmet %></td>
+              </tr>
+          </tbody>
+        </table>
+  <h3>設備情報</h3>
+        <% @park.sections.each do |section| %>
+          <
+        
+    <%= link_to "最寄り銭湯を追加、詳細を編集する", edit_admin_銭湯_path(@sento) %>
+
+
+
+

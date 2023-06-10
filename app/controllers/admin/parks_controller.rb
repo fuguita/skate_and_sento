@@ -2,7 +2,7 @@ class Admin::ParksController < ApplicationController
 
   def new
     @park = Park.new
-    @park.sections.new
+    @park.sections = new
 
   end
 
@@ -36,7 +36,7 @@ class Admin::ParksController < ApplicationController
 
   private
   def park_params
-    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, park_sections_attributes: [:section_id, :name], park_images: [])
+    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, park_sections_attributes: [:id, names: []], park_images: [])
   end
 
 end
