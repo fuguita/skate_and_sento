@@ -56,7 +56,13 @@
               </tr>
               <tr>
                   <td>サウナの温度</td>
-                  <td>約<%= @sento.temperature %>℃</td>
+                  <td>
+                  <% if @sento.temperature == 0 %>
+                  サウナはありません
+                  <% else %>
+                      約<%= @sento.temperature %>℃
+                  <% end %>
+                  </td>
               </tr>
               <tr>
                   <td>貸しタオル</td>

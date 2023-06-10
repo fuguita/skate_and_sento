@@ -5,6 +5,7 @@
 <!--          <ul class="navbar-nav ml-auto">-->
             <% if request.fullpath.include? "admin" %>
               <% if admin_signed_in? %>
+                  <%= link_to "パーク", admin_parks_path %>
                   <%= link_to "銭湯", admin_sentos_path %>
                   <%= link_to "ユーザー一覧", admin_users_path %>
                   <%= link_to "ユーザー投稿一覧", admin_posts_path %>

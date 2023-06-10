@@ -12,7 +12,14 @@
               <tr>
                   <div class="form_group">
                     <td>画像</td>
-                    <td><%= f.file_field :sento_images, multiple: true %></td>
+                    <td>
+                        <% if @sento.sento_images.present? %>
+                          <% @sento.sento_images.each do |image| %>
+                            <%= image_tag image, size: '200x200' %>
+                          <% end %>
+                        <% end %>
+                        <%= f.file_field :sento_images, multiple: true %>
+                    </td>
                   </div>
               </tr>
               <tr>

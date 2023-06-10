@@ -4,6 +4,18 @@ class Sento < ApplicationRecord
      大阪:1,京都:2
    }
 
+   validates :name, presence: true
+   validates :prefecture_id, presence: true
+   validates :introduction, presence: true
+   validates :address, presence: true
+   VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
+   validates :postal_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
+   validates :telephone_number, presence: true
+   validates :business_hour, presence: true
+   validates :temperature, presence: true
+   validates :towel, presence: true
+   validates :soap, presence: true
+
   has_many_attached :sento_images
 
   def get_first_sento_image

@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:index, :show, :destroy]
     resources :sentos, only: [:new, :create, :index, :show, :edit, :update]
+    resources :parks, only: [:new, :create, :index, :show, :edit, :update]
   end
 
 end

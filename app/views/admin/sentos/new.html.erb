@@ -2,6 +2,19 @@
   <h3>基本情報</h3>
 
       <%= form_with model: @sento, url: admin_sentos_path, method: :post do |f| %>
+
+            <% if @sento.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@sento.errors.count, "error") %> prohibited this sento from being saved:</h2>
+
+                    <ul>
+                      <% @sento.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
         <table class="table table-borderless">
            <tbody>
               <tr>
@@ -37,7 +50,7 @@
               <tr>
                   <div class="form_group">
                     <td>郵便番号</td>
-                    <td>〒<%= f.text_field :postal_code %></td>
+                    <td>〒<%= f.text_field :postal_code, placeholder: 'ハイフン含める' %></td>
                   </div>
               </tr>
               <tr>
@@ -87,7 +100,7 @@
               <tr>
                   <div class="form_group">
                     <td>サウナの温度</td>
-                    <td>約<%= f.text_field :temperature %>℃</td>
+                    <td>約<%= f.text_field :temperature, placeholder: 'サウナがない場合は0と記入' %>℃</td>
                   </div>
               </tr>
               <tr>

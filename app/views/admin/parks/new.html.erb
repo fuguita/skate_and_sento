@@ -1,0 +1,98 @@
+<h2>パーク新規登録</h2>
+  <h3>基本情報</h3>
+
+      <%= form_with model: @park, url: admin_parks_path, method: :post do |f| %>
+
+            <% if @park.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@park.errors.count, "error") %> prohibited this park from being saved:</h2>
+                    <ul>
+                      <% @park.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
+        <table class="table table-borderless">
+           <tbody>
+              <tr>
+                  <div class="form_group">
+                    <td>エリアを選択</td>
+                    <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {} %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>画像</td>
+                    <td><%= f.file_field :park_images, multiple: true %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>パーク名</td>
+                    <td><%= f.text_field :name %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>紹介</td>
+                    <td><%= f.text_area :introduction %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>住所</td>
+                    <td><%= f.text_field :address %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>郵便番号</td>
+                    <td>〒<%= f.text_field :postal_code, placeholder: 'ハイフン含める' %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>オープン時間</td>
+                    <td><%= f.text_field :business_hour %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>定休日</td>
+                    <td><%= f.text_field :holiday %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>TEL</td>
+                    <td><%= f.text_field :telephone_number %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>料金</td>
+                    <td><%= f.text_field :price, placeholder: '大人:490円、子供:390円' %></td>
+                  </div>
+              </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>無料パーキング</td>
+                    <td><%= f.text_field :parking %></td>
+                  </div>
+              </tr>
+          </tbody>
+        </table>
+  <h3>設備情報</h3>
+                  <div class="form-group">
+                    <%= f.fields_for :park_sections do |park_section| %>
+                      <%= park_section.collection_checkboxes :park_id, Section.all %>
+                    <% end %>
+                  </div>
+
+
+                  <%#= f.collection_check_boxes :section_id, Section.all, :id, :name %>
+
+                        <%= f.submit "新規登録" %>
+    <% end %>
