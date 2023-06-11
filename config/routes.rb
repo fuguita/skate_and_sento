@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'sentos/index'
+    get 'sentos/show'
+  end
+  namespace :public do
+    get 'parks/index'
+    get 'parks/show'
+  end
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -30,7 +38,11 @@ Rails.application.routes.draw do
       end
     end
         get 'users//information/edit' => "users#edit", as: 'edit_information_user'
-    resources :sentos
+    resources :sentos, only: [:index, :show] do
+      member do
+        get 'reviews'
+      end
+    end
     resources :parks, only: [:index, :show] do
       member do
         get 'reviews'

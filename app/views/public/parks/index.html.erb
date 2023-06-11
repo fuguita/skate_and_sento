@@ -1,0 +1,18 @@
+<h2>PARK LIST</h2>
+  <% @parks.each do |park| %>
+    <h4><%= link_to park_path(park.id) do %><%= park.name %><% end %></h4>
+        <%= park.address %>
+          エリア：<%= park.prefecture_id %>
+            <% if park.sentos.present? %>
+                <% park.sentos.each do |sento| %>
+                    最寄り銭湯♨︎:<%= link_to sento_path(sento.id) do %>
+                                  <%= sento.name %>
+                               <% end %>
+                <% end %>
+            <% else %>
+              まだ情報はありません
+            <% end %>
+                <% park.park_images.each do |park_image| %>
+                  <%= image_tag park_image, size: '200x200' %>
+                <% end %>
+  <% end %>
