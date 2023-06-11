@@ -1,2 +1,57 @@
-<h1>Public::Sentos#show</h1>
-<p>Find me in app/views/public/sentos/show.html.erb</p>
+<h2><%= @sento.name %></h2>
+  <% @sento.sento_images.each do |sento_image| %>
+      <%= image_tag sento_image, size: '300x300' %>
+  <% end %>
+ <table class="table table-borderless">
+           <tbody>
+              <tr>
+                  <td>エリア</td>
+                  <td><%= @sento.prefecture_id %></td>
+              </tr>
+              <tr>
+                  <td>紹介</td>
+                  <td><%= @sento.introduction %></td>
+              </tr>
+              <tr>
+                  <td>住所</td>
+                  <td><%= @sento.address %></td>
+              </tr>
+              <tr>
+                  <td>郵便番号</td>
+                  <td>〒<%= @sento.postal_code %></td>
+              </tr>
+              <tr>
+                  <td>営業時間</td>
+                  <td><%= @sento.business_hour %></td>
+              </tr>
+              <tr>
+                  <td>定休日</td>
+                  <td><%= @sento.holiday %></td>
+              </tr>
+              <tr>
+                  <td>TEL</td>
+                  <td><%= @sento.telephone_number %></td>
+              </tr>
+              <tr>
+                  <td>料金</td>
+                  <td><%= @sento.price %></td>
+              </tr>
+              <tr>
+                  <td>無料パーキング</td>
+                  <td><%= @sento.parking %></td>
+              </tr>
+          </tbody>
+        </table>
+<h3>最寄りパーク</h3>
+    <% if @sento.parks.present? %>
+        <% @sento.parks.each do |sento| %>
+            <%= link_to admin_park_path(sento.id) do %>
+              <h4><%= sento.name %></h4>
+            <% end %>
+        <% end %>
+    <% else %>
+      <h5>まだ情報はありません</h5>
+    <% end %>
+
+
+

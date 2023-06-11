@@ -1,2 +1,18 @@
-<h1>Public::Sentos#index</h1>
-<p>Find me in app/views/public/sentos/index.html.erb</p>
+<h2>銭湯 LIST</h2>
+  <% @sentos.each do |sento| %>
+    <h4><%= link_to sento_path(sento.id) do %><%= sento.name %><% end %></h4>
+        <%= sento.address %>
+          エリア：<%= sento.prefecture_id %>
+            <% if sento.parks.present? %>
+                <% sento.parks.each do |park| %>
+                    最寄りパーク:<%= link_to park_path(park.id) do %>
+                                  <%= park.name %>
+                                 <% end %>
+                <% end %>
+            <% else %>
+              まだ情報はありません
+            <% end %>
+                <% sento.sento_images.each do |sento_image| %>
+                  <%= image_tag sento_image, size: '200x200' %>
+                <% end %>
+  <% end %>

@@ -7,7 +7,7 @@
                 <% park.sentos.each do |sento| %>
                     最寄り銭湯♨︎:<%= link_to sento_path(sento.id) do %>
                                   <%= sento.name %>
-                               <% end %>
+                                <% end %>
                 <% end %>
             <% else %>
               まだ情報はありません
