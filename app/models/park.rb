@@ -3,7 +3,6 @@ class Park < ApplicationRecord
   has_many :park_sections
   has_many :sections, through: :park_sections
 
-  accepts_nested_attributes_for :park_sections, allow_destroy: true
 
   enum prefecture_id:{
      "エリアを選択":0,

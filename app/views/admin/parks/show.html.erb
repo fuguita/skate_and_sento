@@ -52,10 +52,14 @@
           </tbody>
         </table>
   <h3>設備情報</h3>
-        <% @park.sections.each do |section| %>
-          <
-        
-    <%= link_to "最寄り銭湯を追加、詳細を編集する", edit_admin_銭湯_path(@sento) %>
+      <% Section.all.each do |section| %>
+        <% if @park.sections.include?(section) %>
+          ○<%= section.name %>
+        <% else %>
+          x<%= section.name %>
+        <% end %>
+      <% end %>
+  <%= link_to "最寄り銭湯を追加、詳細を編集する", edit_admin_park_path(@park) %>
 
 
 
