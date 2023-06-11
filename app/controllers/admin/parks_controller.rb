@@ -14,8 +14,6 @@ class Admin::ParksController < ApplicationController
       # section_ids.each do |section_id|
       #   next if section_id.blank?
       #   ParkSection.create(park_id: @park.id, section_id: section_id)
-      # end
-
       redirect_to admin_park_path(@park)
     else
       render :new
@@ -28,7 +26,7 @@ class Admin::ParksController < ApplicationController
 
   def show
     @park = Park.find(params[:id])
-    @sections = @park.section_ids
+
 
   end
 
@@ -44,6 +42,6 @@ class Admin::ParksController < ApplicationController
 
   private
   def park_params
-    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, park_images: [], section_ids: [])
+    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, :sento_ids, park_images: [], section_ids: [])
   end
 end

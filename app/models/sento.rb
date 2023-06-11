@@ -1,4 +1,8 @@
 class Sento < ApplicationRecord
+
+  has_many :park_sentos
+  has_many :parks, through: :park_sentos
+
   enum prefecture_id:{
      "エリアを選択":0,
      大阪:1,京都:2

@@ -5,11 +5,14 @@
  <table class="table table-borderless">
            <tbody>
               <tr>
+                  <td>掲載ステータス</td>
+                  <td><%= @sento.active_status %></td>
+              </tr>
+              <tr>
                   <td>エリア</td>
                   <td><%= @sento.prefecture_id %></td>
               </tr>
               <tr>
-
                   <td>銭湯名</td>
                   <td><%= @sento.name %></td>
               </tr>
@@ -82,6 +85,16 @@
               </tr>
         </tbody>
       </table>
+<h3>最寄りパーク</h3>
+    <% if @sento.parks.present? %>
+        <% @sento.parks.each do |sento| %>
+            <%= link_to admin_park_path(sento.id) do %>
+              <h4><%= sento.name %></h4>
+            <% end %>
+        <% end %>
+    <% else %>
+      <h5>まだ情報はありません</h5>
+    <% end %>
     <%= link_to "最寄りパークを追加、詳細を編集する", edit_admin_sento_path(@sento) %>
 
 

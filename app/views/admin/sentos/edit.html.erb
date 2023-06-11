@@ -137,5 +137,9 @@
               </tr>
         </tbody>
       </table>
+<h3>最寄りパーク</h3>
+                  <div class="form_group">
+                    <%= f.collection_select :park_ids, Park.all, :id, :name, options = { include_blank: true }, prompt: '選択してください' %>
+                  </div>
                         <%= f.submit "新規登録" %>
     <% end %>
