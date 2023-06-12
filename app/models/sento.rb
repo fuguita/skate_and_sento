@@ -58,6 +58,8 @@ class Sento < ApplicationRecord
       end
   end
 
-
+def self.search_for(word)
+    Sento.where('name LIKE ?', '%'+word+'%')
+end
 
 end

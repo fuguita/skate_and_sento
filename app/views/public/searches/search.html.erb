@@ -1,0 +1,45 @@
+<% if @word == "" %>
+ <h3>キーワードが入力されてません。</h3>
+ <% else %>
+<% if @model == 'Park' %>
+  <h5>"<%= @word %>"の検索結果</h5>
+    <% @records.each do |park| %>
+      <h4><%= link_to park_path(park.id) do %><%= park.name %><% end %></h4>
+        <%= park.address %>
+          エリア：<%= park.prefecture_id %>
+            <% if park.sentos.present? %>
+                <% park.sentos.each do |sento| %>
+                    最寄り銭湯♨︎:
+                    <%= link_to sento_path(sento.id) do %>
+                        <%= sento.name %>
+                    <% end %>
+                <% end %>
+            <% else %>
+              まだ情報はありません
+            <% end %>
+                <% park.park_images.each do |park_image| %>
+                  <%= image_tag park_image, size: '200x200' %>
+                <% end %>
+    <% end %>
+<% elsif @model == '銭湯' %>
+  <h5>"<%= @word %>"の検索結果</h5>
+    <% @records.each do |sento| %>
+      <h4><%= link_to sento_path(sento.id) do %><%= sento.name %><% end %></h4>
+          <%= sento.address %>
+            エリア：<%= sento.prefecture_id %>
+              <% if sento.parks.present? %>
+                  <% sento.parks.each do |park| %>
+                      最寄りパーク:
+                      <%= link_to park_path(park.id) do %>
+                          <%= park.name %>
+                      <% end %>
+                  <% end %>
+              <% else %>
+                まだ情報はありません
+              <% end %>
+                  <% sento.sento_images.each do |sento_image| %>
+                      <%= image_tag sento_image, size: '200x200' %>
+                  <% end %>
+    <% end %>
+    <% end %>
+<% end %>

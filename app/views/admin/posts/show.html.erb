@@ -19,6 +19,7 @@
           <td><%= image_tag @post.get_post_sento_image, size: '200x200' %></td>
           <td>銭湯名<br>コメント</td>
           <td><%= @post.sento %><br><%= @post.sento_caption %></td>
+          <td><%= @post.likes.count %></td>
           <td><%= link_to "削除する", admin_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
       </tr>
     </tbody>

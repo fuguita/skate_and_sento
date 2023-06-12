@@ -31,6 +31,10 @@ class Park < ApplicationRecord
       end
   end
 
+  def self.search_for(word)
+    Park.where('name LIKE ?', '%'+word+'%')
+  end
+
 
 
 end
