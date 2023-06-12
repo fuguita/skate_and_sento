@@ -15,9 +15,20 @@
           <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
           <td>銭湯名<br>コメント</td>
           <td><%= post.sento %><br><%= post.sento_caption %></td>
-          <% if post.user == current_user %>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+          <td id="like_buttons_<%= post.id %>">
+            <%= render 'public/likes/like', post: post %>
+          </td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+        <% if post.user == current_user %>
           <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
-          <% end %>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

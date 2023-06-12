@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
   belongs_to :user
+  has_many :likes , dependent: :destroy
 
   enum prefecture_id:{
      "エリアを選択":0,
@@ -25,6 +26,10 @@ end
 
 def get_post_sento_image
     (post_sento_image.attached?) ? post_sento_image : 'default-image.jpg'
+end
+
+def liked_by?(user)
+    likes.exists?(user_id: user.id)
 end
 
 end

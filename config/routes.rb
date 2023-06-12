@@ -48,7 +48,9 @@ Rails.application.routes.draw do
         get 'reviews'
       end
     end
-    resources :posts, only: [:create, :index, :edit, :update, :destroy]
+    resources :posts, only: [:create, :index, :edit, :update, :destroy] do
+      resource :likes, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do
