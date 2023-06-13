@@ -1,5 +1,5 @@
 class PostComment < ApplicationRecord
   belongs_to :user
-  belongs_to :psot
-  
+  belongs_to :post
+
 end

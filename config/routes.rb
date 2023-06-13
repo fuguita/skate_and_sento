@@ -54,7 +54,9 @@ Rails.application.routes.draw do
         get 'posts'
       end
     end
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :sentos, only: [:new, :create, :index, :show, :edit, :update]
     resources :parks, only: [:new, :create, :index, :show, :edit, :update]
   end

@@ -6,61 +6,61 @@
         <p>メールアドレス
         <%= current_user.email %></p>
     </div>
-    <div>
-      <p>My Favotite Park</p>
-      <p>My Favotite 銭湯</p>
-      <p><%= link_to "会員情報を変更", edit_information_user_path(current_user) %></p>
-      <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
-    </div>
+      <div>
+          <p>My Favotite Park</p>
+          <p>My Favotite 銭湯</p>
+          <p><%= link_to "会員情報を変更", edit_information_user_path(current_user) %></p>
+          <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
+      </div>
 
   <h3>My Skate And Sento Posts</h3>
       <table class="table table-borderless">
-    <tbody>
-      <% @posts.each do |post| %>
-      <tr>
-          <td>エリア:<%= post.prefecture_id %> 投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
-          <td></td>
-          <td><%= l post.created_at, format: :short %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag post.get_post_park_image, size: '200x200' %></td>
-          <td>パーク名<br>コメント</td>
-          <td><%= post.park %><br><%= post.park_caption %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
-          <td>銭湯名<br>コメント</td>
-          <td><%= post.sento %><br><%= post.sento_caption %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-          <td id="like_buttons_<%= post.id %>">
-            <%= render 'public/likes/like', post: post %>
-            <br>
-            コメント：<%= post.post_comments.count %>件
-          </td>
-      </tr>
-      <tr>
-          <% post.post_comments.each do |post_comment| %>
-            <td>
-                <%= post_comment.user.name %>のコメント<br>
-                <%= post_comment.comment %>
-                <% if post_commet.user == current_user %>
-                  <%= link_to "コメントを削除する", post_post_comment_path, method: :delete %>
-                <% end %>
-            </td>
-          <% end %>
-      </tr>
-      <tr>
-          <td></td>
-          <td></td>
-        <% if post.user == current_user %>
-          <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
-        <% end %>
-      </tr>
-      <% end %>
-    </tbody>
+          <tbody>
+            <% @posts.each do |post| %>
+                <tr>
+                    <td>エリア:<%= post.prefecture_id %> 投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
+                    <td></td>
+                    <td><%= l post.created_at, format: :short %></td>
+                </tr>
+                <tr>
+                    <td><%= image_tag post.get_post_park_image, size: '200x200' %></td>
+                    <td>パーク名<br>コメント</td>
+                    <td><%= post.park %><br><%= post.park_caption %></td>
+                </tr>
+                <tr>
+                    <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
+                    <td>銭湯名<br>コメント</td>
+                    <td><%= post.sento %><br><%= post.sento_caption %></td>
+                </tr>
+                <tr>
+                  <td></td>
+                    <td id="like_buttons_<%= post.id %>">
+                      <%= render 'public/likes/like', post: post %>
+                    </td>
+                    <td>
+                      コメント：<%= post.post_comments.count %>件
+                    </td>
+                </tr>
+                <tr>
+                    <% post.post_comments.each do |post_comment| %>
+                      <td>
+                          <%= post_comment.user.name %>のコメント<br>
+                          <%= post_comment.comment %>
+                          <% if post_commet.user == current_user %>
+                            <%= link_to "コメントを削除する", post_post_comment_path, method: :delete %>
+                          <% end %>
+                      </td>
+                    <% end %>
+                </tr>
+                <tr>
+                      <td></td>
+                      <td></td>
+                    <% if post.user == current_user %>
+                      <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+          </tbody>
 </table>
 
       <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment%>

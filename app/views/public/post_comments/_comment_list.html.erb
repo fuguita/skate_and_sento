@@ -1,0 +1,13 @@
+<% post.post_comments.each do |post_comment| %>
+      <tr>
+            <td>
+                <%= link_to posts_user_path(post_comment.user.id) do %>
+                <%= post_comment.user.name %>
+                <% end %>のコメント<br>
+                <%= post_comment.comment %>
+                    <% if post_comment.user == current_user %>
+                      <%= link_to "コメントを削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
+                    <% end %>
+            </td>
+      </tr>
+<% end %>
