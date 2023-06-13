@@ -1,4 +1,5 @@
 <table class="table table-borderless">
+  hoge
     <tbody>
       <% posts.each do |post| %>
       <tr>
@@ -20,27 +21,19 @@
         <td></td>
           <td id="like_buttons_<%= post.id %>">
             <%= render 'public/likes/like', post: post %>
-            <td>コメント：<%= post.post_comments.count %>件</td>
+            <span class="count">
+              <%= render 'public/post_comments/count', post: post %>
+            </span>
           </td>
       </tr>
-        <% post.post_comments.each do |post_comment| %>
       <tr>
-            <td>
-                <%= link_to posts_user_path(post_comment.user.id) do %>
-                <%= post_comment.user.name %>
-                <% end %>のコメント<br>
-                <%= post_comment.comment %>
-                    <% if post_comment.user == current_user %>
-                      <%= link_to "コメントを削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
-                    <% end %>
+            <td class="comment_list">
+              <%= render 'public/post_comments/comment_list', post: post %>
             </td>
-      </tr>
-        <% end %>
+     </tr>
       <tr>
-          <td><%= form_with model: [post, post_comment] do |f| %>
-                <%= f.text_area :comment, placeholder: "コメントをここにしてください" %>
-                <%= f.submit 'コメントをする' %>
-              <% end %>
+          <td class="form">
+            <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
           </td>
           <td></td>
           <td></td>
