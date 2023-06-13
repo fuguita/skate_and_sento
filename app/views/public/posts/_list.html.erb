@@ -21,7 +21,29 @@
         <td></td>
           <td id="like_buttons_<%= post.id %>">
             <%= render 'public/likes/like', post: post %>
+            <br>
+            コメント：<%= post.post_comments.count %>件
           </td>
+      </tr>
+      <tr>
+          <% post.post_comments.each do |post_comment| %>
+            <td>
+                <%= post_comment.user.name %>のコメント<br>
+                <%= post_comment.comment %>
+                <% if post_commet.user == current_user %>
+                  <%= link_to "コメントを削除する", post_post_comment_path, method: :delete %>
+                <% end %>
+            </td>
+          <% end %>
+      </tr>
+      <tr>
+          <td><%= form_with model: [post, post_comment] do |f| %>
+                <%= f.text_area :comment, placeholder: "コメントをここにしてください" %>
+                <%= f.submit 'コメントをする' %>
+              <% end %>
+          </td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
           <td></td>

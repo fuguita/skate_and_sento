@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:create, :index, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
     get 'search' => "searches#search", as: 'search'
   end

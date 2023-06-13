@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   def posts
     @user = User.find(params[:id])
     @posts = @user.posts
+    @post_comment = PostComment.new
 
 
   end
