@@ -1,5 +1,6 @@
-<h2>PARK LIST</h2>
-  <% @parks.each do |park| %>
+<h3>My Favorite Parks</h3>
+  <% if @favorite_parks.present? %>
+    <% @favorite_parks.each do |park| %>
     <h4><%= link_to park_path(park.id) do %><%= park.name %><% end %></h4>
       <h5><%= render 'public/parks/park_favorite_buttun', park: park %></h5>
         <%= park.address %>
@@ -17,3 +18,6 @@
                   <%= image_tag park_image, size: '200x200' %>
                 <% end %>
   <% end %>
+  <% else %>
+  <h4>まだお気にり登録はありません</h4>
+<% end %>

@@ -1,9 +1,11 @@
 class Park < ApplicationRecord
 
-  has_many :park_sections
+  has_many :park_sections,dependent: :destroy
   has_many :sections, through: :park_sections
-  has_many :park_sentos
+  has_many :park_sentos, dependent: :destroy
   has_many :sentos, through: :park_sentos
+  has_many :park_favorites, dependent: :destroy
+  has_many :users, through: :park_favorites
 
   enum prefecture_id:{
      "エリアを選択":0,
@@ -35,6 +37,9 @@ class Park < ApplicationRecord
     Park.where('name LIKE ?', '%'+word+'%')
   end
 
+  def park_favorited_by?(user)
+    park_favorites.exists?(user_id: user.id)
+  end  
 
 
 end

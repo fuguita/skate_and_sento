@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         get 'posts'
       end
     end
+        resources :park_favorites, only: [:create, :destroy]
         get 'users//information/edit' => "users#edit", as: 'edit_information_user'
     resources :sentos, only: [:index, :show] do
       member do

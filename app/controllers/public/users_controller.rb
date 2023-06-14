@@ -4,16 +4,17 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @post_comment = PostComment.new
-
-
   end
 
   def my_page
     @posts = current_user.posts
   end
 
-  def edit
+  def park_favorites
+    @favorite_parks = current_user.favorite_parks.order(created_at: :desc)
+  end
 
+  def edit
 
   end
 
