@@ -1,7 +1,10 @@
 <h2><%= @sento.name %></h2>
-  <% @sento.sento_images.each do |sento_image| %>
-      <%= image_tag sento_image, size: '300x300' %>
-  <% end %>
+    <% @sento.sento_images.each do |sento_image| %>
+        <%= image_tag sento_image, size: '300x300' %>
+    <% end %>
+    <div id="sento-btn-<%= @sento.id %>">
+<h5><%= render 'public/sentos/sento_favorite_buttun', sento: @sento %></h5>
+    </div>
  <table class="table table-borderless">
            <tbody>
               <tr>

@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :park_favorites, dependent: :destroy
   has_many :favorite_parks, through: :park_favorites, source: :park
-
-
+  has_many :sento_favorites, dependent: :destroy
+  has_many :favorite_sentos, through: :sento_favorites, source: :sento
 
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -29,6 +29,12 @@ class User < ApplicationRecord
     favorite_parks.destroy(park)
   end
 
+  def sento_favorite(sento)
+    favorite_sentos << sento
+  end
 
+  def unsento_favorite(sento)
+    favorite_sentos.destroy(sento)
+  end
 
 end

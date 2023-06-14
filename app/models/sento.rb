@@ -1,7 +1,9 @@
 class Sento < ApplicationRecord
 
-  has_many :park_sentos
+  has_many :park_sentos, dependent: :destroy
   has_many :parks, through: :park_sentos
+  has_many :sento_favorites, dependent: :destroy
+  has_many :users, through: :sento_favorites
 
   enum prefecture_id:{
      "エリアを選択":0,
@@ -50,16 +52,20 @@ class Sento < ApplicationRecord
       end
   end
 
-   def cold_bath_status
-      if cold_bath == true
-        return 'あり'
-      else
-        return 'なし'
-      end
+  def cold_bath_status
+    if cold_bath == true
+      return 'あり'
+    else
+      return 'なし'
+    end
   end
 
-def self.search_for(word)
-    Sento.where('name LIKE ?', '%'+word+'%')
-end
+  def self.search_for(word)
+      Sento.where('name LIKE ?', '%'+word+'%')
+  end
+  
+  def sento_favorited_by?(user)
+    sento_favorites.exists?(user_id: user.id)
+  end  
 
 end

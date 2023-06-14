@@ -2,6 +2,7 @@
   <% @park.park_images.each do |park_image| %>
       <%= image_tag park_image, size: '300x300' %>
   <% end %>
+<h5><%= render 'public/parks/park_favorite_buttun', park: @park %></h5>
  <table class="table table-borderless">
            <tbody>
               <tr>

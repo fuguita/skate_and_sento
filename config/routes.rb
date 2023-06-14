@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
         resources :park_favorites, only: [:create, :destroy]
+        resources :sento_favorites, only: [:create, :destroy]
         get 'users//information/edit' => "users#edit", as: 'edit_information_user'
     resources :sentos, only: [:index, :show] do
       member do

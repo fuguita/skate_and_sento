@@ -14,6 +14,10 @@ class Public::UsersController < ApplicationController
     @favorite_parks = current_user.favorite_parks.order(created_at: :desc)
   end
 
+  def sento_favorites
+    @favorite_sentos = current_user.favorite_sentos.order(created_at: :desc)
+  end
+
   def edit
 
   end
