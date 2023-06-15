@@ -125,5 +125,11 @@
                         <%= f.label :is_active, "掲載停止中" %></td>
                   </div>
               </tr>
+              <tr>
+                  <div class="form_group">
+                    <td>タグを選択</td>
+                    <td><%= f.collection_check_boxes :sento_tag_ids, SentoTag.all, :ids, :name %></td>
+                  </div>
+              </tr>
         </tbody>
       </table>

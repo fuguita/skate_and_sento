@@ -1,0 +1,5 @@
+<h3>銭湯タグ編集</h3>
+  <%= form_with model: @sento_tag, url: admin_sento_tag_path, method: :patch do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更する" %>
+  <% end %>

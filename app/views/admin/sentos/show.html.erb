@@ -83,6 +83,14 @@
                   <td>水風呂</td>
                   <td><%= @sento.cold_bath_status %>
               </tr>
+              <tr>
+                  <td>タグ</td>
+                  <td>
+                    <% @sento.sento_tags.each do |sento_tag| %>
+                      <%= sento_tag.name %>
+                    <% end %>
+                  </td>
+              </tr>
         </tbody>
       </table>
 <h3>最寄りパーク</h3>

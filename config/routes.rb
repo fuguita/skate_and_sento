@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
     resources :sentos, only: [:new, :create, :index, :show, :edit, :update]
     resources :parks, only: [:new, :create, :index, :show, :edit, :update]
+    resources :sento_tags, only: [:index,:create, :edit, :update]
   end
 
 end

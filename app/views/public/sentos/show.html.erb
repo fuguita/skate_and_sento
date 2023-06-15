@@ -45,6 +45,49 @@
               </tr>
           </tbody>
         </table>
+<h3>設備情報</h3>
+        <table class="table table-borderless">
+          <tbody>
+              <tr>
+                  <td>サウナ</td>
+                  <td><%= @sento.sauna_status %>
+              </tr>
+              <tr>
+                  <td>サウナの温度</td>
+                  <td>
+                  <% if @sento.temperature == 0 %>
+                  サウナはありません
+                  <% else %>
+                      約<%= @sento.temperature %>℃
+                  <% end %>
+                  </td>
+              </tr>
+              <tr>
+                  <td>貸しタオル</td>
+                  <td><%= @sento.towel %></td>
+              </tr>
+              <tr>
+                  <td>石鹸類</td>
+                  <td><%= @sento.soap %></td>
+              </tr>
+              <tr>
+                  <td>露天風呂</td>
+                  <td><%= @sento.open_air_bath_status %>
+              </tr>
+              <tr>
+                  <td>水風呂</td>
+                  <td><%= @sento.cold_bath_status %>
+              </tr>
+              <tr>
+                  <td>タグ</td>
+                  <td>
+                    <% @sento.sento_tags.each do |sento_tag| %>
+                      <%= sento_tag.name %>
+                    <% end %>
+                  </td>
+              </tr>
+        </tbody>
+      </table>
 <h3>最寄りパーク</h3>
     <% if @sento.parks.present? %>
         <% @sento.parks.each do |sento| %>

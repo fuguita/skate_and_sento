@@ -2,6 +2,7 @@ class Admin::SentosController < ApplicationController
 
   def new
     @sento = Sento.new
+
   end
 
   def create
@@ -34,7 +35,7 @@ class Admin::SentosController < ApplicationController
 
   private
   def sento_params
-    params.require(:sento).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :sauna, :temperature, :towel, :soap, :open_air_bath, :cold_bath, :is_active, sento_images: [])
+    params.require(:sento).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :sauna, :temperature, :towel, :soap, :open_air_bath, :cold_bath, :is_active, :park_ids, sento_tag_ids: [], sento_images: [])
   end
 
 end

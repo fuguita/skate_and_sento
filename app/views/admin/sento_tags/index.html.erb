@@ -1,0 +1,14 @@
+<h3>銭湯タグ新規作成・一覧</h3>
+  <%= form_with model: @sento_tag, url: admin_sento_tags_path, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: 'タグ名' %>
+    <%= f.submit "登録する" %>
+  <% end %>
+
+<h3>銭湯タグ一覧</h3>
+  <% @sento_tags.each do |sento_tag| %>
+    <ul>
+      <li><%= sento_tag.name %>
+          <%= link_to "変更する", edit_admin_sento_tag_path(sento_tag.id) %>
+      </li>
+    </ul>
+  <% end %>

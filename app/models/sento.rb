@@ -4,6 +4,8 @@ class Sento < ApplicationRecord
   has_many :parks, through: :park_sentos
   has_many :sento_favorites, dependent: :destroy
   has_many :users, through: :sento_favorites
+  has_many :sento_sento_tags, dependent: :destroy
+  has_many :sento_tags, through: :sento_sento_tags
 
   enum prefecture_id:{
      "エリアを選択":0,
