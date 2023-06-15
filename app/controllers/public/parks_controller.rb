@@ -1,7 +1,12 @@
 class Public::ParksController < ApplicationController
   
   def index
-    @parks = Park.all
+    # if params[:word].present?
+    #   @parks = Park.where(word: params[:word])
+    # elsif params[:tags].present?
+    #   @parks = Park.where(tag: params[:tag])
+    # else
+      @parks = Park.all
   end
 
   def show
