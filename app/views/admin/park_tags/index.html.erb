@@ -1,0 +1,14 @@
+<h3>パークタグ新規作成・一覧</h3>
+  <%= form_with model: @park_tag, url: admin_park_tags_path, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: 'タグ名' %>
+    <%= f.submit "登録する" %>
+  <% end %>
+
+<h3>パークタグ一覧</h3>
+  <% @park_tags.each do |park_tag| %>
+    <ul>
+      <li><%= park_tag.name %>
+          <%= link_to "変更する", edit_admin_park_tag_path(park_tag.id) %>
+      </li>
+    </ul>
+  <% end %>

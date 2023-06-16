@@ -145,7 +145,7 @@
               <tr>
                   <div class="form_group">
                     <td>タグを選択</td>
-                    <td><%= f.collection_check_boxes :sento_tag_names, SentoTag.all, :id, :name %></td>
+                    <td><%= f.collection_check_boxes :sento_tag_ids, SentoTag.all, :id, :name %></td>
                   </div>
               </tr>
         </tbody>

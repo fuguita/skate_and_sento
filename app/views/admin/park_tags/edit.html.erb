@@ -1,0 +1,5 @@
+<h3>パークタグ編集</h3>
+  <%= form_with model: @park_tag, url: admin_park_tag_path, method: :patch do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更する" %>
+  <% end %>

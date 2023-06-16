@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_13_041016) do
+ActiveRecord::Schema.define(version: 2023_06_16_133646) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2023_06_13_041016) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "park_park_tags", force: :cascade do |t|
+    t.integer "park_id", null: false
+    t.integer "park_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["park_id"], name: "index_park_park_tags_on_park_id"
+    t.index ["park_tag_id"], name: "index_park_park_tags_on_park_tag_id"
+  end
+
   create_table "park_reviews", force: :cascade do |t|
     t.integer "park_id", null: false
     t.integer "user_id", null: false
@@ -84,6 +93,12 @@ ActiveRecord::Schema.define(version: 2023_06_13_041016) do
   create_table "park_sentos", force: :cascade do |t|
     t.integer "park_id", null: false
     t.integer "sento_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "park_tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -198,6 +213,8 @@ ActiveRecord::Schema.define(version: 2023_06_13_041016) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "park_park_tags", "park_tags"
+  add_foreign_key "park_park_tags", "parks"
   add_foreign_key "sento_sento_tags", "sento_tags"
   add_foreign_key "sento_sento_tags", "sentos"
 end

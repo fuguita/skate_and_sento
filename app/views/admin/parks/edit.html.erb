@@ -119,6 +119,10 @@
                   </div>
 
                   <%#= f.collection_check_boxes :section_id, Section.all, :id, :name %>
-
+<h6>タグ選択</h6>
+                  <div class="form_group">
+                    タグを選択
+                    <%= f.collection_check_boxes :park_tag_ids, ParkTag.all, :id, :name %>
+                  </div>
                         <%= f.submit "銭湯を追加、変更を保存する" %>
     <% end %>

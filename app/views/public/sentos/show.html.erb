@@ -82,7 +82,7 @@
                   <td>タグ</td>
                   <td>
                     <% @sento.sento_tags.each do |sento_tag| %>
-                      <%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
+                      #<%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
                         <%= sento_tag.name %>
                       <% end %>
                     <% end %>
@@ -92,9 +92,9 @@
       </table>
 <h3>最寄りパーク</h3>
     <% if @sento.parks.present? %>
-        <% @sento.parks.each do |sento| %>
-            <%= link_to admin_park_path(sento.id) do %>
-              <h4><%= sento.name %></h4>
+        <% @sento.parks.each do |park| %>
+            <%= link_to park_path(park.id) do %>
+              <h4><%= park.name %></h4>
             <% end %>
         <% end %>
     <% else %>

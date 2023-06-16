@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -45,6 +44,9 @@ Rails.application.routes.draw do
       member do
         get 'reviews'
       end
+      collection do
+        get 'park_tags'
+      end
     end
     resources :posts, only: [:create, :index, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
@@ -65,6 +67,7 @@ Rails.application.routes.draw do
     resources :sentos, only: [:new, :create, :index, :show, :edit, :update]
     resources :parks, only: [:new, :create, :index, :show, :edit, :update]
     resources :sento_tags, only: [:index,:create, :edit, :update]
+    resources :park_tags, only: [:index,:create, :edit, :update]
   end
 
 end

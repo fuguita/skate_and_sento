@@ -42,6 +42,6 @@ class Admin::ParksController < ApplicationController
 
   private
   def park_params
-    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, :sento_ids, park_images: [], section_ids: [])
+    params.require(:park).permit(:prefecture_id, :name, :introduction, :address, :postal_code, :telephone_number, :business_hour, :holiday, :price, :parking, :helmet, :is_active, :sento_ids, park_tag_ids: [], park_images: [], section_ids: [])
   end
 end

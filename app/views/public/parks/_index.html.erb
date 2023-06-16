@@ -4,6 +4,11 @@
 <h5>
   <%= render 'public/parks/park_favorite_buttun', park: park %>
 </h5>
+  <% park.park_tags.each do |park_tag| %>
+    #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
+      <%= park_tag.name %>
+    <% end %>
+  <% end %>
     <%= park.address %>
     エリア：<%= park.prefecture_id %>
       <% if park.sentos.present? %>

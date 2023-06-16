@@ -6,6 +6,9 @@ class Park < ApplicationRecord
   has_many :sentos, through: :park_sentos
   has_many :park_favorites, dependent: :destroy
   has_many :users, through: :park_favorites
+  has_many :park_park_tags, dependent: :destroy
+  has_many :park_tags, through: :park_park_tags
+  
 
   enum prefecture_id:{
      "エリアを選択":0,

@@ -93,13 +93,12 @@
   <h3>セクション</h3>
                   <div class="form-group">
                     <%= f.collection_check_boxes :section_ids, Section.all, :id, :name %>
-                    <%#= f.fields_for :park_sections do |park_section| %>
-                      <%#= park_section.collection_check_boxes :section_id, Section.all, :id, :name %>
-                    <%# end %>
                   </div>
 
-
-                  <%#= f.collection_check_boxes :section_id, Section.all, :id, :name %>
-
-                        <%= f.submit "新規登録" %>
+<h6>タグ選択</h6>
+                  <div class="form_group">
+                    タグを選択
+                    <%= f.collection_check_boxes :park_tag_ids, ParkTag.all, :id, :name %>
+                  </div>
+                    <%= f.submit "新規登録" %>
     <% end %>

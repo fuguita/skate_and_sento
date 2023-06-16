@@ -52,6 +52,15 @@
                   <td>ヘルメット義務</td>
                   <td><%= @park.helmet %></td>
               </tr>
+              <tr>
+                  <td>タグ</td>
+                  <td>
+                    <% @park.park_tags.each do |park_tag| %>
+                      #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
+                        <%= park_tag.name %>
+                       <% end %>
+                    <% end %>
+                  </td>
           </tbody>
         </table>
   <h3>セクション</h3>
