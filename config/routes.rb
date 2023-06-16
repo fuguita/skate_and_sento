@@ -37,6 +37,9 @@ Rails.application.routes.draw do
       member do
         get 'reviews'
       end
+      collection do
+        get 'sento_tags'
+      end
     end
     resources :parks, only: [:index, :show] do
       member do

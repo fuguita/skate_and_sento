@@ -6,6 +6,12 @@
       <%= render 'public/sentos/sento_favorite_buttun', sento: sento %>
     </h5>
   </div>
+
+<% sento.sento_tags.each do |sento_tag| %>
+    <%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
+      <%= sento_tag.name %>
+    <% end %>
+<% end %>
       <%= sento.address %>
       エリア：<%= sento.prefecture_id %>
         <% if sento.parks.present? %>

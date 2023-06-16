@@ -1,6 +1,7 @@
 class Public::SentosController < ApplicationController
+
   def index
-    @sentos = Sento.all
+    @sentos = params[:sento_tag_id].present? ? SentoTag.find(params[:sento_tag_id]).sentos : Sento.all
   end
 
   def show

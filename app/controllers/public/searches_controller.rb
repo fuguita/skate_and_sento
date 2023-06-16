@@ -8,5 +8,6 @@ class Public::SearchesController < ApplicationController
           else
             @records = Sento.search_for(@word)
           end
+          
   end
 end

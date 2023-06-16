@@ -82,7 +82,9 @@
                   <td>タグ</td>
                   <td>
                     <% @sento.sento_tags.each do |sento_tag| %>
-                      <%= sento_tag.name %>
+                      <%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
+                        <%= sento_tag.name %>
+                      <% end %>
                     <% end %>
                   </td>
               </tr>
