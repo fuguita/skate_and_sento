@@ -7,8 +7,8 @@
         <%= current_user.email %></p>
     </div>
       <div>
-          <p>My Favotite Park</p>
-          <p>My Favotite 銭湯</p>
+          <p><%= link_to "My Favotite Park", park_favorites_users_path(current_user) %></p>
+          <p><%= link_to "My Favotite 銭湯", sento_favorites_users_path(current_user) %></p>
           <p><%= link_to "会員情報を変更", edit_information_user_path(current_user) %></p>
           <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
       </div>
@@ -33,6 +33,16 @@
                     <td><%= post.sento %><br><%= post.sento_caption %></td>
                 </tr>
                 <tr>
+                    <td>タグ</td>
+                    <td></td>
+                    <td>
+                      <% post.post_tags.each do |post_tag| %>
+                        #<%= link_to posts_path(:post_tag_id :post_tag.id) do %>
+                            <%= post_tag.name %>
+                         <% end %>
+                    </td>
+                </tr>
+                <tr>
                   <td></td>
                     <td id="like_buttons_<%= post.id %>">
                       <%= render 'public/likes/like', post: post %>
@@ -44,11 +54,14 @@
                 <tr>
                     <% post.post_comments.each do |post_comment| %>
                       <td>
-                          <%= post_comment.user.name %>のコメント<br>
-                          <%= post_comment.comment %>
-                          <% if post_commet.user == current_user %>
-                            <%= link_to "コメントを削除する", post_post_comment_path, method: :delete %>
+                          <%= link_to posts_user_path(post_comment.user.id ) do %>
+                            <%= post_comment.user.name %>
                           <% end %>
+                          のコメント<br>
+                            <%= post_comment.comment %>
+                            <% if post_comment.user == current_user %>
+                              <%= link_to "コメントを削除する", post_post_comment_path, method: :delete %>
+                            <% end %>
                       </td>
                     <% end %>
                 </tr>

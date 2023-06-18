@@ -1,4 +1,8 @@
-<h2>PARK LIST</h2>
-  <% @parks.each do |park| %>
-    <%= render 'index', park: park %>
-  <% end %>
+<% if @tag.present? %>
+  <h3>#<%= @tag.name %></h3><h4>を含んだPARK LIST</h4>
+<% else %>
+  <h2>PARK LIST</h2>
+<% end %>
+<% @parks.each do |park| %>
+  <%= render 'index', park: park %>
+<% end %>

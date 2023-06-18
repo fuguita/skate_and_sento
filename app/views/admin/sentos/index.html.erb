@@ -7,6 +7,7 @@
           <th>銭湯名</th>
           <th>エリア</th>
           <th>お気に入り数</th>
+          <th>レビュー数</th>
           <th>ステータス</th>
         </tr>
       </thead>
@@ -16,6 +17,7 @@
             <td><%= sento.id %></td>
             <td><%= link_to admin_sento_path(sento.id) do %><%= sento.name %><% end %></td>
             <td><%= sento.prefecture_id %></td>
+            <td><%= sento.sento_favorites.count %>件</td>
             <td>件</td>
             <td><%= sento.active_status %></td>
           </tr>

@@ -13,6 +13,7 @@
                   <%= link_to "ユーザー投稿一覧", admin_posts_path %>
                   <%= link_to "銭湯タグ登録・一覧", admin_sento_tags_path %>
                   <%= link_to "パークタグ登録・一覧", admin_park_tags_path %>
+                  <%= link_to "投稿タグ登録・一覧", admin_post_tags_path %>
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
               <% else %>
                   <%= link_to "ログインする", new_admin_session_path %>

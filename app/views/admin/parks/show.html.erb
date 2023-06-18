@@ -56,9 +56,7 @@
                   <td>タグ</td>
                   <td>
                     <% @park.park_tags.each do |park_tag| %>
-                      #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
-                        <%= park_tag.name %>
-                       <% end %>
+                      #<%= park_tag.name %>
                     <% end %>
                   </td>
           </tbody>

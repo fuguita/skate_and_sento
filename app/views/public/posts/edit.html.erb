@@ -20,6 +20,11 @@
                       <td>コメント<%= f.text_area :sento_caption %></td>
                   </tr>
                   <tr>
+                  <td>タグ選択</td>
+                  <td><%= f.collection_check_boxes :post_tag_ids, PostTag.all, :id , :name %></td>
+                  <td></td>
+              </tr>
+                  <tr>
                       <td></td>
                       <td><%= f.submit 'SKATE AND SENTOを変更' %></td>
                       <td></td>

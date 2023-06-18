@@ -1,6 +1,13 @@
 <h2>他エリアのSKATE AND SENTOを登録</h2>
   <%= render 'public/posts/form', post: @post %>
-
-  <h2>他エリアのSKATE AND SENTO</h2>
-  <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
-
+<!--  <h2>他エリアのSKATE AND SENTO</h2>-->
+<!--  <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>-->
+<% if params[:prefecture_id].present? %>
+  <% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
+    <h2><%= params[:prefecture_id] %>のSKATE AND SENTO</h2>
+        <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
+  <% end %>
+<% else %>
+   <h2>他エリアのSKATE AND SENTO</h2>
+        <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
+<% end %>

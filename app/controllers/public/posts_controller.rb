@@ -8,11 +8,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
-    @posts = Post.all.order(created_at: :desc)
-    @user = @post.user_id
-    @post_comment = PostComment.new
-
+      @post = Post.new
+    if 
+      @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
+      @user = @post.user if @post.user.present?
+      @post_comment = PostComment.new
   end
 
   def edit
@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :prefecture_id, :park, :sento, :park_caption, :sento_caption, :post_park_image, :post_sento_image)
+    params.require(:post).permit(:user_id, :prefecture_id, :park, :sento, :park_caption, :sento_caption, :post_park_image, :post_sento_image, post_tag_ids: [])
   end
 
 end

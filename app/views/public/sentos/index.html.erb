@@ -1,4 +1,8 @@
-<h2>銭湯 LIST</h2>
-  <% @sentos.each do |sento| %>
-    <%= render 'index', sento: sento %>
-  <% end %>
+<% if @tag.present? %>
+  <h3>#<%= @tag.name %></h3><h4>を含んだ銭湯LIST</h4>
+<% else %>
+  <h2>銭湯LIST</h2>
+<% end %>
+<% @sentos.each do |sento| %>
+  <%= render 'index', sento: sento %>
+<% end %>
