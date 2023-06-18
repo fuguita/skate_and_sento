@@ -2,12 +2,14 @@
   <%= render 'public/posts/form', post: @post %>
 <!--  <h2>他エリアのSKATE AND SENTO</h2>-->
 <!--  <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>-->
-<% if params[:prefecture_id].present? %>
-  <% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
-    <h2><%= params[:prefecture_id] %>のSKATE AND SENTO</h2>
-        <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
-  <% end %>
-<% else %>
+  <%# if params[:prefecture_id].present? %>
+    <% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
+      <h2><%= params[:prefecture_id] %>のSKATE AND SENTO</h2>
+    <%# end %>
+  <% elsif @tag.present? %>
+    <h3>#<%= @tag.name %></h3><h4>を含むSKATE AND SENTO</h4>
+  <% else %>
    <h2>他エリアのSKATE AND SENTO</h2>
-        <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
-<% end %>
+  <% end %>
+  <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
+

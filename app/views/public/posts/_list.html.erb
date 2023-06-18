@@ -25,7 +25,7 @@
           <td></td>
           <td>
             <% post.post_tags.each do |post_tag| %>
-              #<%= link_to posts_path(:post_tag_id :post_tag.id) do %>
+              #<%= link_to posts_path(post_tag_id: post_tag.id) do %>
                 <%= post_tag.name %>
                 <% end %>
             <% end %>

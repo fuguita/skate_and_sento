@@ -18,7 +18,10 @@
           <tbody>
             <% @posts.each do |post| %>
                 <tr>
-                    <td>エリア:<%= post.prefecture_id %> 投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
+                    <td>エリア:<%= link_to posts_path(prefecture_id: post.prefecture_id) do %>
+                    <%= post.prefecture_id %>
+                    <% end %>
+                    投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
                     <td></td>
                     <td><%= l post.created_at, format: :short %></td>
                 </tr>
@@ -37,9 +40,10 @@
                     <td></td>
                     <td>
                       <% post.post_tags.each do |post_tag| %>
-                        #<%= link_to posts_path(:post_tag_id :post_tag.id) do %>
+                        #<%= link_to posts_path(post_tag_id: post_tag.id) do %>
                             <%= post_tag.name %>
                          <% end %>
+                      <% end %>
                     </td>
                 </tr>
                 <tr>
