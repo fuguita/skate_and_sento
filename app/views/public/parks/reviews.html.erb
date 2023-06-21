@@ -1,0 +1,22 @@
+<h3><%= @park.name %>のレビュー</h3>
+
+<%= link_to 'パークの詳細に戻る', park_path(@park) %>
+
+<%= form_with model: [@park, @park_review] do |f| %>
+  <%= f.text_area :comment, placeholder: '10文字以上200字以内' %>
+    <div class="form-group row" id="star">
+      <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+      <%= f.hidden_field :star, id: :review_star %>
+  　　　　</div>
+    <script>
+  　　　　$('#star').empty();
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'park_review[star]',
+      half: false,
+    });
+    </script>
+  <%= f.submit "レビューする" %>
+<% end %>

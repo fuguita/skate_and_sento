@@ -64,6 +64,10 @@
         <% end %>
       </div>
 
+      <div>
+        <%= link_to "このパークのレビューを見る、投稿する", reviews_park_path(@park) %>
+      </div>
+
     <h3>最寄り銭湯</h3>
     <% if @park.sentos.present? %>
         <% @park.sentos.each do |sento| %>

@@ -8,8 +8,6 @@ class Public::ParksController < ApplicationController
     else
       @parks = Park.all
     end
-    
-    
     # if params[:word].present?
     #   @parks = Park.where(word: params[:word])
     # elsif params[:tags].present?
@@ -19,5 +17,14 @@ class Public::ParksController < ApplicationController
 
   def show
     @park = Park.find(params[:id])
+  end
+
+  def reviews
+    @park = Park.find(params[:id])
+    @park_review = ParkReview.new
+    @user = @park_review.user
+    @park_reviews = ParkReview.all
+
+
   end
 end

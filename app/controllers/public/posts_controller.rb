@@ -11,18 +11,15 @@ class Public::PostsController < ApplicationController
       @post = Post.new
       @user = @post.user if @post.user.present?
       @post_comment = PostComment.new
-
-    @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
-
+      # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
     if params[:prefecture_id].present?
       @posts = Post.where(prefecture_id: params[:prefecture_id])
     elsif params[:post_tag_id].present?
       @tag = PostTag.find(params[:post_tag_id])
       @posts = @tag.posts
     else
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.limit(3).order(created_at: :desc)
     end
-      # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
   end
 
   def edit

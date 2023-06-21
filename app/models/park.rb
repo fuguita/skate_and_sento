@@ -8,6 +8,7 @@ class Park < ApplicationRecord
   has_many :users, through: :park_favorites
   has_many :park_park_tags, dependent: :destroy
   has_many :park_tags, through: :park_park_tags
+  has_many :park_reviews, dependent: :destroy
   
 
   enum prefecture_id:{

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       end
     end
     resources :parks, only: [:index, :show] do
+    resources :park_reviews, only: [:create]
       member do
         get 'reviews'
       end

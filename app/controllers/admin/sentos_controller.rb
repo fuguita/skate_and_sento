@@ -15,7 +15,7 @@ class Admin::SentosController < ApplicationController
   end
 
   def index
-    @sentos = Sento.page(params[:page]).order(created_at: :desc)
+    @sentos = Sento.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show
