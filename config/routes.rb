@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
       end
     end
     resources :parks, only: [:index, :show] do
-    resources :park_reviews, only: [:create]
+      resources :park_reviews, only: [:create]
       member do
         get 'reviews'
       end
@@ -71,8 +72,9 @@ Rails.application.routes.draw do
     resources :park_tags, only: [:index,:create, :edit, :update]
     resources :post_tags, only: [:index,:create, :edit, :update]
   end
-
+  
 end
+
 
 
 

@@ -3,7 +3,7 @@ class Public::ParkReviewsController < ApplicationController
   def create
     park = Park.find(params[:park_id])
     @review = current_user.park_reviews.new(park_review_params)
-    @review.park.id = park.id
+    @review.park_id = park.id
     @review.save
     redirect_to request.referer
 
