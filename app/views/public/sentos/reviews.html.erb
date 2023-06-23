@@ -1,4 +1,5 @@
 <h3><%= @sento.name %>のレビュー</h3>
+      レビュー:<%= @sento.sento_reviews.count %>件
 
 <%= link_to '銭湯の詳細に戻る', sento_path(@sento) %>
 
@@ -7,7 +8,6 @@
 
       <div class="form-group" id="star">
         <%= f.label "評価" %>
-
         <div id="post_raty"></div>
       </div>
           <script>
@@ -28,11 +28,7 @@
   <% end %>
 
   <h5>ユーザーのレビュー</h5>
-  レビュー数:<%= @sento.sento_reviews.count %>件
-  <br>
   <% @sento.sento_reviews.each do |sento_review| %>
-    投稿したユーザー：<%= sento_review.user.name %><br>
-      <%= sento_review.comment %>
       <div id="rate_<%= sento_review.id %>"></div>
         <script>
         $(document).on('turbolinks:load', function() {
@@ -48,5 +44,7 @@
           raty(elem, opt);
         });
         </script>
+      投稿したユーザー：<%= sento_review.user.name %><br>
+      <%= sento_review.comment %>
   <% end %>
 

@@ -1,4 +1,5 @@
 <h3><%= @park.name %>のレビュー</h3>
+  レビュー:<%= @park.park_reviews.count %>件
 
 
 <%= link_to 'パークの詳細に戻る', park_path(@park) %>
@@ -14,38 +15,35 @@
 
 <div>
   <h5>ユーザーのレビュー</h5>
-  レビュー数:<%= @park.park_reviews.count %>件
-  <br>
-  <% @park.park_reviews.each do |park_review| %>
-    投稿したユーザー：<%= park_review.user.name %>
-    <div id="star-rate<%= park_review.id%>">
-    </div>
-    <%= park_review.comment %>
-    <br>
-    <script>
-      $("#star-rate<%= park_review.id%>").empty();
-      raty(document.getElementById("star-rate<%= park_review.id%>"),
-        {
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      score: '<%= park_review.star %>',
-      half: false,
-      readOnly: true,
-        });
-    </script>
-  <% end %>
+    <% @park.park_reviews.each do |park_review| %>
+      <div id="star-rate<%= park_review.id%>">
+      </div>
+      <script>
+        $("#star-rate<%= park_review.id%>").empty();
+        raty(document.getElementById("star-rate<%= park_review.id%>"),
+          {
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        score: '<%= park_review.star %>',
+        half: false,
+        readOnly: true,
+          });
+      </script>
+      投稿したユーザー：<%= park_review.user.name %><br>
+      <%= park_review.comment %>
+    <% end %>
 </div>
 
-<script>
-  $('#star').empty();
-  raty(document.getElementById('star'),
-    {
-  size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  scoreName: 'park_review[star]',
-  half: false,
-    });
-</script>
+      <script>
+        $('#star').empty();
+        raty(document.getElementById('star'),
+          {
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        scoreName: 'park_review[star]',
+        half: false,
+          });
+      </script>
 
