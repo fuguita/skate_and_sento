@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         resources :sento_favorites, only: [:create, :destroy]
         get 'users//information/edit' => "users#edit", as: 'edit_information_user'
     resources :sentos, only: [:index, :show] do
+      resources :sento_reviews, only: [:create]
       member do
         get 'reviews'
       end
@@ -72,7 +73,7 @@ Rails.application.routes.draw do
     resources :park_tags, only: [:index,:create, :edit, :update]
     resources :post_tags, only: [:index,:create, :edit, :update]
   end
-  
+
 end
 
 

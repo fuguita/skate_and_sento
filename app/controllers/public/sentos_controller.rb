@@ -18,4 +18,12 @@ class Public::SentosController < ApplicationController
   def show
     @sento = Sento.find(params[:id])
   end
+
+  def reviews
+    @sento = Sento.find(params[:id])
+    @sento_review = SentoReview.new
+    @user = @sento_review.user
+    @sento_reviews = SentoReview.all
+  end
+
 end

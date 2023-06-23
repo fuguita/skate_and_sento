@@ -1,0 +1,52 @@
+<h3><%= @sento.name %>のレビュー</h3>
+
+<%= link_to '銭湯の詳細に戻る', sento_path(@sento) %>
+
+  <%= form_with model: [@sento, @sento_review] do |f| %>
+    <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
+
+      <div class="form-group" id="star">
+        <%= f.label "評価" %>
+
+        <div id="post_raty"></div>
+      </div>
+          <script>
+            $(document).on('turbolinks:load', function() {
+              let elem = document.querySelector('#post_raty');
+              if (elem == null) return;
+
+              elem.innerHTML = ""
+              let opt = {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                scoreName: 'sento_review[star]',
+              };
+              raty(elem, opt);
+            });
+          </script>
+        <%= f.submit "レビューする" %>
+  <% end %>
+
+  <h5>ユーザーのレビュー</h5>
+  レビュー数:<%= @sento.sento_reviews.count %>件
+  <br>
+  <% @sento.sento_reviews.each do |sento_review| %>
+    投稿したユーザー：<%= sento_review.user.name %><br>
+      <%= sento_review.comment %>
+      <div id="rate_<%= sento_review.id %>"></div>
+        <script>
+        $(document).on('turbolinks:load', function() {
+          let elem = document.querySelector('#rate_<%= sento_review.id %>');
+          if (elem == null) return;
+          elem.innerHTML = "";
+          let opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            score: "<%= sento_review.star %>",
+            readOnly: true,
+          };
+          raty(elem, opt);
+        });
+        </script>
+  <% end %>
+

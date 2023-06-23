@@ -6,6 +6,7 @@ class Sento < ApplicationRecord
   has_many :users, through: :sento_favorites
   has_many :sento_sento_tags, dependent: :destroy
   has_many :sento_tags, through: :sento_sento_tags
+  has_many :sento_reviews, dependent: :destroy
 
   enum prefecture_id:{
      "エリアを選択":0,
@@ -65,13 +66,13 @@ class Sento < ApplicationRecord
   def self.search_for(word)
     Sento.where('name LIKE ?', '%'+word+'%')
   end
-  
+
   # def self.seach_for(sento_tag)
   #   Sento.where(sento_tg_id: sento_tag.id)
   # end
-        
+
   def sento_favorited_by?(user)
     sento_favorites.exists?(user_id: user.id)
-  end  
+  end
 
 end

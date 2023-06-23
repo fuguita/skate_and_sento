@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :sento_favorites, dependent: :destroy
   has_many :favorite_sentos, through: :sento_favorites, source: :sento
   has_many :park_reviews, dependent: :destroy
+  has_many :sento_reviews, dependent: :destroy
+  
 
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :email, presence: true, uniqueness: true

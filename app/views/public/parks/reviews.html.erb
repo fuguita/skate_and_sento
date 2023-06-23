@@ -1,21 +1,10 @@
 <h3><%= @park.name %>のレビュー</h3>
-<div class="average-review-rating" data-score=<%= @park_review.average_star %>></div>
-<script>
-  $('.average-review-rating').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
+
 
 <%= link_to 'パークの詳細に戻る', park_path(@park) %>
 
 <%= form_with model: [@park, @park_review] do |f| %>
-  <%= f.text_area :comment, placeholder: '10文字以上200字以内' %>
+  <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
     <div class="form-group">
       <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
       <div id="star"></div>
