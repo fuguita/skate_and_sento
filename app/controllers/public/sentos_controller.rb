@@ -23,7 +23,7 @@ class Public::SentosController < ApplicationController
     @sento = Sento.find(params[:id])
     @sento_review = SentoReview.new
     @user = @sento_review.user
-    @sento_reviews = SentoReview.all
+    @sento_reviews = SentoReview.all.order(created_at: :desc)
   end
 
 end

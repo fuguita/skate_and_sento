@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
       @tag = PostTag.find(params[:post_tag_id])
       @posts = @tag.posts
     else
-      @posts = Post.limit(3).order(created_at: :desc)
+      @posts = Post.limit(5).order(created_at: :desc)
     end
   end
 

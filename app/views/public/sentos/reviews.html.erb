@@ -3,6 +3,8 @@
 
 <%= link_to '銭湯の詳細に戻る', sento_path(@sento) %>
 
+<%= render 'layouts/errors', obj: @sento, obj: @sento_review %>
+
   <%= form_with model: [@sento, @sento_review] do |f| %>
     <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
 
@@ -29,6 +31,7 @@
 
   <h5>ユーザーのレビュー</h5>
   <% @sento.sento_reviews.each do |sento_review| %>
+      <%= l sento_review.created_at, format: :default %><br>
       <div id="rate_<%= sento_review.id %>"></div>
         <script>
         $(document).on('turbolinks:load', function() {

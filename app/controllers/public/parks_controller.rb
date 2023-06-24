@@ -23,7 +23,7 @@ class Public::ParksController < ApplicationController
     @park = Park.find(params[:id])
     @park_review = ParkReview.new
     @user = @park_review.user
-    @park_reviews = ParkReview.all
+    @park_reviews = ParkReview.all.order(created_at: :desc)
 
 
   end

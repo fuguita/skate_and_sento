@@ -4,18 +4,21 @@
 
 <%= link_to 'パークの詳細に戻る', park_path(@park) %>
 
+<%= render 'layouts/errors', obj: @park, obj: @park_review %>
+
 <%= form_with model: [@park, @park_review] do |f| %>
-  <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
-    <div class="form-group">
-      <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
-      <div id="star"></div>
-  　</div>
-  <%= f.submit "レビューする" %>
+    <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
+      <div class="form-group">
+        <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
+        <div id="star"></div>
+    　</div>
+    <%= f.submit "レビューする" %>
 <% end %>
 
 <div>
   <h5>ユーザーのレビュー</h5>
     <% @park.park_reviews.each do |park_review| %>
+      <%= l park_review.created_at, format: :default %>
       <div id="star-rate<%= park_review.id%>">
       </div>
       <script>
@@ -31,7 +34,7 @@
           });
       </script>
       投稿したユーザー：<%= park_review.user.name %><br>
-      <%= park_review.comment %>
+      <%= park_review.comment %><br>
     <% end %>
 </div>
 

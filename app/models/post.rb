@@ -6,6 +6,12 @@ class Post < ApplicationRecord
   has_many :post_post_tags, dependent: :destroy
   has_many :post_tags, through: :post_post_tags
 
+  validates :park, presence: true
+  validates :sento, presence: true
+  validates :park_caption, presence: true
+  validates :sento_caption, presence: true
+
+
   enum prefecture_id:{
      "エリアを選択":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
