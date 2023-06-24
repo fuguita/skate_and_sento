@@ -1,10 +1,13 @@
-<h2><%= @park.name %></h2>
-  <% @park.park_images.each do |park_image| %>
-      <%= image_tag park_image, size: '300x300' %>
-  <% end %>
+<%= link_to "パーク一覧<", parks_path %>
+<div><h2><%= @park.name %></h2>
+    <%= render 'public/parks/rate_average', park: @park %>
+</div>
+      <% @park.park_images.each do |park_image| %>
+          <%= image_tag park_image, size: '300x300' %>
+      <% end %>
 <h5><%= render 'public/parks/park_favorite_buttun', park: @park %></h5>
- <table class="table table-borderless">
-           <tbody>
+  <table class="table table-borderless">
+      <tbody>
               <tr>
                   <td>エリア</td>
                   <td><%= @park.prefecture_id %></td>
@@ -45,8 +48,8 @@
                   <td>ヘルメット義務</td>
                   <td><%= @park.helmet %></td>
               </tr>
-          </tbody>
-        </table>
+      </tbody>
+  </table>
   <h3>セクション</h3>
       <% Section.all.each do |section| %>
         <% if @park.sections.include?(section) %>

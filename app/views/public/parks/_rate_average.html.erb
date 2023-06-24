@@ -1,0 +1,18 @@
+レビュー評価:<%= park.park_reviews.average(:star).to_f.round(1) %>(1~5)
+<div id="average_rate"></div>
+        <script>
+        $(document).on('turbolinks:load', function() {
+          let elem = document.querySelector('#average_rate');
+          if (elem == null) return;
+          elem.innerHTML = "";
+          let opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            half: true,
+            readOnly: true,
+            score: "<%= park.park_reviews.average(:star).to_f.round(1) %>",
+          };
+          raty(elem, opt);
+        });
+        </script>

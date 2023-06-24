@@ -24,6 +24,7 @@ class Public::SentosController < ApplicationController
     @sento_review = SentoReview.new
     @user = @sento_review.user
     @sento_reviews = SentoReview.all.order(created_at: :desc)
+    # @average = SentoReview.where(sento_id: params[:sento_id]).average(:star)
   end
 
 end

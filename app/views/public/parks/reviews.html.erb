@@ -1,52 +1,57 @@
+<%= link_to "パーク一覧<", parks_path %>/<%= link_to 'パークの詳細<', park_path(@park) %>
+
 <h3><%= @park.name %>のレビュー</h3>
   レビュー:<%= @park.park_reviews.count %>件
-
-
-<%= link_to 'パークの詳細に戻る', park_path(@park) %>
-
+  <%= render 'rate_average', park: @park %>
 <%= render 'layouts/errors', obj: @park, obj: @park_review %>
 
-<%= form_with model: [@park, @park_review] do |f| %>
-    <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
-      <div class="form-group">
-        <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
-        <div id="star"></div>
-    　</div>
-    <%= f.submit "レビューする" %>
-<% end %>
+  <%= form_with model: [@park, @park_review] do |f| %>
+      <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
+        <div class="form-group">
+          <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
+          <div id="star"></div>
+      　</div>
+      <%= f.submit "レビューする" %>
+  <% end %>
 
 <div>
   <h5>ユーザーのレビュー</h5>
-    <% @park.park_reviews.each do |park_review| %>
-      <%= l park_review.created_at, format: :default %>
-      <div id="star-rate<%= park_review.id%>">
-      </div>
-      <script>
-        $("#star-rate<%= park_review.id%>").empty();
-        raty(document.getElementById("star-rate<%= park_review.id%>"),
-          {
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        score: '<%= park_review.star %>',
-        half: false,
-        readOnly: true,
-          });
-      </script>
-      投稿したユーザー：<%= park_review.user.name %><br>
-      <%= park_review.comment %><br>
-    <% end %>
-</div>
+    <% if @park.park_reviews.present? %>
 
+      <% @park.park_reviews.each do |park_review| %>
+        <%= l park_review.created_at, format: :default %>
+      <div id="star-rate<%= park_review.id%>">
+</div>
       <script>
-        $('#star').empty();
-        raty(document.getElementById('star'),
+          $("#star-rate<%= park_review.id%>").empty();
+          raty(document.getElementById("star-rate<%= park_review.id%>"),
           {
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        scoreName: 'park_review[star]',
-        half: false,
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          score: '<%= park_review.star %>',
+          half: false,
+          readOnly: true,
           });
       </script>
+        投稿したユーザー：<%= park_review.user.name %><br>
+        <%= park_review.comment %><br>
+      <% end %>
+    <% else %>
+      <h4>まだレビューがありません</h4>
+    <% end %>
+  </div>
+  
+      <script>
+          $('#star').empty();
+          raty(document.getElementById('star'),
+          {
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          scoreName: 'park_review[star]',
+          half: false,
+          });
+      </script>
+
 

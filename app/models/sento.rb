@@ -24,6 +24,7 @@ class Sento < ApplicationRecord
    validates :temperature, presence: true
    validates :towel, presence: true
    validates :soap, presence: true
+   
 
   has_many_attached :sento_images
 

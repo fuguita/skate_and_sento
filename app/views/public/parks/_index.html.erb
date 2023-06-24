@@ -5,22 +5,22 @@
   <%= render 'public/parks/park_favorite_buttun', park: park %>
 </h5>
   <% park.park_tags.each do |park_tag| %>
-    #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
-      <%= park_tag.name %>
-    <% end %>
-  <% end %>
-    <%= park.address %>
-    エリア：<%= park.prefecture_id %>
-      <% if park.sentos.present? %>
-          <% park.sentos.each do |sento| %>
-              最寄り銭湯♨︎:<%= link_to sento_path(sento.id) do %>
-                <%= sento.name %>
-              <% end %>
-          <% end %>
-      <% else %>
-        最寄り銭湯♨︎:まだ情報はありません
+      #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
+        <%= park_tag.name %>
       <% end %>
+  <% end %>
+        <%= park.address %>
+        エリア：<%= park.prefecture_id %>
+  <% if park.sentos.present? %>
+    <% park.sentos.each do |sento| %>
+        最寄り銭湯♨︎:<%= link_to sento_path(sento.id) do %>
+        <%= sento.name %>
+        <% end %>
+    <% end %>
+  <% else %>
+        最寄り銭湯♨︎:まだ情報はありません
+  <% end %>
       <br>
     <% park.park_images.each do |park_image| %>
-      <%= image_tag park_image, size: '200x200' %>
+        <%= image_tag park_image, size: '200x200' %>
     <% end %>

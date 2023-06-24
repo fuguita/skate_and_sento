@@ -1,4 +1,8 @@
-<h2><%= @sento.name %></h2>
+<%= link_to "銭湯一覧<", sentos_path %>
+
+<div><h2><%= @sento.name %></h2>
+<%= render 'public/sentos/rate_average', sento: @sento %>
+</div>
     <% @sento.sento_images.each do |sento_image| %>
         <%= image_tag sento_image, size: '300x300' %>
     <% end %>
