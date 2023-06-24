@@ -1,0 +1,2 @@
+module Admin::SentoReviewsHelper
+end

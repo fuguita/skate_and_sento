@@ -1,0 +1,24 @@
+<h3>パークレビュー一覧</h3>
+<h5><%= link_to "銭湯レビュー一覧", admin_sento_reviews_path %></h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>投稿日</th>
+            <th>投稿者</th>
+            <th>パーク名</th>
+            <th>レビュー内容</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @park_reviews.each do |park_review| %>
+          <tr>
+            <td><%= l park_review.created_at, format: :default %></td>
+            <td><%= park_review.user.name %></td>
+            <td><%= park_review.park.name %></td>
+            <td><%= park_review.comment %></td>
+            <td><%= link_to "レビューを削除", admin_park_review_path(park_review), method: :delete, data: { confirm: 'レビューを削除しますか？' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>

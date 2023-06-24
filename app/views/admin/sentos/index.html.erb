@@ -8,6 +8,7 @@
           <th>エリア</th>
           <th>お気に入り数</th>
           <th>レビュー数</th>
+          <th>レビューの評価(1~5)</th>
           <th>ステータス</th>
         </tr>
       </thead>
@@ -18,7 +19,8 @@
             <td><%= link_to admin_sento_path(sento.id) do %><%= sento.name %><% end %></td>
             <td><%= sento.prefecture_id %></td>
             <td><%= sento.sento_favorites.count %>件</td>
-            <td>件</td>
+            <td><%= sento.sento_reviews.count %>件</td>
+            <td><%= sento.sento_reviews.average(:star).to_f.round(1) %></td>
             <td><%= sento.active_status %></td>
           </tr>
         <% end %>

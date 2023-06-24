@@ -8,6 +8,7 @@
           <th>エリア</th>
           <th>お気に入り数</th>
           <th>レビュー数</th>
+          <th>レビューの評価(1~5)</th>
           <th>ステータス</th>
         </tr>
       </thead>
@@ -18,7 +19,8 @@
             <td><%= link_to admin_park_path(park.id) do %><%= park.name %><% end %></td>
             <td><%= park.prefecture_id %></td>
             <td><%= park.park_favorites.count %>件</td>
-            <td>件</td>
+            <td><%= park.park_reviews.count %>件</td>
+            <td><%= park.park_reviews.average(:star).to_f.round(1) %></td>
             <td><%= park.active_status %></td>
           </tr>
         <% end %>
