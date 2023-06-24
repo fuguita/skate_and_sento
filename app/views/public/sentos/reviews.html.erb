@@ -1,7 +1,7 @@
 <%= link_to "銭湯一覧<", sentos_path %>/<%= link_to '銭湯の詳細<',sento_path(@sento) %>
 <h3><%= @sento.name %>のレビュー</h3>
       レビュー:<%= @sento.sento_reviews.count %>件
-      <%= render 'rate_average', sento: @sento %>
+      <%= render 'public/sentos/rate_average', sento: @sento %>
 
 <h5>レビューを投稿</h5>
   <%= render 'layouts/errors', obj: @sento, obj: @sento_review %>

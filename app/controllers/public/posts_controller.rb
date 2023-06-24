@@ -1,10 +1,16 @@
 class Public::PostsController < ApplicationController
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    @post.save
-    redirect_to request.referer
+        @post = Post.new(post_params)
+        @post.user_id = current_user.id
+     if @post.save
+        redirect_to request.referer, notice: 'THANK YOU FOR YOUR SKATE AND SENTO!!'
+     else
+       @user = @post.user if @post.user.present?
+       @post_comment = PostComment.new
+       @posts = Post.limit(5).order(created_at: :desc)
+       render 'index'
+     end
   end
 
   def index

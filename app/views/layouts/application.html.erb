@@ -15,6 +15,9 @@
         <%= render 'layouts/header' %>
     </header>
       <%= flash[:notice] %>
+      <div id="flash_message">
+        <%= flash[:notice_favorite] %>
+      </div>
       <%= yield %>
   </body>
 </html>

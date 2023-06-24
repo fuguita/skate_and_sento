@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   validates :sento, presence: true
   validates :park_caption, presence: true
   validates :sento_caption, presence: true
+  validates :prefecture_id, presence: true
+
 
 
   enum prefecture_id:{
