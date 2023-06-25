@@ -61,15 +61,14 @@
 
       <div>タグ
         <% @park.park_tags.each do |park_tag| %>
-          #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
-            <%= park_tag.name %>
-          <% end %>
+          #<%= link_to "#{park_tag.name}", parks_path(park_tag_id: park_tag.id) %>
         <% end %>
       </div>
-
+      <% if user_signed_in? %>
       <div>
         <%= link_to "このパークのレビューを見る、投稿する", reviews_park_path(@park) %>
       </div>
+      <% end %>
 
     <h3>最寄り銭湯</h3>
     <% if @park.sentos.present? %>

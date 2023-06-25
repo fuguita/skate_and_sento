@@ -1,52 +1,53 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
 
-  def create
-        @post = Post.new(post_params)
-        @post.user_id = current_user.id
-     if @post.save
-        redirect_to request.referer, notice: 'THANK YOU FOR YOUR SKATE AND SENTO!!'
-     else
-       @user = @post.user if @post.user.present?
-       @post_comment = PostComment.new
-       @posts = Post.limit(5).order(created_at: :desc)
-       render 'index'
-     end
-  end
-
-  def index
-      @post = Post.new
-      @user = @post.user if @post.user.present?
-      @post_comment = PostComment.new
-      # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
-    if params[:prefecture_id].present?
-      @posts = Post.where(prefecture_id: params[:prefecture_id])
-    elsif params[:post_tag_id].present?
-      @tag = PostTag.find(params[:post_tag_id])
-      @posts = @tag.posts
-    else
-      @posts = Post.limit(5).order(created_at: :desc)
+    def create
+          @post = Post.new(post_params)
+          @post.user_id = current_user.id
+       if @post.save
+          redirect_to request.referer, notice: 'THANK YOU FOR YOUR SKATE AND SENTO!!'
+       else
+         @user = @post.user if @post.user.present?
+         @post_comment = PostComment.new
+         @posts = Post.limit(5).order(created_at: :desc)
+         render 'index'
+       end
     end
-  end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+    def index
+        @post = Post.new
+        @user = @post.user if @post.user.present?
+        @post_comment = PostComment.new
+        # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
+      if params[:prefecture_id].present?
+        @posts = Post.where(prefecture_id: params[:prefecture_id])
+      elsif params[:post_tag_id].present?
+        @tag = PostTag.find(params[:post_tag_id])
+        @posts = @tag.posts
+      else
+        @posts = Post.limit(5).order(created_at: :desc)
+      end
+    end
 
-  def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to my_page_users_path(current_user)
-  end
+    def edit
+      @post = Post.find(params[:id])
+    end
 
-  def destroy
-    post = Post.find(params[:id])
-    post.destroy
-    redirect_to posts_path
-  end
+    def update
+      @post = Post.find(params[:id])
+      @post.update(post_params)
+      redirect_to my_page_users_path(current_user)
+    end
 
-  private
-  def post_params
-    params.require(:post).permit(:user_id, :prefecture_id, :park, :sento, :park_caption, :sento_caption, :post_park_image, :post_sento_image, post_tag_ids: [])
-  end
+    def destroy
+      post = Post.find(params[:id])
+      post.destroy
+      redirect_to posts_path
+    end
+
+    private
+    def post_params
+      params.require(:post).permit(:user_id, :prefecture_id, :park, :sento, :park_caption, :sento_caption, :post_park_image, :post_sento_image, post_tag_ids: [])
+    end
 
 end

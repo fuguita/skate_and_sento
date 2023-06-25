@@ -1,4 +1,5 @@
 class Public::ParksController < ApplicationController
+before_action :authenticate_user!, only: [:reviews]
 
   def index
     # @parks = params[:park_tag_id].present? ? ParkTag.find(params[:park_tag_id]).parks : Park.all
@@ -24,7 +25,6 @@ class Public::ParksController < ApplicationController
     @park_review = ParkReview.new
     @user = @park_review.user
     @park_reviews = ParkReview.all.order(created_at: :desc)
-
-
   end
+
 end

@@ -94,9 +94,11 @@
               </tr>
         </tbody>
       </table>
+<% if user_signed_in? %>
 <div>
   <%= link_to "この銭湯のレビューを見る、投稿する", reviews_sento_path(@sento) %>
 </div>
+<% end %>
 <h3>最寄りパーク</h3>
     <% if @sento.parks.present? %>
         <% @sento.parks.each do |park| %>
