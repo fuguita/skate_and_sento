@@ -1,10 +1,9 @@
 <h2>MY PAGE</h2>
   <h4>登録情報</h4>
     <div>
-        <p>アカウント名
-        <%= current_user.name %></p>
-        <p>メールアドレス
-        <%= current_user.email %></p>
+        <p><%= "アカウント名: #{current_user.name}" %></p>
+        <p><%= "メールアドレス: #{current_user.email}" %></p>
+
     </div>
       <div>
           <p><%= link_to "My Favotite Park", park_favorites_users_path(current_user) %></p>
@@ -18,10 +17,9 @@
           <tbody>
             <% @posts.each do |post| %>
                 <tr>
-                    <td>エリア:<%= link_to posts_path(prefecture_id: post.prefecture_id) do %>
-                    <%= post.prefecture_id %>
-                    <% end %>
-                    投稿者：<%= link_to posts_user_path(post.user_id) do %><%= post.user.name %><% end %></td>
+                    <td>エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id) %>
+                        投稿者：<%= link_to "#{post.user.name}", posts_user_path(post.user_id) %>
+                    </td>
                     <td></td>
                     <td><%= l post.created_at, format: :short %></td>
                 </tr>
@@ -40,9 +38,7 @@
                     <td></td>
                     <td>
                       <% post.post_tags.each do |post_tag| %>
-                        #<%= link_to posts_path(post_tag_id: post_tag.id) do %>
-                            <%= post_tag.name %>
-                         <% end %>
+                        #<%= link_to "#{post_tag.name}", posts_path(post_tag_id: post_tag.id) %>
                       <% end %>
                     </td>
                 </tr>
@@ -58,10 +54,7 @@
                 <tr>
                     <% post.post_comments.each do |post_comment| %>
                       <td>
-                          <%= link_to posts_user_path(post_comment.user.id ) do %>
-                            <%= post_comment.user.name %>
-                          <% end %>
-                          のコメント<br>
+                          <%= link_to "#{post_comment.user.name}", posts_user_path(post_comment.user.id ) %>のコメント<br>
                             <%= post_comment.comment %>
                             <% if post_comment.user == current_user %>
                               <%= link_to "コメントを削除する", post_post_comment_path, method: :delete, data: { confirm: '本当に削除しますか？'} %>

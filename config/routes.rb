@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:show, :index, :edit, :update, :destroy] do
+    resources :users, only: [:show, :index, :edit, :update] do
       member do
         get 'posts'
       end

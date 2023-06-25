@@ -1,5 +1,7 @@
 class Admin::SentoReviewsController < ApplicationController
-   def index
+  before_action :authenticate_admin!
+
+  def index
     @sento_reviews = SentoReview.all
   end
 
@@ -8,4 +10,5 @@ class Admin::SentoReviewsController < ApplicationController
     sento_review.destroy
     redirect_to request.referer
   end
+
 end
