@@ -1,0 +1,2 @@
+$("#park-btn-<%= @park.id %>").html("<%= j(render('public/parks/park_favorite_buttun', park: @park)) %>");
+$('#flash_message').html("<%= j(render 'layouts/flash') %>");

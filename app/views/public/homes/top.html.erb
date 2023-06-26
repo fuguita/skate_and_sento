@@ -1,1 +1,24 @@
-<h1>Top PAGE</h1>
+<h1>OSAKA & KYOTOのSKATE AND SENTO</h1>
+<h5>大阪、京都のスケートパーク、銭湯の情報をご紹介！！</h5>
+
+  <div>
+    <%= link_to "スケートパークから探す", parks_path %>
+  </div>
+  <div>
+    <%= link_to "銭湯から探す", sentos_path %>
+  </div>
+
+<h4><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path %></h4>
+<% unless user_signed_in? %>
+    <p>
+      ※投稿、レビューを見るには<%= link_to"新規登録", new_user_registration_path %>、
+      <%= link_to"ログイン", new_user_session_path %>が必要です
+    </p>
+<% end %>
+
+<h6>
+  <% @parks.each do |park| %>
+    <%= link_to "#{park.name}", park_path(park) %>
+  <% end %>
+</h6>
+

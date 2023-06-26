@@ -1,4 +1,5 @@
-<%= link_to "銭湯一覧<", sentos_path %>
+<div class="sento-test">
+  <%= link_to "銭湯一覧<", sentos_path %>
 
 <div><h2><%= @sento.name %></h2>
 <%= render 'public/sentos/rate_average', sento: @sento %>
@@ -9,6 +10,7 @@
     <div id="sento-btn-<%= @sento.id %>">
 <h5><%= render 'public/sentos/sento_favorite_buttun', sento: @sento %></h5>
     </div>
+<h3>基本情報</h3>
  <table class="table table-borderless">
            <tbody>
               <tr>
@@ -109,6 +111,7 @@
     <% else %>
       <h5>まだ情報はありません</h5>
     <% end %>
+</div>
 
 
 

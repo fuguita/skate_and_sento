@@ -1,2 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.public-header {
+  text-align: right;
+  width: 450px;
+}
+
+.header-container {
+}

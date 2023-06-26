@@ -9,12 +9,14 @@ class Park < ApplicationRecord
   has_many :park_park_tags, dependent: :destroy
   has_many :park_tags, through: :park_park_tags
   has_many :park_reviews, dependent: :destroy
-  
+
 
   enum prefecture_id:{
      "エリアを選択":0,
      大阪:1,京都:2
    }
+
+   scope :star_count, -> {order(star: :desc)}
 
    validates :name, presence: true
    validates :prefecture_id, presence: true
@@ -43,7 +45,7 @@ class Park < ApplicationRecord
 
   def park_favorited_by?(user)
     park_favorites.exists?(user_id: user.id)
-  end  
+  end
 
 
 end

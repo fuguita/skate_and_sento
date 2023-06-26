@@ -2,7 +2,9 @@
     <% if @favorite_parks.present? %>
         <% @favorite_parks.each do |park| %>
           <h4><%= link_to park_path(park.id) do %><%= park.name %><% end %></h4>
-            <h5><%= render 'public/parks/park_favorite_buttun', park: park %></h5>
+            <div id="park-btn-<%= park.id %>">
+              <h5><%= render 'public/parks/park_favorite_buttun', park: park %></h5>
+            </div>
               <%= park.address %>
               エリア：<%= park.prefecture_id %>
               <br>
