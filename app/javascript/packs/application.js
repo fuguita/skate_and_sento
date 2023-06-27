@@ -25,5 +25,13 @@ window.raty = function(elem,opt) {
     return raty;
 }
 
-
 //= require cocoon
+
+document.addEventListener('turbolinks:load', (e) => {
+    $('.menu-trigger').on('click', function(event) {
+        $(this).toggleClass('active');
+        $('#sp-menu').fadeToggle();
+        event.preventDefault();
+    });
+})
+

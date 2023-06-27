@@ -1,57 +1,65 @@
 <!--<nav class="navbar navbar-expand-lg navbar-light">-->
 <!--    <div class="container-fluid">-->
 <div class="header-container">
+  <div class ="main-logp">
     <a class="navbar-brand p-3" href="/">SKATE AND SENTO</a>
-<!--        <div class="collapse navbar-collapse justify-content-around">-->
-<!--          <ul class="navbar-nav ml-auto">-->
-<div id="hm-icon">
-    <a class="menu-trigger" href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
-</div>
-        <% if request.fullpath.include? "admin" %>
-          <div id="sp-menu">
-                  <% if admin_signed_in? %>
-            <ul>
-                  <li><%= link_to "パーク", admin_parks_path %></li>
-                  <li><%= link_to "銭湯", admin_sentos_path %></li>
-                  <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-                  <li><%= link_to "ユーザー投稿一覧", admin_posts_path %></li>
-                  <li><%= link_to "銭湯タグ登録・一覧", admin_sento_tags_path %></li>
-                  <li><%= link_to "パークタグ登録・一覧", admin_park_tags_path %></li>
-                  <li><%= link_to "投稿タグ登録・一覧", admin_post_tags_path %></li>
-                  <li><%= link_to "パークレビュー一覧", admin_park_reviews_path %></li>
-                  <li><%= link_to "銭湯レビュー一覧", admin_sento_reviews_path %></li>
-                  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-              <% else %>
-                  <li><%= link_to "ログインする", new_admin_session_path %></li>
-            </ul>
-              <% end %>
+  </div>
+  <!--        <div class="collapse navbar-collapse justify-content-around">-->
+  <!--          <ul class="navbar-nav ml-auto">-->
+  <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+  </div>
+  <% if request.fullpath.include? "admin" %>
+    <div id="sp-menu">
+      <% if admin_signed_in? %>
+        <ul>
+          <li><%= link_to "パーク", admin_parks_path %></li>
+          <li><%= link_to "銭湯", admin_sentos_path %></li>
+          <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+          <li><%= link_to "ユーザー投稿一覧", admin_posts_path %></li>
+          <li><%= link_to "銭湯タグ登録・一覧", admin_sento_tags_path %></li>
+          <li><%= link_to "パークタグ登録・一覧", admin_park_tags_path %></li>
+          <li><%= link_to "投稿タグ登録・一覧", admin_post_tags_path %></li>
+          <li><%= link_to "パークレビュー一覧", admin_park_reviews_path %></li>
+          <li><%= link_to "銭湯レビュー一覧", admin_sento_reviews_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul>
+          <li><%= link_to "ログインする", new_admin_session_path %></li>
+        </ul>
+      <% end %>
+    </div>
+  <% else %>
+    <div id="sp-menu">
+        <% if user_signed_in? %>
+          HELLO!!<%= current_user.name %>!
+          <ul>
+            <li><%= link_to "SKATEPARK", parks_path %></li>
+            <li><%= link_to "銭湯", sentos_path %></li>
+            <li><%= link_to "お気に入りPARK", park_favorites_users_path %></li>
+            <li><%= link_to "お気に入り銭湯", sento_favorites_users_path %></li>
+            <li><%= link_to "NEW POST", posts_path %></li>
+            <li><%= link_to "ユーザーのSKATEANDSENTO", posts_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "マイページ", my_page_users_path %></li>
+          </ul>
         <% else %>
-              <% if user_signed_in? %>
-                  HELLO!!<%= current_user.name %>!
-            <ul>
-                  <li><%= link_to "SKATEPARK", parks_path %></li>
-                  <li><%= link_to "銭湯", sentos_path %></li>
-                  <li><%= link_to "お気に入りPARK", park_favorites_users_path %></li>
-                  <li><%= link_to "お気に入り銭湯", sento_favorites_users_path %></li>
-                  <li><%= link_to "NEW POST", posts_path %></li>
-                  <li><%= link_to "ユーザーのSKATEANDSENTO", posts_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                  <li><%= link_to "マイページ", my_page_users_path %></li>
-              <% else %>
-                  <li><%= link_to "新規登録", new_user_registration_path %></li>
-                  <li><%= link_to "ログイン", new_user_session_path %></li>
-                  <li><%= link_to "ABOUT", about_path %></li>
-                  <li><%= link_to "SKATEPARK", parks_path %></li>
-                  <li><%= link_to "銭湯", sentos_path %></li>
-            </ul>
-              <% end %>
-          </div>
-              <%= render 'public/searches/form' %>
+          <ul>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <li><%= link_to "ABOUT", about_path %></li>
+            <li><%= link_to "SKATEPARK", parks_path %></li>
+            <li><%= link_to "銭湯", sentos_path %></li>
+          </ul>
         <% end %>
+      </div>
+    <%= render 'public/searches/form' %>
+  <% end %>
 </div>
 
 

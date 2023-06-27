@@ -1,6 +1,8 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.
+
 #hm-icon {
   position: fixed;
   right: 20px;
@@ -21,7 +23,7 @@
 .menu-trigger span {
   position: absolute;
   left: 0;
-  width: 100%;
+  width: 50%;
   height: 4px;
   background-color: #000;
   border-radius: 4px;
@@ -38,7 +40,7 @@
 .menu-trigger.active span:nth-child(1) {
   -webkit-transform: translateY(20px) rotate(-45deg);
   transform: translateY(20px) rotate(-45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 .menu-trigger.active span:nth-child(2) {
   opacity: 0;
@@ -46,21 +48,23 @@
 .menu-trigger.active span:nth-child(3) {
   -webkit-transform: translateY(-20px) rotate(45deg);
   transform: translateY(-20px) rotate(45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 
 #sp-menu {
   position: fixed;
   top: 0;
-  left: 0;
-  background: #000;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
   color: #fff;
-  width: 100%;
-  min-height: 100%;
+  text-align: right;
+  padding: 65px;
   display: none;
   z-index: 9;
 }
 #sp-menu li {
   text-align: center;
   margin-bottom: 30px;
+  list-style: none;
 }

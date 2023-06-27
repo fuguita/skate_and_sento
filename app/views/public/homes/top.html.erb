@@ -16,9 +16,18 @@
     </p>
 <% end %>
 
-<h6>
-  <% @park_averages.each do |park| %>
-    <%= link_to "#{park.name}", park_path(park) %>
+
+  <% @park_averages.each.with_index(1) do |park, i| %>
+    <div>
+      <h5><%= ranking_position_with_fuffix(i) %></h5>
+      <p><%= link_to "#{park.name}", park_path(park) %></p>
+    </div>
   <% end %>
-</h6>
+
+  <% @sento_averages.each.with_index(1) do |sento, i| %>
+    <div>
+      <h5><%= ranking_position_with_fuffix(i) %></h5>
+      <p><%= link_to "#{sento.name}", sento_path(sento) %></p>
+    </div>
+  <% end %>
 
