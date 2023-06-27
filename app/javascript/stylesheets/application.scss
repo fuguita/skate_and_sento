@@ -1,7 +1,21 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-.
+// @font-face {
+//   font-family: 'gomarice_mukasi_mukasi';
+//   src: font-url('/assets/gomarice_mukasi_mukasi.ttf');
+// }
+.search {
+  text-align: right;
+}
+
+.main-logo {
+  // font-family: 'gomarice_mukasi_mukasi';
+  font-size: 35px;
+  margin-top: 10px;
+  text-align: center;
+}
+
 
 #hm-icon {
   position: fixed;
@@ -68,3 +82,23 @@
   margin-bottom: 30px;
   list-style: none;
 }
+
+.tittle {
+  text-align: center;
+  margin-top: 20px;
+
+  font-size: 100px;
+}
+
+.introduction {
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+

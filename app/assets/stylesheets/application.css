@@ -1,4 +1,26 @@
-/*
+.park-sento {
+  height: 400px;
+  width: 800px;
+  display: inline-block;
+}
+
+.park-visual {
+  background-image: url('longlong.jpeg');
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 300px ;
+  border-radius: 15px;
+}
+
+.sento-visual {
+  background-image: url('senntou.jpeg');
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 300px ;
+  border-radius: 15px;
+}/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *

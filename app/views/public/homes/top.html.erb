@@ -1,12 +1,18 @@
-<h1>OSAKA & KYOTOのSKATE AND SENTO</h1>
-<h5>大阪、京都のスケートパーク、銭湯の情報をご紹介！！</h5>
+<h1 class="tittle">OSAKA & KYOTO<br>SKATE AND SENTO</h1>
+<h5 class="introduction">大阪、京都のスケートパーク、銭湯の情報をご紹介！！</h5>
 
-  <div>
-    <%= link_to "スケートパークから探す", parks_path %>
+<div class="park-sento">
+  <div class="park-visual">
+      <div class="park-visual-link">
+        <%= link_to "スケートパークから探す", parks_path %>
+      </div>
   </div>
-  <div>
-    <%= link_to "銭湯から探す", sentos_path %>
+  <div class="sento-visual">
+      <div class="sento-visual-link">
+        <%= link_to "銭湯から探す", sentos_path %>
+      </div>
   </div>
+</div>
 
 <h4><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path %></h4>
 <% unless user_signed_in? %>

@@ -1,8 +1,8 @@
 <!--<nav class="navbar navbar-expand-lg navbar-light">-->
 <!--    <div class="container-fluid">-->
 <div class="header-container">
-  <div class ="main-logp">
-    <a class="navbar-brand p-3" href="/">SKATE AND SENTO</a>
+  <div class ="main-logo">
+    <%= link_to "SKATE AND SENTO", root_path %>
   </div>
   <!--        <div class="collapse navbar-collapse justify-content-around">-->
   <!--          <ul class="navbar-nav ml-auto">-->
@@ -58,7 +58,9 @@
           </ul>
         <% end %>
       </div>
-    <%= render 'public/searches/form' %>
+    <div class="search">
+      <%= render 'public/searches/form' %>
+    </div>
   <% end %>
 </div>
 
