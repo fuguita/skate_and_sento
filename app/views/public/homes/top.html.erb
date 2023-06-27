@@ -17,7 +17,7 @@
 <% end %>
 
 <h6>
-  <% @parks.each do |park| %>
+  <% @park_averages.each do |park| %>
     <%= link_to "#{park.name}", park_path(park) %>
   <% end %>
 </h6>
