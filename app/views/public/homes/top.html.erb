@@ -4,36 +4,40 @@
 <div class="park-sento">
   <div class="park-visual">
       <div class="park-visual-link">
-        <%= link_to "スケートパークから探す", parks_path %>
+        <%= link_to "スケートパークから探す", parks_path, class: 'park_visual_link' %>
       </div>
   </div>
   <div class="sento-visual">
       <div class="sento-visual-link">
-        <%= link_to "銭湯から探す", sentos_path %>
+        <%= link_to "銭湯から探す", sentos_path, class: 'sento_visual_link' %>
       </div>
   </div>
 </div>
 
-<h4><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path %></h4>
-<% unless user_signed_in? %>
-    <p>
-      ※投稿、レビューを見るには<%= link_to"新規登録", new_user_registration_path %>、
-      <%= link_to"ログイン", new_user_session_path %>が必要です
-    </p>
-<% end %>
-
-
-  <% @park_averages.each.with_index(1) do |park, i| %>
-    <div>
-      <h5><%= ranking_position_with_fuffix(i) %></h5>
-      <p><%= link_to "#{park.name}", park_path(park) %></p>
-    </div>
+<div class="log-or-sign">
+  <h4><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path, class: 'link_post' %></h4>
+  <% unless user_signed_in? %>
+      <p class="login_comment">
+        ※投稿、レビューを見るには<%= link_to"新規登録", new_user_registration_path %>、
+        <%= link_to"ログイン", new_user_session_path %>が必要です
+      </p>
   <% end %>
+</div>
 
-  <% @sento_averages.each.with_index(1) do |sento, i| %>
-    <div>
-      <h5><%= ranking_position_with_fuffix(i) %></h5>
-      <p><%= link_to "#{sento.name}", sento_path(sento) %></p>
-    </div>
-  <% end %>
+<div class="park-sento-ranking">
+  <div class="park-ranking p-3">
+      <p class="park-top3">人気パークTOP3</p>
+      <% @park_averages.each.with_index(1) do |park, i| %>
+          <h5><%= ranking_position_with_fuffix(i) %></h5>
+          <p><%= link_to "#{park.name}", park_path(park) %></p>
+      <% end %>
+  </div>
+  <div class="sento-ranking p-3">
+      <p class="sento-top3">人気銭湯TOP3</p>
+      <% @sento_averages.each.with_index(1) do |sento, i| %>
+          <h5><%= ranking_position_with_fuffix(i) %></h5>
+          <p><%= link_to "#{sento.name}", sento_path(sento) %></p>
+      <% end %>
+  </div>
+</div>
 

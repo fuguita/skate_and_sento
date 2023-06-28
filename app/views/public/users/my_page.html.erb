@@ -55,6 +55,7 @@
                     <% post.post_comments.each do |post_comment| %>
                       <td>
                           <%= link_to "#{post_comment.user.name}", posts_user_path(post_comment.user.id ) %>のコメント<br>
+                          
                             <%= post_comment.comment %>
                             <% if post_comment.user == current_user %>
                               <%= link_to "コメントを削除する", post_post_comment_path, method: :delete, data: { confirm: '本当に削除しますか？'} %>

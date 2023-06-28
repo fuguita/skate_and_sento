@@ -1,28 +1,32 @@
-<h4>
-  <%= link_to park_path(park.id) do %><%= park.name %><% end %>
-</h4>
-<div id="park-btn-<%= park.id %>">
-  <h5>
-    <%= render 'public/parks/park_favorite_buttun', park: park %>
-  </h5>
-</div>
-  <% park.park_tags.each do |park_tag| %>
-      #<%= link_to parks_path(park_tag_id: park_tag.id) do %>
-        <%= park_tag.name %>
-      <% end %>
-  <% end %>
-        <%= park.address %>
-        エリア：<%= park.prefecture_id %>
-  <% if park.sentos.present? %>
-    <% park.sentos.each do |sento| %>
-        最寄り銭湯♨︎:<%= link_to sento_path(sento.id) do %>
-        <%= sento.name %>
-        <% end %>
-    <% end %>
-  <% else %>
-        最寄り銭湯♨︎:まだ情報はありません
-  <% end %>
-      <br>
+<div class="park-list">
+  <div class="park-image-index">
     <% park.park_images.each do |park_image| %>
-        <%= image_tag park_image, size: '200x200' %>
+            <%= image_tag park_image, size: '450x300', class: "park_image" %>
     <% end %>
+  </div>
+      <h4>
+        <%= link_to park_path(park.id), class: "park_name_index" do %><%= park.name %><% end %>
+      </h4>
+      <div class="park-mini-info">
+          <i class="fas fa-map-pin fa-lg"></i>  <%= park.address %><br>
+        <% if park.sentos.present? %>
+            <% park.sentos.each do |sento| %>
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯︎:<%= link_to sento_path(sento.id) do %>
+                  <%= sento.name %>
+                <% end %>
+            <% end %>
+        <% else %>
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯︎:まだ情報はありません
+        <% end %>
+      </div>
+        <% park.park_tags.each do |park_tag| %>
+              <%= link_to parks_path(park_tag_id: park_tag.id), class: 'park_tags_index' do %>
+                <%= park_tag.name %>
+              <% end %>
+        <% end %>
+      <div id="park-btn-<%= park.id %>">
+        <h5>
+          <%= render 'public/parks/park_favorite_buttun', park: park %>
+        </h5>
+      </div>
+</div>

@@ -37,7 +37,6 @@
   <% else %>
     <div id="sp-menu">
         <% if user_signed_in? %>
-          HELLO!!<%= current_user.name %>!
           <ul>
             <li><%= link_to "SKATEPARK", parks_path %></li>
             <li><%= link_to "銭湯", sentos_path %></li>
@@ -45,8 +44,9 @@
             <li><%= link_to "お気に入り銭湯", sento_favorites_users_path %></li>
             <li><%= link_to "NEW POST", posts_path %></li>
             <li><%= link_to "ユーザーのSKATEANDSENTO", posts_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data:{ confirm: 'ログアウトしますか？'} %></li>
             <li><%= link_to "マイページ", my_page_users_path %></li>
+            <li>HELLO!!<%= current_user.name %>!</li>
           </ul>
         <% else %>
           <ul>
