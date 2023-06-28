@@ -7,7 +7,7 @@ before_action :authenticate_user!, only: [:reviews]
       @tag = ParkTag.find(params[:park_tag_id])
       @parks = @tag.parks
     else
-      @parks = Park.all
+      @parks = Park.all.page(params[:page]).per(10)
     end
     # if params[:word].present?
     #   @parks = Park.where(word: params[:word])

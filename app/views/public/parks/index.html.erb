@@ -6,3 +6,7 @@
 <% @parks.each do |park| %>
   <%= render 'index', park: park %>
 <% end %>
+
+<div class="page">
+ <%= paginate @parks %>
+</div>

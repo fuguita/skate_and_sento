@@ -7,21 +7,20 @@
 // }
 
 
-
-
-
 .search {
   text-align: right;
 }
 
 .main-logo {
-  // font-family: 'gomarice_mukasi_mukasi';
-  font-size: 35px;
   margin-top: 10px;
   text-align: center;
-
 }
 
+.main-logo-link {
+   font-size: 40px;
+   color: #96a44a;
+   font-family: 'Bluesky' !important;
+}
 
 #hm-icon {
   position: fixed;
@@ -87,12 +86,20 @@
   text-align: center;
   margin-bottom: 30px;
   list-style: none;
+  color: #96a44a;
 }
+
+.nav-link{
+  font-family: 'Bluesky' !important;
+  color: black;
+
+}
+
 
 .tittle {
   text-align: center;
-  margin-top: 20px;
-
+  margin-top: 50px;
+  font-family: 'Bluesky' !important;
   font-size: 100px;
 }
 

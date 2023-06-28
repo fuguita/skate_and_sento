@@ -11,7 +11,7 @@
           <i class="fas fa-map-pin fa-lg"></i>  <%= park.address %><br>
         <% if park.sentos.present? %>
             <% park.sentos.each do |sento| %>
-                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯︎:<%= link_to sento_path(sento.id) do %>
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯：<%= link_to sento_path(sento.id), class: 'near-sento' do %>
                   <%= sento.name %>
                 <% end %>
             <% end %>
