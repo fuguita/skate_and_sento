@@ -1,8 +1,12 @@
 <% if @tag.present? %>
-  <h3>#<%= @tag.name %></h3><h4>を含んだ銭湯LIST</h4>
+  <button class="btn btn-outline-warning rounded-pill btn-lg mb-4"><%= @tag.name %></button>を含んだ</h3>
+  <h2 class="park-and-sento-tag-title">銭湯 LIST</h2>
 <% else %>
-  <h2>銭湯LIST</h2>
+  <h2 class="park-title-index mt-5 mb-5">銭湯LIST</h2>
 <% end %>
 <% @sentos.each do |sento| %>
   <%= render 'index', sento: sento %>
 <% end %>
+<div class="page">
+ <%= paginate @sentos%>
+</div>

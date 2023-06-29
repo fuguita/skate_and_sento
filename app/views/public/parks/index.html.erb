@@ -1,12 +1,13 @@
 <% if @tag.present? %>
-  <h3>#<%= @tag.name %></h3><h4>を含んだPARK LIST</h4>
+  <button class="btn btn-outline-warning rounded-pill btn-lg mb-4"><%= @tag.name %></button>を含んだ
+  <h2 class="park-and-sento-tag-title">PARK LIST</h2>
 <% else %>
   <h2 class="park-title-index mt-5 mb-5">PARK LIST</h2>
 <% end %>
 <% @parks.each do |park| %>
   <%= render 'index', park: park %>
 <% end %>
-
 <div class="page">
  <%= paginate @parks %>
 </div>
+

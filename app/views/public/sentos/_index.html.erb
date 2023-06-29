@@ -1,28 +1,32 @@
-<h4>
-<%= link_to sento_path(sento.id) do %><%= sento.name %><% end %>
-</h4>
-  <div id="sento-btn-<%= sento.id %>">
-    <h5>
-      <%= render 'public/sentos/sento_favorite_buttun', sento: sento %>
-    </h5>
-  </div>
-
-<% sento.sento_tags.each do |sento_tag| %>
-    #<%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
-      <%= sento_tag.name %>
+<div class="park-list">
+  <div class="park-image-index">
+    <% sento.sento_images.each do |sento_image| %>
+            <%= image_tag sento_image, size: '450x300', class: "park_image" %>
     <% end %>
-<% end %>
-      <%= sento.address %>
-      エリア：<%= sento.prefecture_id %>
+  </div>
+      <h4>
+        <%= link_to sento_path(sento.id), class: "park_name_index" do %><%= sento.name %><% end %>
+      </h4>
+      <div class="park-mini-info">
+          <i class="fas fa-map-pin fa-lg"></i>  <%= sento.address %><br>
         <% if sento.parks.present? %>
             <% sento.parks.each do |park| %>
-                最寄りパーク:<%= link_to park_path(park.id) do %>
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄りパーク：<%= link_to park_path(park.id), class: 'near-sento' do %>
                   <%= park.name %>
                 <% end %>
             <% end %>
         <% else %>
-            最寄り銭湯♨︎:まだ情報はありません
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄りパーク︎:まだ情報はありません
         <% end %>
-      <% sento.sento_images.each do |sento_image| %>
-        <%= image_tag sento_image, size: '200x200' %>
-      <% end %>
+      </div>
+        <% sento.sento_tags.each do |sento_tag| %>
+              <%= link_to sentos_path(sento_tag_id: sento_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" do %>
+                <%= sento_tag.name %>
+              <% end %>
+        <% end %>
+      <div id="sento-btn-<%= sento.id %>">
+        <h5>
+          <%= render 'public/sentos/sento_favorite_buttun', sento: sento %>
+        </h5>
+      </div>
+</div>

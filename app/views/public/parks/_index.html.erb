@@ -20,7 +20,7 @@
         <% end %>
       </div>
         <% park.park_tags.each do |park_tag| %>
-              <%= link_to parks_path(park_tag_id: park_tag.id), class: 'park_tags_index' do %>
+              <%= link_to parks_path(park_tag_id: park_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" do %>
                 <%= park_tag.name %>
               <% end %>
         <% end %>
