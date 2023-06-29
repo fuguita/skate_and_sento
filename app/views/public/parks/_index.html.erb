@@ -1,15 +1,15 @@
-<div class="park-list">
-  <div class="park-image-index">
-    <%= image_tag park.park_images.first, size: '600x400', class: "park_image" %>
+<div class="park-sento-list">
+  <div class="park-sento-image-index">
+    <%= image_tag park.park_images.first, size: '600x400', class: "park_sento_image" %>
   </div>
       <h4>
-        <%= link_to park_path(park.id), class: "park_name_index" do %><%= park.name %><% end %>
+        <%= link_to park_path(park.id), class: "park_sento_name_index" do %><%= park.name %><% end %>
       </h4>
-      <div class="park-mini-info">
+      <div class="park-sento-mini-info">
           <i class="fas fa-map-pin fa-lg"></i>  <%= park.address %><br>
         <% if park.sentos.present? %>
             <% park.sentos.each do |sento| %>
-                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯：<%= link_to sento_path(sento.id), class: 'near-sento' do %>
+                <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯：<%= link_to sento_path(sento.id), class: 'near-park-sento' do %>
                   <%= sento.name %>
                 <% end %>
             <% end %>

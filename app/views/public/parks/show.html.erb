@@ -3,16 +3,16 @@
 <% end %>
 
 <div>
-  <div class="park-title-row">
+  <div class="park-sento-title-row">
     <div></div>
     <h2 class="park-sento-name"><%= @park.name %></h2>
-    <div class="park-favorite-btn">
+    <div class="park-sento-favorite-btn">
       <div id="park-btn-<%= @park.id %>">
         <%= render 'public/parks/park_favorite_buttun', park: @park %>
       </div>
     </div>
   </div>
-  <div class="park-review">
+  <div class="park-sento-review">
     <%= render 'public/parks/rate_average', park: @park %>
       <% if user_signed_in? %>
         <div>
@@ -21,77 +21,73 @@
       <% end %>
   </div>
 </div>
-<div class="park-image-index">
+<div class="park-sento-image-index">
   <% @park.park_images.each do |park_image| %>
-      <%= image_tag park_image, size: '700x450', class: "park_image" %><br>
+      <%= image_tag park_image, size: '700x450', class: "park_sento_image" %><br>
   <% end %>
-  <div class="park-intro">
-  <%= @park.introduction %>
-</div>
-</div>
-<div class="park-title-row ">
-
-  <h3 class="info-title">基本情報</h3>
-  <div></div>
-    <div class="park-tag-list">
-      <i class="fas fa-tag" style="color: #628961;"></i>
-      <% @park.park_tags.each do |park_tag| %>
-        <%= link_to "#{park_tag.name}", parks_path(park_tag_id: park_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
-      <% end %>
-    </div>
+  <div class="park-sento-intro">
+    <%= @park.introduction %>
+  </div>
+  <div class="park-sento-tag-list">
+    <i class="fas fa-tag" style="color: #628961;"></i>
+    <% @park.park_tags.each do |park_tag| %>
+      <%= link_to "#{park_tag.name}", parks_path(park_tag_id: park_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
+    <% end %>
+  </div>
 </div>
 
-<div class="park-info">
-  <table class="table table-borderless">
-    <tbody>
-      <tr class="park-info-list">
-          <td >エリア</td>
-          <td><%= @park.prefecture_id %></td>
-      </tr>
-      <tr>
-          <td>住所</td>
-          <td><%= @park.address %></td>
-      </tr>
-      <tr>
-          <td>郵便番号</td>
-          <td>〒<%= @park.postal_code %></td>
-      </tr>
-      <tr>
-          <td>オープン時間</td>
-          <td><%= @park.business_hour %></td>
-      </tr>
-      <tr>
-          <td>定休日</td>
-          <td><%= @park.holiday %></td>
-      </tr>
-      <tr>
-          <td>TEL</td>
-          <td><%= @park.telephone_number %></td>
-      </tr>
-      <tr>
-          <td>料金</td>
-          <td><%= @park.price %></td>
-      </tr>
-      <tr>
-          <td>無料パーキング</td>
-          <td><%= @park.parking %></td>
-      </tr>
-      <tr>
-          <td>ヘルメット義務</td>
-          <td><%= @park.helmet %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<h3 class="info-title">基本情報</h3>
+  <div class="park-sento-info">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+            <td>エリア</td>
+            <td><%= @park.prefecture_id %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= @park.address %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td>〒<%= @park.postal_code %></td>
+        </tr>
+        <tr>
+            <td>オープン時間</td>
+            <td><%= @park.business_hour %></td>
+        </tr>
+        <tr>
+            <td>定休日</td>
+            <td><%= @park.holiday %></td>
+        </tr>
+        <tr>
+            <td>TEL</td>
+            <td><%= @park.telephone_number %></td>
+        </tr>
+        <tr>
+            <td>料金</td>
+            <td><%= @park.price %></td>
+        </tr>
+        <tr>
+            <td>無料パーキング</td>
+            <td><%= @park.parking %></td>
+        </tr>
+        <tr>
+            <td>ヘルメット義務</td>
+            <td><%= @park.helmet %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 <div>
-<h3 class="info-title">セクション</h3><br>
-      <% Section.all.each do |section| %>
-        <% if @park.sections.include?(section) %>
-          ○<%= section.name %>
-        <% else %>
-          x<%= section.name %>
+  <h3 class="info-title">セクション</h3><br>
+        <% Section.all.each do |section| %>
+          <% if @park.sections.include?(section) %>
+            ○<%= section.name %>
+          <% else %>
+            x<%= section.name %>
+          <% end %>
         <% end %>
-      <% end %>
 </di>
 <div class="near-name">
     <h3 class="info-title">最寄り銭湯</h3><br>

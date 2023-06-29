@@ -1,111 +1,128 @@
-<div class="sento-test">
-  <%= link_to "銭湯一覧<", sentos_path %>
-
-<div><h2><%= @sento.name %></h2>
-<%= render 'public/sentos/rate_average', sento: @sento %>
-</div>
-    <% @sento.sento_images.each do |sento_image| %>
-        <%= image_tag sento_image, size: '300x300' %>
-    <% end %>
-    <div id="sento-btn-<%= @sento.id %>">
-<h5><%= render 'public/sentos/sento_favorite_buttun', sento: @sento %></h5>
-    </div>
-<h3>基本情報</h3>
- <table class="table table-borderless">
-           <tbody>
-              <tr>
-                  <td>エリア</td>
-                  <td><%= @sento.prefecture_id %></td>
-              </tr>
-              <tr>
-                  <td>紹介</td>
-                  <td><%= @sento.introduction %></td>
-              </tr>
-              <tr>
-                  <td>住所</td>
-                  <td><%= @sento.address %></td>
-              </tr>
-              <tr>
-                  <td>郵便番号</td>
-                  <td>〒<%= @sento.postal_code %></td>
-              </tr>
-              <tr>
-                  <td>営業時間</td>
-                  <td><%= @sento.business_hour %></td>
-              </tr>
-              <tr>
-                  <td>定休日</td>
-                  <td><%= @sento.holiday %></td>
-              </tr>
-              <tr>
-                  <td>TEL</td>
-                  <td><%= @sento.telephone_number %></td>
-              </tr>
-              <tr>
-                  <td>料金</td>
-                  <td><%= @sento.price %></td>
-              </tr>
-              <tr>
-                  <td>無料パーキング</td>
-                  <td><%= @sento.parking %></td>
-              </tr>
-          </tbody>
-        </table>
-<h3>設備情報</h3>
-        <table class="table table-borderless">
-          <tbody>
-              <tr>
-                  <td>サウナ</td>
-                  <td><%= @sento.sauna_status %>
-              </tr>
-              <tr>
-                  <td>サウナの温度</td>
-                  <td>
-                  <% if @sento.temperature == 0 %>
-                  サウナはありません
-                  <% else %>
-                      約<%= @sento.temperature %>℃
-                  <% end %>
-                  </td>
-              </tr>
-              <tr>
-                  <td>貸しタオル</td>
-                  <td><%= @sento.towel %></td>
-              </tr>
-              <tr>
-                  <td>石鹸類</td>
-                  <td><%= @sento.soap %></td>
-              </tr>
-              <tr>
-                  <td>露天風呂</td>
-                  <td><%= @sento.open_air_bath_status %>
-              </tr>
-              <tr>
-                  <td>水風呂</td>
-                  <td><%= @sento.cold_bath_status %>
-              </tr>
-              <tr>
-                  <td>タグ</td>
-                  <td>
-                    <% @sento.sento_tags.each do |sento_tag| %>
-                      #<%= link_to sentos_path(sento_tag_id: sento_tag.id) do %>
-                        <%= sento_tag.name %>
-                      <% end %>
-                    <% end %>
-                  </td>
-              </tr>
-        </tbody>
-      </table>
-<% if user_signed_in? %>
-<div>
-  <%= link_to "この銭湯のレビューを見る、投稿する", reviews_sento_path(@sento) %>
-</div>
+<%= link_to  sentos_path do %>
+  <i class="fas fa-angle-double-left"></i>銭湯LIST
 <% end %>
-<h3>最寄りパーク</h3>
+
+<div>
+  <div class="park-sento-title-row">
+    <div></div>
+    <h2 class="park-sento-name"><%= @sento.name %></h2>
+    <div class="park-sento-favorite-btn">
+      <div id="sento-btn-<%= @sento.id %>">
+        <%= render 'public/sentos/sento_favorite_buttun', sento: @sento %>
+      </div>
+    </div>
+  </div>
+<!--<div class="park-sento-title-row">-->
+  <!--<div class="area">-->
+  <!--  <%#= @sento.prefecture_id %>-->
+  <!--</div>-->
+  <!--<div></div>-->
+  <div class="park-sento-review">
+    <%= render 'public/sentos/rate_average', sento: @sento %>
+      <% if user_signed_in? %>
+        <div>
+          </i><%= link_to "レビューを見る、投稿する", reviews_sento_path(@sento), class: 'mt-2 btn btn-sm btn-outline-secondary' %>
+        </div>
+      <% end %>
+  </div>
+</div>
+<div class="park-sento-image-index">
+  <% @sento.sento_images.each do |sento_image| %>
+      <%= image_tag sento_image, size: '700x450', class: "park_sento_image" %><br>
+  <% end %>
+  <div class="park-sento-intro">
+    <%= @sento.introduction %>
+  </div>
+  <div class="park-sento-tag-list">
+    <i class="fas fa-tag" style="color: #628961;"></i>
+    <% @sento.sento_tags.each do |sento_tag| %>
+      <%= link_to "#{sento_tag.name}", sentos_path(sento_tag_id: sento_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
+    <% end %>
+  </div>
+</div>
+
+<h3 class="info-title">基本情報</h3>
+  <div class="park-sento-info">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+            <td>エリア</td>
+            <td><%= @sento.prefecture_id %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= @sento.address %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td>〒<%= @sento.postal_code %></td>
+        </tr>
+        <tr>
+            <td>オープン時間</td>
+            <td><%= @sento.business_hour %></td>
+        </tr>
+        <tr>
+            <td>定休日</td>
+            <td><%= @sento.holiday %></td>
+        </tr>
+        <tr>
+            <td>TEL</td>
+            <td><%= @sento.telephone_number %></td>
+        </tr>
+        <tr>
+            <td>料金</td>
+            <td><%= @sento.price %></td>
+        </tr>
+        <tr>
+            <td>無料パーキング</td>
+            <td><%= @sento.parking %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<h3 class="info-title">設備情報</h3>
+  <div class="park-sento-info">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td>サウナ</td>
+          <td><%= @sento.sauna_status %>
+        </tr>
+        <tr>
+          <td>サウナの温度</td>
+          <td>
+            <% if @sento.temperature == 0 %>
+                サウナはありません
+            <% else %>
+                約<%= @sento.temperature %>℃
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>貸しタオル</td>
+          <td><%= @sento.towel %></td>
+        </tr>
+        <tr>
+          <td>石鹸類</td>
+          <td><%= @sento.soap %></td>
+        </tr>
+        <tr>
+          <td>露天風呂</td>
+          <td><%= @sento.open_air_bath_status %></td>
+        </tr>
+        <tr>
+          <td>水風呂</td>
+          <td><%= @sento.cold_bath_status %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<div class="near-name">
+    <h3 class="info-title">最寄りパーク</h3><br>
     <% if @sento.parks.present? %>
         <% @sento.parks.each do |park| %>
-            <%= link_to park_path(park.id) do %>
-              <h4><%= park.name %></h4>
+            <%= link_to park_path(park.id), class: 'near' do %>
+              <%= park.name %>
             <% end %>
         <% end %>
     <% else %>

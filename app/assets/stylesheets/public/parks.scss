@@ -1,17 +1,13 @@
 // Place all the styles related to the public/parks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.park-title-index {
+.park-sento-title-index {
   margin-bottom: 20px;
   font-family: 'Bluesky' !important;
   border-bottom: 5px solid #96a44a;
   border-radius: 6px;
   line-height: 0.7;
   display: inline-block;
-}
-
-.park-and-sento-tag {
-
 }
 
 .park-and-sento-tag-title {
@@ -23,43 +19,43 @@
   display: inline-block;
 }
 
-.park-list {
+.park-sento-list {
 border-bottom: 2px solid #96a44a;
 margin-bottom: 20px
 }
 
-.park-title-row {
+.park-sento-title-row {
   display: flex;
   justify-content: space-between;
 }
 
-.park-favorite-btn {
+.park-sento-favorite-btn {
   font-size: 40px;
   margin-top: 35px;
 }
 
-.park-review {
+.park-sento-review {
   text-align: right;
 }
 
-.park-image-index {
+.park-sento-image-index {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.park_image {
+.park_sento_image {
 border-radius: 15px;
 padding-right: 10px;
 margin-top: 20px
 }
 
-.park_name_index {
+.park_sento_name_index {
   color: black;
   font-size: 30px;
   font-weight: bold;
 }
 
-.park-mini-info {
+.park-sento-mini-info {
     font-size: 20px;
 }
 
@@ -72,7 +68,7 @@ margin-top: 20px
 //   padding-left: 10px;
 // }
 
-.near-sento{
+.near-park-sento {
   font-weight: bold;
   color :black;
 }
@@ -94,11 +90,12 @@ margin-top: 20px
   display: inline-block;
 }
 
-.park-tag-list {
-  margin-top: 20px;
+.park-sento-tag-list {
+  margin-top: 30px;
+  text-align: center;
 }
 
-.park-intro {
+.park-sento-intro {
   font-size: 30px;
   border-bottom: 5px solid #96a44a;
   border-radius: 6px;
@@ -108,7 +105,7 @@ margin-top: 20px
   font-weight: bold;
 }
 
-.park-info {
+.park-sento-info {
   text-align: left;
   font-size: 20px;
 }
