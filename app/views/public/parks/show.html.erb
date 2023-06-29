@@ -3,34 +3,43 @@
 <% end %>
 
 <div>
-  <h2 class="park-sento-name"><%= @park.name %></h2>
-      <%= render 'public/parks/rate_average', park: @park %>
+  <div>
+    <h2 class="park-sento-name"><%= @park.name %></h2>
+    <div class="park-favorite-btn">
       <div id="park-btn-<%= @park.id %>">
         <%= render 'public/parks/park_favorite_buttun', park: @park %>
       </div>
+    </div>
+  </div>
+  <%= render 'public/parks/rate_average', park: @park %>
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to "このパークのレビューを見る、投稿する", reviews_park_path(@park), class: 'mt-2 btn btn-sm btn-outline-secondary' %>
+      </div>
+    <% end %>
 </div>
 <div class="park-image-index">
   <% @park.park_images.each do |park_image| %>
-      <%= image_tag park_image, size: '450x300', class: "park_image" %>
+      <%= image_tag park_image, size: '700x450', class: "park_image" %><br>
   <% end %>
+  <div class="park-intro">
+  <%= @park.introduction %>
 </div>
+</div>
+
 <div>
+  <i class="fas fa-tag" style="color: #628961;"></i>
   <% @park.park_tags.each do |park_tag| %>
     <%= link_to "#{park_tag.name}", parks_path(park_tag_id: park_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
   <% end %>
 </div>
-
 <h3 class="info-title">基本情報</h3>
   <div class="park-info">
     <table class="table table-borderless">
       <tbody>
-        <tr>
-            <td>エリア</td>
+        <tr class="park-info-list">
+            <td >エリア</td>
             <td><%= @park.prefecture_id %></td>
-        </tr>
-        <tr>
-            <td>紹介</td>
-            <td><%= @park.introduction %></td>
         </tr>
         <tr>
             <td>住所</td>
@@ -74,13 +83,6 @@
         <% else %>
           x<%= section.name %>
         <% end %>
-      <% end %>
-
-
-      <% if user_signed_in? %>
-      <div>
-        <%= link_to "このパークのレビューを見る、投稿する", reviews_park_path(@park) %>
-      </div>
       <% end %>
 
     <h3 class="info-title">最寄り銭湯</h3>
