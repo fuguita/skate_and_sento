@@ -1,8 +1,6 @@
 <div class="park-list">
   <div class="park-image-index">
-    <% park.park_images.each do |park_image| %>
-            <%= image_tag park_image, size: '450x300', class: "park_image" %>
-    <% end %>
+    <%= image_tag park.park_images.first, size: '600x400', class: "park_image" %>
   </div>
       <h4>
         <%= link_to park_path(park.id), class: "park_name_index" do %><%= park.name %><% end %>
