@@ -1,3 +1,30 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.signin-link-caption {
+  display: flex;
+  justify-content: center;
+}
+
+.signin-link {
+  color: grey;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.card-title {
+  text-align: center;
+  font-family: 'Bluesky';
+  margin-top: 30px;
+  font-size: 23px;
+}
+
+.log-sign-title {
+  font-family: 'Bluesky';
+}

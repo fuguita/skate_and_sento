@@ -1,28 +1,47 @@
-<h2>Log in</h2>
+<h2 class="log-sign-title">Log in</h2>
 
-
- <%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="card-block">
+  <div class="card col-5 mb-5">
+    <div class="card-title">
+      WELCOME TO<br> SKATE AND SENTO
     </div>
-  <% end %>
+      <div class="card-body login-card-body">
+        <%= form_with model: @user, url: user_session_path do |f| %>
+          <%= f.label :email %>
+            <div class="input-group mb-3">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+            </div>
+          <%= f.label :password %>
+            <div class="input-group mb-3">
+              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'Email' %>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+            </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+            <div class='row'>
+              <div class='col-12'>
+                <%= f.submit "Log in", class: "form-control btn btn-secondary mb-3" %>
+                <%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "form-control btn btn-warning"  %>
+              </div>
+            </div>
+          </div>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post %>
+      <%= render "public/shared/links" %>
+    </div>
+</div>
 
-<%= render "public/shared/links" %>
+
