@@ -32,6 +32,18 @@ body {
   font-family: monospace;
 }
 
+.tittle {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Bluesky' !important;
+  font-size: 100px;
+}
+
+.introduction {
+  font-size: 20px;
+  text-align: center;
+}
+
 .logo-image {
   img {
   width: 150px;
@@ -42,7 +54,7 @@ body {
 
 .park-sento {
   height: 500px;
-  width: 100%;
+  // width: 100%;
   text-align: center;
   margin-top: 80px;
 }
