@@ -28,3 +28,20 @@
 .log-sign-title {
   font-family: 'Bluesky';
 }
+
+.account-intro-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.account-intro {
+margin: 0 auto;
+display: inline-block;
+border: 18px solid #98A44A;
+border-radius: 20px;
+text-align: center;
+font-weight: bold;
+padding: 10px;
+font-size: 20px;
+}

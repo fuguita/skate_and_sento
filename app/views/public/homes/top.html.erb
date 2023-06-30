@@ -15,7 +15,7 @@
 </div>
 
 <div class="log-or-sign">
-  <h4><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path, class: 'link_post' %></h4>
+  <h4><i class="fas fa-hand-point-right"></i><%= link_to "銭湯好きスケーターのSKATE AND SENTOの投稿をチェック", posts_path, class: 'link_post' %><i class="fas fa-hand-point-left"></i></h4>
   <% unless user_signed_in? %>
       <p class="login_comment">
         ※投稿、レビューを見るには<%= link_to"新規登録", new_user_registration_path %>、

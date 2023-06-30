@@ -51,45 +51,46 @@ body {
   background-image: url('longlong.jpeg');
   background-size: cover;
   background-position: center;
-  width: 300px;
-  height: 400px ;
+  width: 400px;
+  height: 500px ;
   border-radius: 15px;
   display: inline-block;
 }
 
 .park-visual-link {
-padding-top: 180px;
+padding-top: 230px;
 }
 
 .park_visual_link {
   color: #ffe28b;
   font-weight: bold ;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .sento-visual {
   background-image: url('senntou.jpeg');
   background-size: cover;
   background-position: center;
-  width: 300px;
-  height: 400px ;
+  width: 400px;
+  height: 500px ;
   border-radius: 15px;
   display: inline-block;
   margin-left: 40px;
 }
 
 .sento-visual-link{
-  padding-top: 180px;
+  padding-top: 230px;
 }
 
 .sento_visual_link {
   font-weight: bold ;
   color: #ffe28b;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .log-or-sign {
-  text-align: center
+  text-align: center;
+  margin-top: 90px;
 }
 
 .link_post {
@@ -97,7 +98,8 @@ padding-top: 180px;
   border-radius: 10px;
   background-color: #ffe28b;
   color: black;
-  font-size: 25px
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .park-sento-ranking {

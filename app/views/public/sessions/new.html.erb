@@ -5,20 +5,21 @@
     <div class="card-title">
       WELCOME TO<br> SKATE AND SENTO
     </div>
-      <div class="card-body login-card-body">
-        <%= form_with model: @user, url: user_session_path do |f| %>
-          <%= f.label :email %>
+    <div class="card-body login-card-body">
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <%= render "public/shared/error_messages", resource: @user %>
+          <%#= f.label :メールアドレス %>
             <div class="input-group mb-3">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
                   </div>
                 </div>
             </div>
-          <%= f.label :password %>
+          <%#= f.label :パスワード %>
             <div class="input-group mb-3">
-              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'Email' %>
+              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'パスワード' %>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
@@ -37,9 +38,8 @@
                 <%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "form-control btn btn-warning"  %>
               </div>
             </div>
-          </div>
       <% end %>
-
+    </div>
       <%= render "public/shared/links" %>
     </div>
 </div>
