@@ -1,3 +1,3 @@
-<%= link_to sento_favorite_path(current_user.sento_favorites.find_by(sento_id: sento.id)), method: :delete, remote: true do %>
-   <i class="fas fa-star"></i>
+<%= link_to sento_favorite_path(current_user.sento_favorites.find_by(sento_id: sento.id)), method: :delete, remote: true, class: "unfavorite-button" do %>
+   <i class="fas fa-star"></i><p class="favorite-comment">お気に入りを外す</p>
 <% end %>

@@ -6,8 +6,8 @@
       WELCOME TO<br> SKATE AND SENTO
     </div>
     <div class="card-body login-card-body">
-      <%= form_with model: @user, url: user_session_path do |f| %>
-        <%= render "public/shared/error_messages", resource: @user %>
+      <%= form_with model: resource, url: user_session_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
           <%#= f.label :メールアドレス %>
             <div class="input-group mb-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>

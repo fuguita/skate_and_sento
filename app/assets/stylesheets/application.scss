@@ -79,6 +79,12 @@ padding-top: 230px;
   font-size: 35px;
 }
 
+.park_visual_link:hover {
+  color: #f7c01c;
+  text-decoration: none;
+}
+
+
 .sento-visual {
   background-image: url('senntou.jpeg');
   background-size: cover;
@@ -100,6 +106,11 @@ padding-top: 230px;
   font-size: 35px;
 }
 
+.sento_visual_link:hover {
+  color: #f7c01c;
+  text-decoration: none;
+}
+
 .log-or-sign {
   text-align: center;
   margin-top: 90px;
@@ -112,6 +123,11 @@ padding-top: 230px;
   color: black;
   font-size: 25px;
   font-weight: bold;
+}
+
+.link_post:hover {
+  color: #888e94f2;
+  text-decoration: none;
 }
 
 .park-sento-ranking {
@@ -148,6 +164,12 @@ padding-top: 230px;
   font-family: 'Bluesky' !important;
   color: #98A44A;
 }
+
+.rank_name:hover {
+   color: #c6df3a;
+   text-decoration: none;
+}
+
 
 .page {
   margin-bottom: 20px;

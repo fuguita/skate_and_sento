@@ -13,3 +13,8 @@
     </ul>
   </div>
 <% end %>
+
+<% flash.each do |message_type, message| %>
+  <%= content_tag :div, message, class: message_type %>
+  <div class="<%= message_type %>"><%= message %></div>
+<% end %>
