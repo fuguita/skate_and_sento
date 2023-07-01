@@ -1,17 +1,29 @@
-<h3>My Favorite 銭湯</h3>
+<h3 class="favorite-park-sento-titile mt-5">My Favorite 銭湯</h3>
   <% if @favorite_sentos.present? %>
+    <div class="row">
       <% @favorite_sentos.each do |sento| %>
-        <h4><%= link_to sento_path(sento.id) do %><%= sento.name %><% end %></h4>
-              <div id="sento-btn-<%= sento.id %>">
-                <h5><%= render 'public/sentos/sento_favorite_buttun', sento: sento %></h5>
+        <div class="col-lg-4">
+          <div class="card mb-5">
+            <%= image_tag sento.sento_images.first %>
+            <div class="card-body">
+              <div class="card-text">
+                  <p class="favarite-park-sento-name">
+                    <%= link_to sento_path(sento.id), class: 'favarite-park-sento-name-link' do %>
+                      <%= sento.name %>
+                    <% end %>
+                  </p>
+                  <p class="gfavorite-park-sento-area">
+                    エリア：<%= sento.prefecture_id %>
+                  </p>
+                  <div id="sento-btn-<%= sento.id %>">
+                    <h5><%= render 'public/sentos/sento_favorite_buttun', sento: sento %></h5>
+                  </div>
               </div>
-                  <%= sento.address %>
-                  エリア：<%= sento.prefecture_id %>
-                  <br>
-                  <% sento.sento_images.each do |sento_image| %>
-                    <%= image_tag sento_image, size: '200x200' %>
-                  <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
+    </div>
   <% else %>
-        <h4>お気にり登録はありません</h4>
+    <h4>お気にり登録はありません</h4>
   <% end %>

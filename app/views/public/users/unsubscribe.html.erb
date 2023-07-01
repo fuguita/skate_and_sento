@@ -1,6 +1,7 @@
-<h3>本当に退会しますか？？</h3>
-<p>退会すると会員情報の変更や利用履歴の閲覧を含む全ての会員機能が利用できなくなります。
+<h3 class="unsubscribe">本当に退会しますか？？</h3>
+<p class="about-intro">退会すると会員情報の変更や利用履歴の閲覧を含む全ての会員機能が利用できなくなります。<br>
 退会する場合は、「退会する」をクリックして下さい。</p>
-
-<%= link_to 'キャンセルする', my_page_users_path %>
-<%= link_to '退会する', withdraw_users_path, method: :patch %>
+<div class="cancel-or">
+  <%= link_to 'キャンセルする', my_page_users_path, class: " mr-5 btn btn-sm btn-outline-secondary" %>
+  <%= link_to '退会する', withdraw_users_path, method: :patch, class: "btn btn-sm btn-outline-secondary" %>
+</div>
