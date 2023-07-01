@@ -1,6 +1,9 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+li {
+  list-style: none;
+}
 
 .about-title {
   font-family: 'Bluesky';
@@ -13,7 +16,7 @@
   display: flex;
   justify-content: center;
   margin-top: 70px;
-
+  margin-bottom: 70px;
 }
 
 .about-caption {
@@ -22,4 +25,8 @@
   border-radius: 6px;
   line-height: 0.7;
   font-weight: bold;
+}
+
+.about-intro {
+  text-align: center;
 }

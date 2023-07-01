@@ -9,7 +9,7 @@
     <div class="park-sento-favorite-btn">
       <div id="park-btn-<%= @park.id %>">
         <%= render 'public/parks/park_favorite_buttun', park: @park %>
-        
+
       </div>
     </div>
   </div>
@@ -84,9 +84,9 @@
   <h3 class="info-title">セクション</h3><br>
         <% Section.all.each do |section| %>
           <% if @park.sections.include?(section) %>
-            ○<%= section.name %>
+            ○<%= section.name %><br>
           <% else %>
-            x<%= section.name %>
+            x<%= section.name %><br>
           <% end %>
         <% end %>
 </di>

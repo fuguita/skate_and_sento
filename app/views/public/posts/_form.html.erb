@@ -21,7 +21,10 @@
               </tr>
               <tr>
                   <td>タグ選択</td>
-                  <td><%= f.collection_check_boxes :post_tag_ids, PostTag.all, :id , :name %></td>
+                  <td>
+                    <%= f.collection_check_boxes :post_tag_ids, PostTag.all, :id , :name %>
+
+                  </td>
                   <td></td>
               </tr>
               <tr>

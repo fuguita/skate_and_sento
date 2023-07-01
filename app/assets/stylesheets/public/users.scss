@@ -6,10 +6,15 @@
   justify-content: center;
 }
 
-.signin-link {
+.signin-login-out-link {
   color: grey;
   margin-bottom: 10px;
   text-align: center;
+}
+
+.signin-login-out-link:hover {
+  color: black;
+  text-decoration: none;
 }
 
 .card-block {
@@ -27,6 +32,10 @@
 
 .log-sign-title {
   font-family: 'Bluesky';
+  border-bottom: 5px solid #96a44a;
+  border-radius: 6px;
+  line-height: 0.7;
+  display: inline-block;
 }
 
 .account-intro-box {
@@ -46,4 +55,12 @@ padding: 10px;
 font-size: 20px;
 // background-color: white;
 // color: #98A44A;
+}
+
+.edit-title {
+  font-family: 'Bluesky';
+  border-bottom: 5px solid #96a44a;
+  border-radius: 6px;
+  line-height: 0.7;
+  display: inline-block;
 }

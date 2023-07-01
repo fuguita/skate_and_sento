@@ -1,9 +1,38 @@
-<h2>会員情報編集</h2>
+<h2 class="edit-title">アカウント編集</h2>
 
-<%= form_with model: current_user, url: users_path, method: :patch do |f| %>
-  <p>ユーザーネーム<%= f.text_field :name %></p>
-  <p>メールアドレス<%=f.text_field :email %> </p>
-  <%= f.submit '変更を保存' %>
-<% end %>
-  <%= link_to '会員を退会する', unsubscribe_users_path %>
-  
+<div class="card-block">
+    <div class="card col-5 mb-5">
+      <div class="card-title">
+        Edit Profile
+      </div>
+    <div class="card-body login-card-body">
+      <%= form_with model: current_user, url: users_path, method: :patch do |f| %>
+      <%= render "public/shared/error_messages", resource: current_user %>
+        <div class="input-group mb-3">
+          <%= f.text_field :name, class: 'form-control', placeholder: '入力してくだい' %>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+          <%=f.text_field :email, class: 'form-control', placeholder: '入力してくだい' %>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+        </div>
+        <div class='row'>
+          <div class='col-12'>
+            <%= f.submit "変更を保存", class: "form-control btn btn-secondary mb-3" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="signin-link-caption">退会はこちらから→
+        <%= link_to '会員を退会する', unsubscribe_users_path, class: "signin-login-out-link" %>
+      </div>
+  </div>
+</div>
+
