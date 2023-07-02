@@ -4,7 +4,9 @@
       <% @favorite_sentos.each do |sento| %>
         <div class="col-lg-4">
           <div class="card mb-5">
-            <%= image_tag sento.sento_images.first %>
+            <div class="card-image">
+              <%= image_tag sento.sento_images.first %>
+            </div>
             <div class="card-body">
               <div class="card-text">
                   <p class="favarite-park-sento-name">

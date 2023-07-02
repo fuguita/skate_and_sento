@@ -20,3 +20,45 @@
   text-decoration: none;
 }
 
+.favorite-park-sento-titile {
+  font-family: 'Bluesky';
+  border-bottom: 5px solid #96a44a;
+  border-radius: 6px;
+  line-height: 0.7;
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+.favarite-park-sento-name-link {
+  font-family: 'Bluesky';
+  color: black;
+  font-size: 20px;
+
+}
+
+.favarite-park-sento-name-link:hover {
+  color: #888e94f2;
+  text-decoration: none;
+}
+
+.favorite-box {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  // background-color: red;
+  // #98A44A
+}
+
+.card-box {
+  width: 250px;
+  // height: ;
+  background-color: #fff;
+  margin: 10px;
+}
+
+ .card-image {
+   img {
+     width: 250px;
+     height: 240px;
+   }
+ }
