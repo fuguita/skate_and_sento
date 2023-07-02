@@ -1,16 +1,23 @@
-<h2>他エリアのSKATE AND SENTOを登録</h2>
-
-  <%= render 'public/posts/form', post: @post %>
+<h3 class="post-post-list mt-5">
+  他エリアのSKATE AND SENTOを投稿
+</h3>
+<%= render 'layouts/errors', obj: @post %>
+<%= render 'public/posts/form', post: @post %>
 <!--  <h2>他エリアのSKATE AND SENTO</h2>-->
 <!--  <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>-->
   <%# if params[:prefecture_id].present? %>
-    <% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
-      <h2><%= params[:prefecture_id] %>のSKATE AND SENTO</h2>
+<% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
+      <h3 class="post-post-list mt-5"><%= params[:prefecture_id] %>のSKATE AND SENTO</h2>
     <%# end %>
   <% elsif @tag.present? %>
-    <h3>#<%= @tag.name %></h3><h4>を含むSKATE AND SENTO</h4>
+    <h3 class="post-post-list-support mt-5">
+      #<%= @tag.name %>
+    </h3><br>
+    <h4 class="post-post-list">
+      を含むSKATE AND SENTO
+    </h4>
   <% else %>
-   <h2>他エリアのSKATE AND SENTO</h2>
+   <h3 class="post-post-list mt-5">他エリアのSKATE AND SENTO</h3>
   <% end %>
   <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
 

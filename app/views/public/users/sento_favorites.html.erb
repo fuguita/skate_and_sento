@@ -1,27 +1,28 @@
-<h3 class="favorite-park-sento-titile mt-5">My Favorite 銭湯</h3>
+<h3 class="favorite-park-sento-titile mt-5">
+  My Favorite 銭湯
+  <span id="count">
+    <%= render 'public/sento_favorites/count', favorite_sentos: @favorite_sentos %>
+  </span>
+</h3>
   <% if @favorite_sentos.present? %>
-    <div class="row">
+    <div class="row favorite-box">
       <% @favorite_sentos.each do |sento| %>
-        <div class="col-lg-4">
-          <div class="card mb-5">
-            <div class="card-image">
-              <%= image_tag sento.sento_images.first %>
-            </div>
-            <div class="card-body">
-              <div class="card-text">
-                  <p class="favarite-park-sento-name">
-                    <%= link_to sento_path(sento.id), class: 'favarite-park-sento-name-link' do %>
-                      <%= sento.name %>
-                    <% end %>
-                  </p>
-                  <p class="gfavorite-park-sento-area">
-                    エリア：<%= sento.prefecture_id %>
-                  </p>
-                  <div id="sento-btn-<%= sento.id %>">
-                    <h5><%= render 'public/sentos/sento_favorite_buttun', sento: sento %></h5>
-                  </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+              <%= image_tag sento.sento_images.first, class: 'card-img-top', height:'250' %>
+              <div class="card-body">
+                <h5 class="card-title mt-2 text-left">
+                  <%= link_to sento_path(sento.id), class: 'favarite-park-sento-name-link' do %>
+                    <%= sento.name %>
+                  <% end %>
+                </h5>
+                <ul class="list-unstyled">
+                    <li>エリア：<%= sento.prefecture_id %></li>
+                </ul>
+                <div id="sento-btn-<%= sento.id %>">
+                  <h5><%= render 'public/sentos/sento_favorite_buttun', sento: sento %></h5>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       <% end %>

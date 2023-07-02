@@ -1,2 +1,3 @@
 $("#sento-btn-<%= @sento.id %>").html("<%= j(render('public/sentos/sento_favorite_buttun', sento: @sento)) %>");
 $('#flash_message').html("<%= j(render 'layouts/flash') %>");
+$('#count').html("<%= j(render 'public/sento_favorites/count', favorite_sentos: @favorite_sentos) %>");
