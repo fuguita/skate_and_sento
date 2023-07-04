@@ -6,8 +6,8 @@
     <div class="card-body login-card-body">
       <%= form_with model: post do |f| %>
         <div class="row g-3">
-          <div class="col-12 input-group mb-3 ">
-            <%= f.select :prefecture_id, Post.prefecture_ids.keys, {}, class: 'form-control' %>
+          <div class="col-md-12 input-group row">
+            <%= f.select :prefecture_id, Post.prefecture_ids.keys, {include_blank: true, prompt: 'エリアを選択してくだい'}, class: 'form-control' %>
           </div>
           <div class="col-md-6 mb-3">
             <div class="field">

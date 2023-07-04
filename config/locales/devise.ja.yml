@@ -2,11 +2,6 @@
 ja:
   activerecord:
     attributes:
-      post:
-        park: パーク名
-        sento: 銭湯名
-        park_caption: パークのコメント
-        sento_caption: 銭湯のコメント
       user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン

@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   end
 
   def park_favorites
-    @favorite_parks = current_user.favorite_parks.order(created_at: :desc)
+    @favorite_parks = current_user.park_favorites.order(created_at: :desc)
   end
 
   def sento_favorites
