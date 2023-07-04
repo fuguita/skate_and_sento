@@ -1,27 +1,37 @@
-<%= link_to "パーク一覧<", parks_path %>/<%= link_to 'パークの詳細<', park_path(@park) %>
+<%= link_to  parks_path, class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>PARK LIST
+<% end %>
+/<%= link_to  park_path(@park), class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>PARK
+<% end %>
+<%= render 'layouts/errors', obj: @park, obj: @park_review %>
+<h2 class="park-sento-name"><%= @park.name %>のレビュー</h2>
+<!--<div class="card col-12 bg-none">-->
+<div class="review-post">
+  <h3 class="review-title">レビューを投稿</h3>
+    <%= form_with model: [@park, @park_review] do |f| %>
+        <%= f.text_area :comment, class: 'form-control col-5', placeholder: '5文字以上200字以内' %>
+          <div class="form-group-rank col-5">
+            <strong>評価:</strong>
+            <span id="star"></span>
+        　</div>
+        　<div class="review-submit col-5">
+        　  <%= f.submit "レビューする", class: 'btn btn-sm btn-secondary pl-3 pr-3' %>
+        　</div>
+    <% end %>
+</div>
 
-<h3><%= @park.name %>のレビュー</h3>
-  レビュー:<%= @park.park_reviews.count %>件
-  <%= render 'public/parks/rate_average', park: @park %>
-<h5>レビューを投稿</h5>
-  <%= render 'layouts/errors', obj: @park, obj: @park_review %>
-  <%= form_with model: [@park, @park_review] do |f| %>
-      <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
-        <div class="form-group">
-          <%= f.label :star,'評価 ', class: 'col-md-3 col-form-label' %>
-          <div id="star"></div>
-      　</div>
-      <%= f.submit "レビューする" %>
-  <% end %>
+<div class="review-title">
+  <h3>ユーザーのレビュー(<%= @park.park_reviews.count %>件)</h3>
+  <h5><%= render 'public/parks/rate_average', park: @park %></h5>
+</div>
+
 
 <div>
-  <h5>ユーザーのレビュー</h5>
     <% if @park.park_reviews.present? %>
-
       <% @park.park_reviews.each do |park_review| %>
         <%= l park_review.created_at, format: :default %>
-      <div id="star-rate<%= park_review.id%>">
-</div>
+      <div id="star-rate<%= park_review.id%>"></div>
       <script>
           $("#star-rate<%= park_review.id%>").empty();
           raty(document.getElementById("star-rate<%= park_review.id%>"),
@@ -34,7 +44,7 @@
           readOnly: true,
           });
       </script>
-        投稿したユーザー：<%= park_review.user.name %><br>
+        <i class="fas fa-user"></i>：<%= park_review.user.name %><br>
         <%= park_review.comment %><br>
       <% end %>
     <% else %>

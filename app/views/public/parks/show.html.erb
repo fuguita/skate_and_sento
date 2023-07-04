@@ -4,12 +4,10 @@
 
 <div>
   <div class="park-sento-title-row">
-    <div></div>
     <h2 class="park-sento-name"><%= @park.name %></h2>
     <div class="park-sento-favorite-btn">
       <div id="park-btn-<%= @park.id %>">
         <%= render 'public/parks/park_favorite_buttun', park: @park %>
-
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
   end
 
   def sento_favorites
-    @favorite_sentos = current_user.favorite_sentos.order(created_at: :desc)
+    @favorite_sentos = current_user.sento_favorites.order(created_at: :desc)
   end
 
   def edit

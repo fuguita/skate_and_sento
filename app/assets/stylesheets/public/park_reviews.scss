@@ -1,3 +1,27 @@
 // Place all the styles related to the public/park_reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.review-post {
+  margin-top: 90px;
+}
+
+.review-title {
+  margin-botom: 40px;
+  font-family: 'Bluesky' !important;
+  border-bottom: 2px solid #96a44a;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.form-group-rank {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+.review-submit {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}
