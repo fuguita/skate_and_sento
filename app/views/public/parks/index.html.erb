@@ -1,5 +1,5 @@
 <% if @tag.present? %>
-  <button class="btn btn-outline-warning rounded-pill btn-lg mb-4"><%= @tag.name %></button>を含んだ<br>
+  <button class="btn btn-outline-warning rounded-pill btn-lg mb-4"><%= @tag.name %></button><span class="letter">を含んだ</span><br>
   <h2 class="park-and-sento-tag-title">PARK LIST</h2>
 <% else %>
   <h2 class="park-sento-title-index mt-5 mb-5">PARK LIST</h2>
@@ -7,7 +7,7 @@
 <% @parks.each do |park| %>
   <%= render 'index', park: park %>
 <% end %>
-<div class="page">
- <%= paginate @parks %>
-</div>
+<!--<div class="page">-->
+ <%#= paginate @parks %>
+<!--</div>-->
 

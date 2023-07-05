@@ -4,11 +4,11 @@
 /<%= link_to  park_path(@park), class: "back-link-park-sento" do %>
   <i class="fas fa-angle-double-left"></i>PARK
 <% end %>
-<%= render 'layouts/errors', obj: @park, obj: @park_review %>
+
 <h2 class="park-sento-name"><%= @park.name %>のレビュー</h2>
-<!--<div class="card col-12 bg-none">-->
 <div class="review-post">
   <h2 class="review-title">レビューを投稿</h2>
+    <%= render 'layouts/errors', obj: @park, obj: @park_review %>
     <%= form_with model: [@park, @park_review] do |f| %>
         <%= f.text_area :comment, class: 'form-control col-5', placeholder: '5文字以上200字以内' %>
         <div class="form-group-rank col-5">
@@ -25,7 +25,6 @@
   <h5><%= render 'public/parks/rate_average', park: @park %></h5>
 </div>
 
-
 <div>
   <% if @park.park_reviews.present? %>
     <% @park.park_reviews.each do |park_review| %>
@@ -39,16 +38,16 @@
           <span class="reviewer-star">
           <div id="star-rate<%= park_review.id%>"></div>
           <script>
-              $("#star-rate<%= park_review.id%>").empty();
-              raty(document.getElementById("star-rate<%= park_review.id%>"),
-              {
-              size     : 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              score: '<%= park_review.star %>',
-              half: false,
-              readOnly: true,
-              });
+            $("#star-rate<%= park_review.id%>").empty();
+            raty(document.getElementById("star-rate<%= park_review.id%>"),
+            {
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            score: '<%= park_review.star %>',
+            half: false,
+            readOnly: true,
+            });
           </script>
           </span>
           <div class="review-comment">
@@ -57,20 +56,25 @@
       </div>
     <% end %>
   <% else %>
-      <h4>まだレビューがありません</h4>
+      <h4>レビューがありません</h4>
   <% end %>
-  </div>
+</div>
 
           <script>
-              $('#star').empty();
-              raty(document.getElementById('star'),
-              {
-              size     : 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              scoreName: 'park_review[star]',
-              half: false,
-              });
+            $('#star').empty();
+            raty(document.getElementById('star'),
+            {
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            scoreName: 'park_review[star]',
+            half: false,
+            });
           </script>
+
+<!--<div class="page">-->
+<!-- <%#= paginate @park_reviews %>-->
+<!--</div>-->
+
 
 

@@ -1,16 +1,67 @@
-<%= link_to "銭湯一覧<", sentos_path %>/<%= link_to '銭湯の詳細<',sento_path(@sento) %>
-<h3><%= @sento.name %>のレビュー</h3>
-      レビュー:<%= @sento.sento_reviews.count %>件
-      <%= render 'public/sentos/rate_average', sento: @sento %>
+<%= link_to  sentos_path, class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>銭湯 LIST
+<% end %>
+/<%= link_to  sento_path(@sento), class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>銭湯
+<% end %>
 
-<h5>レビューを投稿</h5>
-  <%= render 'layouts/errors', obj: @sento, obj: @sento_review %>
-  <%= form_with model: [@sento, @sento_review] do |f| %>
-            <%= f.text_area :comment, placeholder: '5文字以上200字以内' %>
-        <div class="form-group" id="star">
-            <%= f.label "評価" %>
-            <div id="post_raty"></div>
-        </div>
+<h2 class="park-sento-name"><%= @sento.name %>のレビュー</h2>
+<div class="review-post">
+  <h2 class="review-title">レビューを投稿</h2>
+    <%= render 'layouts/errors', obj: @sento, obj: @sento_review %>
+    <%= form_with model: [@sento, @sento_review] do |f| %>
+        <%= f.text_area :comment, class: 'form-control col-5', placeholder: '5文字以上200字以内' %>
+        <div class="form-group-rank col-5">
+          <strong>評価:</strong>
+          <span id="post_raty"></span>
+      　</div>
+      　<div class="review-submit col-5">
+      　  <%= f.submit "レビューする", class: 'btn btn-sm btn-secondary pl-3 pr-3' %>
+      　</div>
+    <% end %>
+</div>
+<div class="review-title-box">
+  <h2 class="review-title">ユーザーのレビュー(<%= @sento.sento_reviews.count %>件)</h2>
+  <h5><%= render 'public/sentos/rate_average', sento: @sento %></h5>
+</div>
+
+<div>
+  <% if @sento.sento_reviews.present? %>
+    <% @sento.sento_reviews.each do |sento_review| %>
+      <div class="review-comment-box">
+          <div class="reviewer-name-date">
+            <div class="reviewer-name">
+              <i class="fas fa-user"></i>：<%= sento_review.user.name %>
+            </div>
+            <span class="review-date"><%= l sento_review.created_at, format: :default %></span>
+          </div>
+          <span class="reviewer-star">
+          <div id="rate_<%= sento_review.id %>"></div>
+            <script>
+              $(document).on('turbolinks:load', function() {
+              let elem = document.querySelector('#rate_<%= sento_review.id %>');
+              if (elem == null) return;
+              elem.innerHTML = "";
+              let opt = {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                score: "<%= sento_review.star %>",
+                readOnly: true,
+                };
+                raty(elem, opt);
+                });
+            </script>
+            </span>
+          <div class="review-comment">
+            <%= sento_review.comment %><br>
+          </div>
+      </div>
+    <% end %>
+  <% else %>
+      <h4>レビューがありません</h4>
+  <% end %>
+</div>
+
             <script>
               $(document).on('turbolinks:load', function() {
                 let elem = document.querySelector('#post_raty');
@@ -24,28 +75,3 @@
                 raty(elem, opt);
                 });
             </script>
-            <%= f.submit "レビューする" %>
-  <% end %>
-
-  <h5>ユーザーのレビュー</h5>
-    <% @sento.sento_reviews.each do |sento_review| %>
-        <%= l sento_review.created_at, format: :default %><br>
-        <div id="rate_<%= sento_review.id %>"></div>
-        <script>
-            $(document).on('turbolinks:load', function() {
-            let elem = document.querySelector('#rate_<%= sento_review.id %>');
-            if (elem == null) return;
-            elem.innerHTML = "";
-            let opt = {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              score: "<%= sento_review.star %>",
-              readOnly: true,
-              };
-              raty(elem, opt);
-              });
-        </script>
-        投稿したユーザー：<%= sento_review.user.name %><br>
-        <%= sento_review.comment %><br>
-    <% end %>
-

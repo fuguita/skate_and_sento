@@ -6,6 +6,8 @@ ja:
   activerecord:
     models:
       post: 投稿
+      park_review: レビュー投稿
+      sento_review: レビュー投稿
     attributes:
       post:
         park: パーク名
@@ -13,6 +15,12 @@ ja:
         park_caption: パークのコメント
         sento_caption: 銭湯のコメント
         prefecture_id: 都道府県
+      park_review:
+        comment: レビュー
+        star: レビューの評価(星を選択)
+      sento_review:
+        comment: レビュー
+        star: レビューの評価(星を選択)
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -7,7 +7,7 @@ before_action :authenticate_user!, only: [:reviews]
       @tag = ParkTag.find(params[:park_tag_id])
       @parks = @tag.parks.page(params[:page]).per(10)
     else
-      @parks = Park.all.page(params[:page]).per(10)
+      @parks = Park.all.page(params[:page]).per(10).order(created_at: :desc)
     end
     # if params[:word].present?
     #   @parks = Park.where(word: params[:word])
@@ -25,6 +25,7 @@ before_action :authenticate_user!, only: [:reviews]
     @park_review = ParkReview.new
     @user = @park_review.user
     @park_reviews = ParkReview.all.order(created_at: :desc)
+
   end
 
 end
