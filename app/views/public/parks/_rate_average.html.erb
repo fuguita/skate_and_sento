@@ -1,4 +1,4 @@
-<i class="far fa-file-alt fa-lg"></i> レビュー評価:<%= park.park_reviews.average(:star).to_f.round(1) %>(1-5)
+<i class="far fa-file-alt fa-lg"></i> レビュー評価:<span class="rate_number"><%= park.park_reviews.average(:star).to_f.round(1) %></span>
 <div id="average_rate"></div>
         <script>
         $(document).on('turbolinks:load', function() {

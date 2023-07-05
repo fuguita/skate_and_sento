@@ -6,12 +6,19 @@
   margin-top: 90px;
 }
 
-.review-title {
+.review-title-box {
   margin-botom: 40px;
   font-family: 'Bluesky' !important;
-  border-bottom: 2px solid #96a44a;
-  display: inline-block;
   margin-bottom: 30px;
+}
+
+.review-title {
+  border-bottom: 5px solid #96a44a;
+  display: inline-block;
+  font-family: 'Bluesky' !important;
+  border-radius: 6px;
+  line-height: 0.7;
+  margin-bottom: 20px;
 }
 
 .form-group-rank {
@@ -25,3 +32,47 @@
   justify-content: end;
   margin-bottom: 30px;
 }
+
+.rate_number {
+  color: #ff954d;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.review-comment-box {
+  border-bottom: 3px solid grey;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.review-comment-box:last-child {
+  margin-bottom: 50px;
+}
+
+.review-comment-box:first-child {
+  border-top: 3px solid grey;
+  padding-top: 10px;
+}
+
+.reviewer-name-date{
+  display: inline-block;
+  border-bottom: 2px double grey;
+}
+
+.reviewer-name {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.review-date {
+  font-size: 16px;
+  margin-left: 30px;
+}
+
+.review-comment {
+  margin-top: 15px;
+}
+
+
+// .reviewer-star {
