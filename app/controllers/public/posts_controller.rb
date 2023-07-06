@@ -20,12 +20,12 @@ class Public::PostsController < ApplicationController
         @post_comment = PostComment.new
         # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
       if params[:prefecture_id].present?
-        @posts = Post.where(prefecture_id: params[:prefecture_id])
+        @posts = Post.where(prefecture_id: params[:prefecture_id]).page(params[:page]).per(5).order(created_at: :desc)
       elsif params[:post_tag_id].present?
         @tag = PostTag.find(params[:post_tag_id])
-        @posts = @tag.posts
+        @posts = @tag.posts.page(params[:page]).per(5).order(created_at: :desc)
       else
-        @posts = Post.limit(5).order(created_at: :desc)
+        @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
       end
     end
 

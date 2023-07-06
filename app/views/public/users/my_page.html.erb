@@ -1,15 +1,14 @@
 <h2 class="post-post-list mt-5">MY PAGE</h2>
-  <h4>登録情報</h4>
-    <div>
-        <p><%= "アカウント名: #{current_user.name}" %></p>
-        <p><%= "メールアドレス: #{current_user.email}" %></p>
-
+  <br><h3 class="info-title mt-2">登録情報</h3>
+    <div class="account-info">
+      <p><%= "アカウント名: #{current_user.name}" %></p>
+      <p><%= "メールアドレス: #{current_user.email}" %></p>
     </div>
       <div>
-          <p><%= link_to "My Favotite Park", park_favorites_users_path(current_user) %></p>
-          <p><%= link_to "My Favotite 銭湯", sento_favorites_users_path(current_user) %></p>
-          <p><%= link_to "会員情報を変更", edit_information_user_path(current_user) %></p>
-          <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
+          <p><%= link_to "My Favotite Park", park_favorites_users_path(current_user), class: 'btn  btn-outline-secondary' %></p>
+          <p><%= link_to "My Favotite 銭湯", sento_favorites_users_path(current_user), class: 'btn  btn-outline-secondary' %></p>
+          <p><%= link_to "アカウント情報を変更", edit_information_user_path(current_user), class: 'btn  btn-outline-secondary' %></p>
+          <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete, class: 'btn  btn-outline-secondary' %></p>
       </div>
 
   <h2 class="post-post-list mt-5">My Skate And Sento Posts</h2>

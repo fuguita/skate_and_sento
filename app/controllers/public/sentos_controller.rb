@@ -24,7 +24,7 @@ class Public::SentosController < ApplicationController
       @sento = Sento.find(params[:id])
       @sento_review = SentoReview.new
       @user = @sento_review.user
-      @sento_reviews = @sento.sento_reviews.page(params[:page]).per(2).order(created_at: :desc)
+      @sento_reviews = @sento.sento_reviews.page(params[:page]).per(5).order(created_at: :desc)
     end
 
 end
