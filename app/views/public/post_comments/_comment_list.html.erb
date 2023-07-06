@@ -10,8 +10,8 @@
                 <i class="fas fa-trash-alt" style="color: black;"></i>
               <% end %>
               <% elsif post_comment.post.user == current_user %>
-              <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？'} do %>
-                <i class="fas fa-trash-alt" style="color: black;"></i>
+              <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？'}, class: 'post-edit-link' do %>
+                <i class="fas fa-trash-alt"></i>
               <% end %>
             <% end %>
           </div>

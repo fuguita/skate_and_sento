@@ -1,4 +1,4 @@
-<h2>MY PAGE</h2>
+<h2 class="post-post-list mt-5">MY PAGE</h2>
   <h4>登録情報</h4>
     <div>
         <p><%= "アカウント名: #{current_user.name}" %></p>
@@ -12,69 +12,76 @@
           <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete %></p>
       </div>
 
-  <h3>My Skate And Sento Posts</h3>
-      <table class="table table-borderless">
-          <tbody>
-            <% @posts.each do |post| %>
-                <tr>
-                    <td>エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id) %>
-                        投稿者：<%= link_to "#{post.user.name}", posts_user_path(post.user_id) %>
-                    </td>
-                    <td></td>
-                    <td><%= l post.created_at, format: :short %></td>
-                </tr>
-                <tr>
-                    <td><%= image_tag post.get_post_park_image, size: '200x200' %></td>
-                    <td>パーク名<br>コメント</td>
-                    <td><%= post.park %><br><%= post.park_caption %></td>
-                </tr>
-                <tr>
-                    <td><%= image_tag post.get_post_sento_image, size: '200x200' %></td>
-                    <td>銭湯名<br>コメント</td>
-                    <td><%= post.sento %><br><%= post.sento_caption %></td>
-                </tr>
-                <tr>
-                    <td>タグ</td>
-                    <td></td>
-                    <td>
-                      <% post.post_tags.each do |post_tag| %>
-                        #<%= link_to "#{post_tag.name}", posts_path(post_tag_id: post_tag.id) %>
-                      <% end %>
-                    </td>
-                </tr>
-                <tr>
-                  <td></td>
-                    <td id="like_buttons_<%= post.id %>">
-                      <%= render 'public/likes/like', post: post %>
-                    </td>
-                    <td>
-                      コメント：<%= post.post_comments.count %>件
-                    </td>
-                </tr>
-                <tr>
-                    <% post.post_comments.each do |post_comment| %>
-                      <td>
-                          <%= link_to "#{post_comment.user.name}", posts_user_path(post_comment.user.id ) %>のコメント<br>
-                          
-                            <%= post_comment.comment %>
-                            <% if post_comment.user == current_user %>
-                              <%= link_to "コメントを削除する", post_post_comment_path, method: :delete, data: { confirm: '本当に削除しますか？'} %>
-                            <% elsif post_comment.post.user == current_user %>
-                              <%= link_to "ユーザーのコメントを削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？'} %>
-                            <% end %>
-                      </td>
-                    <% end %>
-                </tr>
-                <tr>
-                      <td></td>
-                      <td></td>
-                    <% if post.user == current_user %>
-                      <td><%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
-                    <% end %>
-                </tr>
-            <% end %>
-          </tbody>
-</table>
+  <h2 class="post-post-list mt-5">My Skate And Sento Posts</h2>
+      <div class="user-post-list">
+  <% @posts.each do |post| %>
+      <div class="post-user-info"><i class="fas fa-user"></i>：<%= link_to "#{post.user.name}", posts_user_path(post.user_id), class: 'post-user' %>
+        <div class="post-area-date-box">
+            <div class="post-area-date">エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-2" %></div>
+            <div></div>
+            <div class="post-area-date">投稿日：<%= l post.created_at, format: :short %></div>
+        </div>
+      </div>
+    <div class="row post-box">
+      <div class="col-md-5">
+        <div class="card mb-2">
+          <h4 class="post-park-sento-title">
+            PARK
+          </h4>
+          <%= image_tag post.get_post_park_image, class: 'card-img-top', height:'350' %>
+          <div class="card-body">
+            <div class="post-spark-sento-explain">
+             <i class="fas fa-store-alt"></i>:  <strong><%= post.park %></strong><br>
+             <i class="fas fa-comment"></i>:  <%= post.park_caption %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card mb-2">
+          <h4 class="post-park-sento-title">
+            銭湯
+          </h4>
+          <%= image_tag post.get_post_sento_image, class: 'card-img-top', height:'350' %>
+          <div class="card-body">
+            <div class="post-spark-sento-explain">
+              <i class="fas fa-store-alt"></i>: <strong><%= post.sento %></strong><br>
+              <i class="fas fa-comment"></i>: <%= post.sento_caption %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-tag-list">
+      <i class="fas fa-tag" style="color: #628961;"></i>
+      <% post.post_tags.each do |post_tag| %>
+        <%= link_to "#{post_tag.name}", posts_path(post_tag_id: post_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
+      <% end %>
+    </div>
+    <div class="like-comment-count">
+      <div id="like_buttons_<%= post.id %>">
+        <%= render 'public/likes/like', post: post %>
+      </div>
+      <span class="count">
+        <%= render 'public/post_comments/count', post: post %>
+      </span>
+    </div>
+
+    <div class="comment_list">
+      <%= render 'public/post_comments/comment_list', post: post %>
+    </div>
+    <div class="post-edit">
+      <% if post.user == current_user %>
+        <%= link_to edit_post_path(post.id), class: 'post-edit-link' do %>
+          <i class="fas fa-edit fa-lg"></i>
+        <% end %><span>/</span>
+       <%= link_to post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'post-delete-link' do %>
+            <i class="fas fa-trash-alt fa-lg"></i>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
       <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment%>
 

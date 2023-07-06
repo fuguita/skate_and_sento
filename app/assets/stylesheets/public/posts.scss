@@ -24,6 +24,7 @@
 
 .post-user:hover {
   color: #888e94f2;
+  text-decoration: none;
 }
 
 .post-area-date-box {
@@ -40,6 +41,10 @@
 .post-park-sento-title {
   text-align: center;
   font-family: 'Bluesky';
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  background-color: #96a44a;
 }
 
 .like-comment-count {
