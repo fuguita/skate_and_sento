@@ -17,6 +17,7 @@
                 <i class="fas fa-hot-tub fa-lg"></i>  最寄り銭湯︎:まだ情報はありません
         <% end %>
       </div>
+        <i class="fas fa-tag" style="color: #628961;"></i>
         <% park.park_tags.each do |park_tag| %>
               <%= link_to parks_path(park_tag_id: park_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" do %>
                 <%= park_tag.name %>

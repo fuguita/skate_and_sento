@@ -14,30 +14,40 @@
 .post-user-info {
   font-size: 20px;
   border-bottom: 2px solid grey;
-
-
 }
 
 .post-user {
   color: black;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .post-user:hover {
   color: #888e94f2;
 }
 
+
+
+.post-area-date-box {
+  display: flex;
+  justify-content: space-between;
+}
+
 .favorite-box {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .post-park-sento-title {
   text-align: center;
   font-family: 'Bluesky';
 }
+
+.like-comment-count {
+  font-size: 20px;
+}
+// .post-tag-list
 
 
 

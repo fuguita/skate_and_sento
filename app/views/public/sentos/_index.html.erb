@@ -17,6 +17,7 @@
                 <i class="fas fa-hot-tub fa-lg"></i>  最寄りパーク︎:まだ情報はありません
         <% end %>
       </div>
+        <i class="fas fa-tag" style="color: #628961;"></i>
         <% sento.sento_tags.each do |sento_tag| %>
               <%= link_to sentos_path(sento_tag_id: sento_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" do %>
                 <%= sento_tag.name %>
