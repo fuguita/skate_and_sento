@@ -15,8 +15,10 @@
           </h4>
           <%= image_tag post.get_post_park_image, class: 'card-img-top', height:'300' %>
           <div class="card-body">
-            PARK名：<%= post.park %><br>
-            PARKコメント：<%= post.park_caption %>
+            <div class="post-spark-sento-explain">
+             <i class="fas fa-store-alt"></i>:  <strong><%= post.park %></strong><br>
+             <i class="fas fa-comment"></i>:  <%= post.park_caption %>
+            </div>
           </div>
         </div>
       </div>
@@ -27,8 +29,10 @@
           </h4>
           <%= image_tag post.get_post_sento_image, class: 'card-img-top', height:'300' %>
           <div class="card-body">
-            銭湯名：<%= post.sento %><br>
-            銭湯コメント：<%= post.sento_caption %>
+            <div class="post-spark-sento-explain">
+              <i class="fas fa-store-alt"></i>: <strong><%= post.sento %></strong><br>
+              <i class="fas fa-comment"></i>: <%= post.sento_caption %>
+            </div>
           </div>
         </div>
       </div>
@@ -48,12 +52,12 @@
       </span>
     </div>
 
-        <div class="comment_list">
-          <%= render 'public/post_comments/comment_list', post: post %>
-        </div>
-        <div class="form">
-          <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
-       </div>
+    <div class="comment_list">
+      <%= render 'public/post_comments/comment_list', post: post %>
+    </div>
+    <div class="form">
+      <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
+    </div>
 
       <% if post.user == current_user %>
         <%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>

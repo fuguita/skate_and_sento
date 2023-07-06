@@ -1,3 +1,25 @@
 // Place all the styles related to the public/post_comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.comment-user-name {
+  color: black;
+  font-weight: bold;
+  display: inline-black;
+  border-bottom: 1px solid #888e94f2;
+}
+
+.comment-user-name:hover {
+  color: #888e94f2;
+  text-decoration: none;
+}
+
+.comment-list {
+  font-size: 18px;
+  border-bottom: 1px solid #888e94f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-post-time {
+  font-size: 14px;
+}
