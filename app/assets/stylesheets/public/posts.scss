@@ -13,7 +13,7 @@
 
 .post-user-info {
   font-size: 20px;
-  border-bottom: 2px solid #96a44a;
+  border-bottom: 2px double #96a44a;
 }
 
 .post-user {
@@ -26,14 +26,12 @@
   color: #888e94f2;
 }
 
-
-
 .post-area-date-box {
   display: flex;
   justify-content: space-between;
 }
 
-.favorite-box {
+.post-box {
   display: flex;
   justify-content: center;
   margin-top: 40px;
@@ -54,6 +52,22 @@
   font-size: 18px;
 }
 
+.post-edit {
+  display: flex;
+  justify-content: end;
+  border-bottom: 2px solid #98A44A;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.post-edit-link, .post-delete-link {
+  color: black;
+}
+
+.post-edit-link:hover, .post-delete-link:hover {
+  color: #888e94f2;
+  text-decoration: none;
+}
 
   // .post-post-list-support {
   //   font-family: 'Bluesky';

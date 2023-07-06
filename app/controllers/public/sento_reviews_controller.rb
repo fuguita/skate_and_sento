@@ -8,10 +8,9 @@ class Public::SentoReviewsController < ApplicationController
       if @review.save
          redirect_to request.referer, notice: 'レビューを投稿しました！'
       else
-         @sento
          @sento_review = @review
          @user = @sento_review.user
-         @sento_reviews = SentoReview.all
+         @sento_reviews = @sento.sento_reviews.page(params[:page]).per(5).order(created_at: :desc)
          render 'public/sentos/reviews'
       end
     end

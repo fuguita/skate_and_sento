@@ -21,13 +21,13 @@
     <% end %>
 </div>
 <div class="review-title-box">
-  <h2 class="review-title">ユーザーのレビュー(<%= @sento.sento_reviews.count %>件)</h2>
+  <h2 class="review-title">ユーザーのレビュー(<%= @sento_reviews.total_count %>件)</h2>
   <h5><%= render 'public/sentos/rate_average', sento: @sento %></h5>
 </div>
 
 <div>
-  <% if @sento.sento_reviews.present? %>
-    <% @sento.sento_reviews.each do |sento_review| %>
+  <% if @sento_reviews.present? %>
+    <% @sento_reviews.each do |sento_review| %>
       <div class="review-comment-box">
           <div class="reviewer-name-date">
             <div class="reviewer-name">
@@ -75,3 +75,4 @@
                 raty(elem, opt);
                 });
             </script>
+<%= paginate @sento_reviews %>

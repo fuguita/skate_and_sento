@@ -24,8 +24,7 @@ before_action :authenticate_user!, only: [:reviews]
     @park = Park.find(params[:id])
     @park_review = ParkReview.new
     @user = @park_review.user
-    @park_reviews = ParkReview.all.order(created_at: :desc)
-
+    @park_reviews = @park.park_reviews.page(params[:page]).per(5).order(created_at: :desc)
   end
 
 end

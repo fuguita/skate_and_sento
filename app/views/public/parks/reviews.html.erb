@@ -21,13 +21,13 @@
     <% end %>
 </div>
 <div class="review-title-box">
-  <h2 class="review-title">ユーザーのレビュー(<%= @park.park_reviews.count %>件)</h2>
+  <h2 class="review-title">ユーザーのレビュー(<%= @park_reviews.total_count %>件)</h2>
   <h5><%= render 'public/parks/rate_average', park: @park %></h5>
 </div>
 
 <div>
-  <% if @park.park_reviews.present? %>
-    <% @park.park_reviews.each do |park_review| %>
+  <% if @park_reviews.present? %>
+    <% @park_reviews.each do |park_review| %>
       <div class="review-comment-box">
           <div class="reviewer-name-date">
             <div class="reviewer-name">
@@ -72,9 +72,9 @@
             });
           </script>
 
-<!--<div class="page">-->
-<!-- <%#= paginate @park_reviews %>-->
-<!--</div>-->
+<div class="page">
+ <%= paginate @park_reviews %>
+</div>
 
 
 

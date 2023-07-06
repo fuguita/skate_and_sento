@@ -8,10 +8,9 @@ class Public::ParkReviewsController < ApplicationController
        if @review.save
           redirect_to request.referer, notice: 'レビューを投稿しました！'
        else
-          @park
           @park_review = @review
           @user = @park_review.user
-          @park_reviews = ParkReview.all
+          @park_reviews = @park.park_reviews.page(params[:page]).per(5).order(created_at: :desc)
           render 'public/parks/reviews'
        end
     end

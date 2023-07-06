@@ -8,6 +8,7 @@ ja:
       post: 投稿
       park_review: レビュー投稿
       sento_review: レビュー投稿
+      post_comment: コメントの投稿
     attributes:
       post:
         park: パーク名
@@ -21,6 +22,8 @@ ja:
       sento_review:
         comment: レビュー
         star: レビューの評価(星を選択)
+      post_comment:
+        comment: コメント
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

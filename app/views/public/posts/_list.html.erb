@@ -7,7 +7,7 @@
             <div class="post-area-date">投稿日：<%= l post.created_at, format: :short %></div>
         </div>
       </div>
-    <div class="row favorite-box">
+    <div class="row post-box">
       <div class="col-md-5">
         <div class="card mb-2">
           <h4 class="post-park-sento-title">
@@ -58,9 +58,15 @@
     <div class="form">
       <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
     </div>
-
+    <div class="post-edit">
       <% if post.user == current_user %>
-        <%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
+        <%= link_to edit_post_path(post.id), class: 'post-edit-link' do %>
+          <i class="fas fa-edit fa-lg"></i>
+        <% end %><span>/</span>
+       <%= link_to post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: 'post-delete-link' do %>
+            <i class="fas fa-trash-alt fa-lg"></i>
+          <% end %>
       <% end %>
+    </div>
   <% end %>
 </div>
