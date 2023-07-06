@@ -11,7 +11,7 @@
           <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete, class: 'btn  btn-outline-secondary' %></p>
       </div>
 
-  <h2 class="post-post-list mt-5">My Skate And Sento Posts</h2>
+  <h2 class="post-post-list mt-5">My Skate And Sento Posts(全<%= @posts.total_count %>件)</h2>
       <div class="user-post-list">
   <% @posts.each do |post| %>
       <div class="post-user-info"><i class="fas fa-user"></i>：<%= link_to "#{post.user.name}", posts_user_path(post.user_id), class: 'post-user' %>
@@ -80,6 +80,9 @@
       <% end %>
     </div>
   <% end %>
+</div>
+<div class="page">
+  <%= paginate @posts %>
 </div>
 
       <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment%>

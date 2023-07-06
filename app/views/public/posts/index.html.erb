@@ -17,4 +17,7 @@
    <h2 class="post-post-list mt-5">他エリアのSKATE AND SENTO</h2>
   <% end %>
   <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
+<div class="page">
+  <%= paginate @posts %>
+</div>
 
