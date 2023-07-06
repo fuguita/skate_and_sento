@@ -1,37 +1,59 @@
+<div class="user-post-list">
+<% posts.each do |post| %>
+    <div class="post-user-info"><i class="fas fa-user"></i>：<%= link_to "#{post.user.name}", posts_user_path(post.user_id), class: 'post-user' %>
+    <br>エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-2" %>
+    <br>投稿日：<%= l post.created_at, format: :short %>
+    </div>
+  <div class="row favorite-box">
+    <div class="col-md-5">
+      <div class="card mb-5">
+        <h4 class="post-park-sento-title">
+          PARK
+        </h4>
+        <%= image_tag post.get_post_park_image, class: 'card-img-top', height:'300' %>
+        <div class="card-body">
+          PARK名：<%= post.park %><br>
+          PARKコメント：<%= post.park_caption %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card mb-5">
+        <h4 class="post-park-sento-title">
+          銭湯
+        </h4>
+        <%= image_tag post.get_post_sento_image, class: 'card-img-top', height:'300' %>
+        <div class="card-body">
+          銭湯名：<%= post.sento %><br>
+          銭湯コメント：<%= post.sento_caption %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <% posts.each do |post| %>
-
-          エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id) %>
-          投稿者：<%= link_to "#{post.user.name}", posts_user_path(post.user_id) %>
-          <%= l post.created_at, format: :short %>
-
-          <%= image_tag post.get_post_park_image, size: '200x200' %>
-          パーク名<br>コメント
-          <%= post.park %><br><%= post.park_caption %>
-          <%= image_tag post.get_post_sento_image, size: '200x200' %>
-          銭湯名<br>コメント
-          <%= post.sento %><br><%= post.sento_caption %>
-          タグ
-            <% post.post_tags.each do |post_tag| %>
-              #<%= link_to "#{post_tag.name}", posts_path(post_tag_id: post_tag.id) %>
-            <% end %>
-
-          <div id="like_buttons_<%= post.id %>">
-            <%= render 'public/likes/like', post: post %>
-          </div>
-          <span class="count">
-            <%= render 'public/post_comments/count', post: post %>
-          </span>
-
-
-          <div class="comment_list">
-            <%= render 'public/post_comments/comment_list', post: post %>
-          </div>
-          <div class="form">
-            <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
-         </div>
-
-        <% if post.user == current_user %>
-          <%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
+      <div class="park-sento-tag-list">
+        <i class="fas fa-tag" style="color: #628961;"></i>
+        <% post.post_tags.each do |post_tag| %>
+          <%= link_to "#{post_tag.name}", posts_path(post_tag_id: post_tag.id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-1" %>
         <% end %>
-      <% end %>
+      </div>
+
+      <div id="like_buttons_<%= post.id %>">
+        <%= render 'public/likes/like', post: post %>
+      </div>
+      <span class="count">
+        <%= render 'public/post_comments/count', post: post %>
+      </span>
+
+      <div class="comment_list">
+        <%= render 'public/post_comments/comment_list', post: post %>
+      </div>
+      <div class="form">
+        <%= render 'public/post_comments/form', post: post, post_comment: post_comment %>
+     </div>
+
+    <% if post.user == current_user %>
+      <%= link_to "編集する", edit_post_path(post.id) %> <%= link_to "削除する", post_path(post.id), method: :delete, data: { confirm: '本当に削除しますか？'} %></td>
+    <% end %>
+  <% end %>
+</div>

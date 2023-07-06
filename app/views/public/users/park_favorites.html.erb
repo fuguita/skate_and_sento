@@ -13,7 +13,7 @@
     <% @favorite_parks.each do |favorite_park| %>
       <div class="col-md-4">
         <div class="card mb-4">
-          <%= image_tag favorite_park.park.park_images.first, class: 'card-img-top', height:'250' %>
+          <%= image_tag favorite_park.park.park_images.first, height:'250' %>
           <div class="card-body">
             <h5 class="card-title mt-2 text-left">
               <%= link_to park_path(favorite_park.park.id), class: 'favarite-park-sento-name-link' do %>
