@@ -9,6 +9,9 @@ ja:
       park_review: レビュー投稿
       sento_review: レビュー投稿
       post_comment: コメントの投稿
+      pot_tag: 投稿タグ
+      sento_tag: 銭湯タグ
+      park_tag: パークタグ
     attributes:
       post:
         park: パーク名
@@ -24,6 +27,12 @@ ja:
         star: レビューの評価(星を選択)
       post_comment:
         comment: コメント
+      post_tag:
+        name: タグ
+      park_tag:
+        name: タグ
+      sento_tag:
+        name: タグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

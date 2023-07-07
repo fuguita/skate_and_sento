@@ -6,14 +6,13 @@
   <% end %>
 
 <h3 class="admin-title">投稿タグ一覧</h3>
-
-<div class="admin-tag-list">
-  <table class="table table-striped col-5">
-    <% @post_tags.each do |post_tag| %>
-    <tr>
-      <td><%= post_tag.name %></td>
-      <td><%= link_to "変更する", edit_admin_post_tag_path(post_tag.id), class: "btn btn-sm btn-success" %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+  <div class="admin-tag-list">
+    <table class="table table-striped col-5">
+      <% @post_tags.each do |post_tag| %>
+      <tr>
+        <td><%= post_tag.name %></td>
+        <td><%= link_to "変更する", edit_admin_post_tag_path(post_tag.id), class: "btn btn-sm btn-success" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>

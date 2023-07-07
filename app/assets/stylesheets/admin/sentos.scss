@@ -1,3 +1,11 @@
 // Place all the styles related to the admin/sentos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.admin-obj-name-link {
+  text-weight: bold;
+  color: #98A44A;
+}
+
+.admin-obj-name-link:hover {
+  text-decoration: none;
+}

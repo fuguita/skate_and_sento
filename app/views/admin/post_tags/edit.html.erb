@@ -1,3 +1,6 @@
+<%= link_to  admin_post_tags_path, class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>戻る
+<% end %><br>
 <h3 class="admin-title mt-5">投稿タグ編集</h3>
   <%= form_with model: @post_tag, url: admin_post_tag_path, method: :patch do |f| %>
     <%= render 'layouts/errors', obj: @post_tag %>

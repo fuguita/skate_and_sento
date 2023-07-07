@@ -1,8 +1,8 @@
-<h2>銭湯 LIST</h2>
-  <h4><%= link_to "銭湯新規登録", new_admin_sento_path %></h4>
-    <table class="table table-bordered">
+<h3 class="admin-title mt-5">銭湯 LIST</h3>
+  <h4><%= link_to "銭湯新規登録", new_admin_sento_path, class: 'btn btn-lg btn-info mb-3' %></h4>
+    <table class="table table-bordered table-striped">
       <thead>
-        <tr>
+        <tr align="center">
           <th>ID</th>
           <th>銭湯名</th>
           <th>エリア</th>
@@ -10,20 +10,24 @@
           <th>レビュー数</th>
           <th>レビューの評価(1~5)</th>
           <th>ステータス</th>
+          <th>作成日</th>
         </tr>
       </thead>
       <tbody>
         <% @sentos.each do |sento| %>
-          <tr>
+           <tr align="center">
             <td><%= sento.id %></td>
-            <td><%= link_to admin_sento_path(sento.id) do %><%= sento.name %><% end %></td>
+            <td><%= link_to admin_sento_path(sento.id), class: "admin-obj-name-link" do %><%= sento.name %><% end %></td>
             <td><%= sento.prefecture_id %></td>
             <td><%= sento.sento_favorites.count %>件</td>
             <td><%= sento.sento_reviews.count %>件</td>
-            <td><%= sento.sento_reviews.average(:star).to_f.round(1) %></td>
+            <td><%= sento.sento_reviews.average(:star).to_f.round(10) %></td>
             <td><%= sento.active_status %></td>
+            <td><%= l sento.created_at, format: :short %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+<div class="page">
   <%= paginate @sentos %>
+</div>
