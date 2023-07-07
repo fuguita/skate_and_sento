@@ -1,8 +1,8 @@
-<h1>ユーザー投稿一覧</h1>
-全<%= @posts.count %>件
-  <table class="table table-bordered">
+<h3 class="admin-title mt-5">ユーザー投稿一覧</h3>
+<h5>全<%= @posts.total_count %>件</h5>
+  <table class="table table-bordered table-striped">
     <thead>
-      <tr>
+      <tr align="center">
         <td>投稿日</td>
         <td>ユーザー名</td>
         <td>パーク名</td>
@@ -15,16 +15,19 @@
     </thead>
     <tbody>
       <% @posts.each do |post| %>
-        <tr>
+        <tr align="center">
           <td><%= l post.created_at, format: :short %></td>
-          <td><%= link_to admin_user_path(post.user.id) do %><%= post.user.name %><% end %></td>
+          <td><%= link_to admin_user_path(post.user.id), class: "admin-obj-name-link" do %><%= post.user.name %><% end %></td>
           <td><%= post.park %></td>
           <td><%= post.sento %></td>
           <td><%= post.prefecture_id %></td>
           <td><%= post.likes.count %></td>
           <td><%= post.post_comments.count %></td>
-          <td><%= link_to "表示する", admin_post_path(post.id) %></td>
+          <td><%= link_to "表示する", admin_post_path(post.id), class: "btn btn-sm btn-info" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+<div class="page">
+    <%= paginate @posts %>
+</div>

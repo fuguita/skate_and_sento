@@ -1,3 +1,7 @@
 // Place all the styles related to the admin/park_reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.admin-park-list-link {
+  display: flex;
+  justify-content: end;
+}

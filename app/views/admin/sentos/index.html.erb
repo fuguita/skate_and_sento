@@ -21,7 +21,7 @@
             <td><%= sento.prefecture_id %></td>
             <td><%= sento.sento_favorites.count %>件</td>
             <td><%= sento.sento_reviews.count %>件</td>
-            <td><%= sento.sento_reviews.average(:star).to_f.round(10) %></td>
+            <td><%= sento.sento_reviews.average(:star).to_f.round(1) %></td>
             <td><%= sento.active_status %></td>
             <td><%= l sento.created_at, format: :short %></td>
           </tr>

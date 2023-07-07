@@ -5,7 +5,7 @@
     <%= f.submit "登録する", class: "btn btn-sm btn-primary mb-5" %>
   <% end %>
 
-<h3 class="admin-title">投稿タグ一覧</h3>
+<h3 class="admin-title">投稿タグ一覧(全<%= @post_tags.count %>件)</h3>
   <div class="admin-tag-list">
     <table class="table table-striped col-5">
       <% @post_tags.each do |post_tag| %>

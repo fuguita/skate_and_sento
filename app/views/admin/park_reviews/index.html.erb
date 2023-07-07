@@ -1,8 +1,9 @@
-<h3>パークレビュー一覧</h3>
-<h5><%= link_to "銭湯レビュー一覧", admin_sento_reviews_path %></h5>
-<table class="table">
+<h3 class="admin-title mt-5">パークレビュー一覧</h3>
+<h4 class="admin-park-list-link"><%= link_to "銭湯レビュー一覧", admin_sento_reviews_path, class: "btn btn-warning" %></h4>
+<h5> 全<%= @park_reviews.total_count %>件</h5>
+<table class="table table-striped">
     <thead>
-        <tr>
+        <tr align="center">
             <th>投稿日</th>
             <th>投稿者</th>
             <th>パーク名</th>
@@ -12,13 +13,17 @@
     </thead>
     <tbody>
         <% @park_reviews.each do |park_review| %>
-          <tr>
+          <tr align="center">
             <td><%= l park_review.created_at, format: :default %></td>
             <td><%= park_review.user.name %></td>
             <td><%= park_review.park.name %></td>
             <td><%= park_review.comment %></td>
-            <td><%= link_to "レビューを削除", admin_park_review_path(park_review), method: :delete, data: { confirm: 'レビューを削除しますか？' } %></td>
+            <td><%= link_to "レビューを削除", admin_park_review_path(park_review), method: :delete, data: { confirm: 'レビューを削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
           </tr>
         <% end %>
     </tbody>
 </table>
+<div class="page">
+    <%= paginate @park_reviews %>
+</div>
+

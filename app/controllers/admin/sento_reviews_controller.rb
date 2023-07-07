@@ -2,7 +2,7 @@ class Admin::SentoReviewsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @sento_reviews = SentoReview.all
+    @sento_reviews = SentoReview.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def destroy
