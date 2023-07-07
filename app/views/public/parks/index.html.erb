@@ -3,14 +3,14 @@
   <i class="fas fa-angle-double-left"></i>PARK LIST
   <% end %><br>
   <button class="btn btn-outline-warning rounded-pill btn-lg mt-3 mb-4"><%= @tag.name %></button><span class="letter">を含んだ</span><br>
-  <h2 class="park-and-sento-tag-title">PARK LIST(全<%= @parks.count %>件)</h2>
+  <h2 class="park-and-sento-tag-title">PARK LIST(全<%= @parks.total_count %>件)</h2>
 <% else %>
-  <h2 class="park-sento-title-index mt-5 mb-5">PARK LIST(全<%= @parks.count %>件)</h2>
+  <h2 class="park-sento-title-index mt-5 mb-5">PARK LIST(全<%= @parks.total_count %>件)</h2>
 <% end %>
 <% @parks.each do |park| %>
   <%= render 'index', park: park %>
 <% end %>
-<!--<div class="page">-->
- <%#= paginate @parks %>
-<!--</div>-->
+<div class="page">
+ <%= paginate @parks %>
+</div>
 

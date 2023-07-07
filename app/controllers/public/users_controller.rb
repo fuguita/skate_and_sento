@@ -11,11 +11,11 @@ class Public::UsersController < ApplicationController
   end
 
   def park_favorites
-    @favorite_parks = current_user.park_favorites.order(created_at: :desc)
+    @favorite_parks = current_user.park_favorites.page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def sento_favorites
-    @favorite_sentos = current_user.sento_favorites.order(created_at: :desc)
+    @favorite_sentos = current_user.sento_favorites.page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def edit

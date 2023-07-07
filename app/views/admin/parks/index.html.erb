@@ -1,5 +1,6 @@
 <h3 class="admin-title mt-5">SKATE PARK LIST</h3>
   <h4><%= link_to "パーク新規登録", new_admin_park_path, class: 'btn btn-lg btn-info mb-3' %></h4>
+  <h5>全<%= @parks.total_count %>件</h5>
     <table class="table table-bordered table-striped">
       <thead>
         <tr align="center">

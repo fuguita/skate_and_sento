@@ -5,16 +5,22 @@
 <!--  <h2>他エリアのSKATE AND SENTO</h2>-->
 <!--  <%#= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>-->
   <%# if params[:prefecture_id].present? %>
-<% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
-      <h2 class="post-post-list mt-5">"<%= params[:prefecture_id] %>"のSKATE AND SENTO</h2>
-    <%# end %>
+  <% if @posts.exists?(prefecture_id: params[:prefecture_id]) %>
+    <%= link_to  posts_path, class: "back-link-park-sento" do %>
+     <i class="fas fa-angle-double-left"></i>他エリアのSKATE AND SENTO
+    <% end %><br>
+        <h2 class="post-post-list mt-5">"<%= params[:prefecture_id] %>"のSKATE AND SENTO(全<%= @posts.total_count %>件)</h2>
+      <%# end %>
   <% elsif @tag.present? %>
-    <button class="btn btn-outline-warning rounded-pill btn-lg mb-4"><%= @tag.name %></button><span class="letter">を含んだ</span><br>
-    <h2 class="post-post-list">
-      SKATE AND SENTO
-    </h2>
+    <%= link_to  posts_path, class: "back-link-park-sento" do %>
+     <i class="fas fa-angle-double-left"></i>他エリアのSKATE AND SENTO
+    <% end %><br>
+      <button class="btn btn-outline-warning rounded-pill btn-lg mt-3 mb-4"><%= @tag.name %></button><span class="letter">を含んだ</span><br>
+      <h2 class="post-post-list">
+        SKATE AND SENTO(全<%= @posts.total_count %>件)
+      </h2>
   <% else %>
-   <h2 class="post-post-list mt-5">他エリアのSKATE AND SENTO</h2>
+     <h2 class="post-post-list mt-5">他エリアのSKATE AND SENTO</h2>
   <% end %>
   <%= render 'public/posts/list', posts: @posts, user: @user, post_comment: @post_comment %>
 <div class="page">
