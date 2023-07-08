@@ -13,6 +13,7 @@ ja:
       sento_tag: 銭湯タグ
       park_tag: パークタグ
       park: パークの投稿
+      sento: 銭湯の投稿
     attributes:
       post:
         park: パーク名
@@ -44,6 +45,18 @@ ja:
         helmet: ヘルメットの項目
         park_images: パークのイメージ
         park_tag_ids: タグ
+      sento:
+        name: 銭湯名
+        introduction: 一言コメント
+        address: 住所
+        postal_code: 郵便番号
+        telephone_number: 電話番号
+        business_hour: オープン時間
+        temperature: サウナの温度
+        towel: 貸しタオル
+        soap: 石鹸類
+        sento_images: パークのイメージ
+        sento_tag_ids: タグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

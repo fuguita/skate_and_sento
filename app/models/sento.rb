@@ -24,7 +24,10 @@ class Sento < ApplicationRecord
    validates :temperature, presence: true
    validates :towel, presence: true
    validates :soap, presence: true
-   
+   validates :sento_images, presence: true
+   validates :sento_tag_ids, presence: true
+   validates :is_active, presence: true
+
 
   has_many_attached :sento_images
 

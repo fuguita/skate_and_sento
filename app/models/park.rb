@@ -29,6 +29,7 @@ class Park < ApplicationRecord
    validates :helmet, presence: true
    validates :park_images, presence: true
    validates :park_tag_ids, presence: true
+   validates :is_active, presence: true
 
 
 

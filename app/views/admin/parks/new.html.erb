@@ -77,6 +77,15 @@
                   <td><%= f.text_field :helmet, placeholder: '小学生のみ', class: 'form-control' %></td>
                 </div>
               </tr>
+              <tr align="center">
+                <div class="form_group">
+                  <td>掲載ステータス</td>
+                  <td><%= f.radio_button :is_active, true %>
+                      <%= f.label :is_active, "掲載中" %>
+                      <%= f.radio_button :is_active, false %>
+                      <%= f.label :is_active, "掲載停止中" %></td>
+                </div>
+              </tr>
           </tbody>
         </table>
   <h3 class="admin-subtitle">セクション</h3>
