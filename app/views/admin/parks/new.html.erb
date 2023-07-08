@@ -1,104 +1,95 @@
-<h2>パーク新規登録</h2>
-  <h3>基本情報</h3>
-
-      <%= form_with model: @park, url: admin_parks_path, method: :post do |f| %>
-
-            <% if @park.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@park.errors.count, "error") %> prohibited this park from being saved:</h2>
-                    <ul>
-                      <% @park.errors.each do |error| %>
-                        <li><%= error.full_message %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-              <% end %>
-
+<h2 class="admin-title">パーク新規登録</h2>
+<div class="admin-park-sento-new col-12 mt-3 mb-5">
+    <%= form_with model: @park, url: admin_parks_path, method: :post do |f| %>
+      <%= render 'layouts/errors', obj: @park %>
         <table class="table table-borderless">
+          <h3 class="admin-subtitle">基本情報</h3>
            <tbody>
-              <tr>
-                  <div class="form_group">
-                    <td>エリアを選択</td>
-                    <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {} %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>エリアを選択</td>
+                  <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {}, class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>画像</td>
-                    <td><%= f.file_field :park_images, multiple: true %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>画像</td>
+                  <td><%= f.file_field :park_images, multiple: true %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>パーク名</td>
-                    <td><%= f.text_field :name %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>パーク名</td>
+                  <td><%= f.text_field :name, placeholder: 'XXXパーク', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>紹介</td>
-                    <td><%= f.text_area :introduction %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>紹介</td>
+                  <td><%= f.text_area :introduction, placeholder: '一言コメント', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>住所</td>
-                    <td><%= f.text_field :address %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>住所</td>
+                  <td><%= f.text_field :address, placeholder: '大阪府XXX',class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>郵便番号</td>
-                    <td>〒<%= f.text_field :postal_code, placeholder: 'ハイフン含める' %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>郵便番号</td>
+                  <td><%= f.text_field :postal_code, placeholder: '〒ハイフン含める', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>オープン時間</td>
-                    <td><%= f.text_field :business_hour %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>オープン時間</td>
+                  <td><%= f.text_field :business_hour, placeholder: '00:00-23:00', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>定休日</td>
-                    <td><%= f.text_field :holiday %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>定休日</td>
+                  <td><%= f.text_field :holiday, placeholder: 'X曜日', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>TEL</td>
-                    <td><%= f.text_field :telephone_number %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>TEL</td>
+                  <td><%= f.text_field :telephone_number, placeholder: '090-XXXX-XXXX', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>料金</td>
-                    <td><%= f.text_field :price, placeholder: '大人:490円、子供:390円' %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>料金</td>
+                  <td><%= f.text_field :price, placeholder: '大人:XXX円、子供:XXX円', class: 'form-control' %></td>
+                </div>
               </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>無料パーキング</td>
-                    <td><%= f.text_field :parking %></td>
-                  </div>
+              <tr align="center">
+                <div class="form_group">
+                  <td>無料パーキング</td>
+                  <td><%= f.text_field :parking, placeholder: 'X台無料', class: 'form-control' %></td>
+                </div>
               </tr>
-               <tr>
-                  <div class="form_group">
-                    <td>ヘルメット義務</td>
-                    <td><%= f.text_field :helmet %></td>
-                  </div>
+               <tr align="center">
+                <div class="form_group">
+                  <td>ヘルメット義務</td>
+                  <td><%= f.text_field :helmet, placeholder: '小学生のみ', class: 'form-control' %></td>
+                </div>
               </tr>
           </tbody>
         </table>
-  <h3>セクション</h3>
+  <h3 class="admin-subtitle">セクション</h3>
                   <div class="form-group">
-                    <%= f.collection_check_boxes :section_ids, Section.all, :id, :name %>
+                    <%= f.collection_check_boxes :section_ids, Section.all, :id, :name, class: 'form-control' %>
                   </div>
 
-<h6>タグ選択</h6>
+<h3 class="admin-subtitle">タグ選択</h3>
                   <div class="form_group">
-                    タグを選択
-                    <%= f.collection_check_boxes :park_tag_ids, ParkTag.all, :id, :name %>
+                    <%= f.collection_check_boxes :park_tag_ids, ParkTag.all, :id, :name, class: 'form-control, pr-3' %>
                   </div>
-                    <%= f.submit "新規登録" %>
+                  <div class="admin-park-sento-submit">
+                    <%= f.submit "新規登録", class: 'col-5 btn btn-primary mt-3' %>
+                  </div>
     <% end %>
+</div>

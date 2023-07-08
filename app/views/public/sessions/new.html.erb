@@ -1,5 +1,4 @@
 <h2 class="log-sign-title mt-5">Log in</h2>
-
 <div class="card-block">
   <div class="card col-5 mb-5">
     <div class="card-title">
@@ -7,8 +6,7 @@
     </div>
     <div class="card-body login-card-body">
       <%= form_with model: resource, url: user_session_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-          <%#= f.label :メールアドレス %>
+        <%= render "public/shared/flash_messages", resource: resource %>
             <div class="input-group mb-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
                 <div class="input-group-append">
@@ -17,7 +15,6 @@
                   </div>
                 </div>
             </div>
-          <%#= f.label :パスワード %>
             <div class="input-group mb-3">
               <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'パスワード' %>
                 <div class="input-group-append">

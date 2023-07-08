@@ -27,6 +27,9 @@ class Park < ApplicationRecord
    validates :telephone_number, presence: true
    validates :business_hour, presence: true
    validates :helmet, presence: true
+   validates :park_images, presence: true
+   validates :park_tag_ids, presence: true
+
 
 
   has_many_attached :park_images

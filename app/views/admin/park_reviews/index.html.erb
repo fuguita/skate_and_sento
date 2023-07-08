@@ -18,7 +18,11 @@
             <td><%= park_review.user.name %></td>
             <td><%= park_review.park.name %></td>
             <td><%= park_review.comment %></td>
-            <td><%= link_to "レビューを削除", admin_park_review_path(park_review), method: :delete, data: { confirm: 'レビューを削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            <td><%= link_to admin_park_review_path(park_review), method: :delete, data: { confirm: 'レビューを削除しますか？' }, class: "btn btn-sm btn-danger" do %>
+                    <i class="fas fa-trash-alt fa-lg"></i>
+                <% end %>
+            </td>
+
           </tr>
         <% end %>
     </tbody>

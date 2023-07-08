@@ -2,27 +2,27 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-    #before_action :user_state, only: [:create]
-    
+    before_action :user_state, only: [:create]
+
     def after_sign_in_path_for(resource)
       flash[:notice] = 'ログインしました'
       root_path
     end
-    
+
     def after_sign_out_path_for(resource)
         flash[:notice] = 'ログアウトしました'
         root_path
     end
-    
+
     def guest_sign_in
       user = User.guest
       sign_in user
       flash[:notice] = 'ゲストユーザーとしてログインしました。'
       redirect_to root_path
     end
-    
+
     protected
-  
+
     def user_state
         @user = User.find_by(email: params[:user][:email])
         return if !@user
@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
           end
       end
     end
-  end
+end
 
   # GET /resource/sign_in
   # def new

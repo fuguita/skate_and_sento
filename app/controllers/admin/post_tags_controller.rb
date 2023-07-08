@@ -6,7 +6,6 @@ class Admin::PostTagsController < ApplicationController
          if @post_tag.save
             redirect_to request.referer, notice: 'タグを追加しました！'
          else
-            @post_tag = PostTag.new
             @post_tags = PostTag.all
             render 'index'
          end

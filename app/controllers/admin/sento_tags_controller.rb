@@ -6,7 +6,6 @@ class Admin::SentoTagsController < ApplicationController
        if @sento_tag.save
           redirect_to request.referer, notice: 'タグを追加しました！'
        else
-          @sento_tag = SentoTag.new
           @sento_tags = SentoTag.all
           render 'index'
        end

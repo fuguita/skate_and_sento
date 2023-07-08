@@ -2,10 +2,9 @@ class Admin::ParkTagsController < ApplicationController
   before_action :authenticate_admin!
     def create
           @park_tag = ParkTag.new(park_tag_params)
-       if @park_tag.save
+      if @park_tag.save
           redirect_to request.referer, notice: 'タグを追加しました！'
       else
-          @park_tag = ParkTag.new
           @park_tags = ParkTag.all
           render 'index'
       end

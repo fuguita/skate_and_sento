@@ -6,17 +6,12 @@ class Admin::ParksController < ApplicationController
     end
 
     def create
-      # section_ids = params[:park][:section_ids]
-      # park_params.delete(:section_ids)
-      @park = Park.new(park_params)
-    if @park.save
-      # section_ids.each do |section_id|
-      #   next if section_id.blank?
-      #   ParkSection.create(park_id: @park.id, section_id: section_id)
-      redirect_to admin_park_path(@park)
-    else
-      render :new
-    end
+        @park = Park.new(park_params)
+     if @park.save
+         redirect_to admin_park_path(@park)
+     else
+        render :new
+     end
     end
 
     def index

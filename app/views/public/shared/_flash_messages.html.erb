@@ -1,0 +1,6 @@
+<% flash.each do |message_type, message| %>
+    <%#= content_tag :div, message, class: message_type %>
+    <div class="errors-color">
+        <div class="<%= message_type %>"><%= message %></div>
+    </div>
+<% end %>
