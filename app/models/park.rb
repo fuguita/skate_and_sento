@@ -29,9 +29,8 @@ class Park < ApplicationRecord
    validates :helmet, presence: true
    validates :park_images, presence: true
    validates :park_tag_ids, presence: true
-   validates :is_active, presence: true
-
-
+   
+   scope :active, -> { where(is_active: true) }
 
   has_many_attached :park_images
 
@@ -50,6 +49,10 @@ class Park < ApplicationRecord
   def park_favorited_by?(user)
     park_favorites.exists?(user_id: user.id)
   end
+
+  # def self.count_active_park
+  #   Park.where(is_active: true).count
+  # end
 
 
 end

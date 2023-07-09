@@ -26,9 +26,9 @@ class Sento < ApplicationRecord
    validates :soap, presence: true
    validates :sento_images, presence: true
    validates :sento_tag_ids, presence: true
-   validates :is_active, presence: true
-
-
+   
+   scope :active, -> { where(is_active: true) }
+   
   has_many_attached :sento_images
 
   def get_first_sento_image
@@ -70,11 +70,9 @@ class Sento < ApplicationRecord
   def self.search_for(word)
     Sento.where('name LIKE ?', '%'+word+'%')
   end
-
   # def self.seach_for(sento_tag)
   #   Sento.where(sento_tg_id: sento_tag.id)
   # end
-
   def sento_favorited_by?(user)
     sento_favorites.exists?(user_id: user.id)
   end

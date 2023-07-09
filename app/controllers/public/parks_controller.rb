@@ -5,9 +5,10 @@ before_action :authenticate_user!, only: [:reviews]
     # @parks = params[:park_tag_id].present? ? ParkTag.find(params[:park_tag_id]).parks : Park.all
     if params[:park_tag_id].present?
       @tag = ParkTag.find(params[:park_tag_id])
-      @parks = @tag.parks.page(params[:page]).per(10)
+      @parks = @tag.parks.active.page(params[:page]).per(10)
     else
-      @parks = Park.all.page(params[:page]).per(10).order(created_at: :desc)
+      @parks = Park.active.page(params[:page]).per(10).order(created_at: :desc)
+      @active_park_count = Park.active.count
     end
     # if params[:word].present?
     #   @parks = Park.where(word: params[:word])
