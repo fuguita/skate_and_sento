@@ -7,8 +7,18 @@
            <tbody>
               <tr align="center">
                 <div class="form_group">
+                  <td>掲載ステータス</td>
+                  <td><%= f.radio_button :is_active, true %>
+                      <%= f.label :is_active, "掲載中" %>
+                      <%= f.radio_button :is_active, false %>
+                      <%= f.label :is_active, "掲載停止中" %>
+                  </td>
+                </div>
+              </tr>
+              <tr align="center">
+                <div class="form_group">
                   <td>エリアを選択</td>
-                  <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {}, class: 'form-control' %></td>
+                  <td><%= f.select :prefecture_id, Park.prefecture_ids.keys, {}, class: 'form-control col-6' %></td>
                 </div>
               </tr>
               <tr align="center">
@@ -62,7 +72,7 @@
               <tr align="center">
                 <div class="form_group">
                   <td>料金</td>
-                  <td><%= f.text_field :price, placeholder: '大人:XXX円、子供:XXX円', class: 'form-control' %></td>
+                  <td><%= f.text_field :price, placeholder: '大人:XXX円、子供:XXX円', class: 'form-control ' %></td>
                 </div>
               </tr>
               <tr align="center">
@@ -77,23 +87,14 @@
                   <td><%= f.text_field :helmet, placeholder: '小学生のみ', class: 'form-control' %></td>
                 </div>
               </tr>
-              <tr align="center">
-                <div class="form_group">
-                  <td>掲載ステータス</td>
-                  <td><%= f.radio_button :is_active, true %>
-                      <%= f.label :is_active, "掲載中" %>
-                      <%= f.radio_button :is_active, false %>
-                      <%= f.label :is_active, "掲載停止中" %></td>
-                </div>
-              </tr>
           </tbody>
         </table>
-  <h3 class="admin-subtitle">セクション</h3>
+      <h3 class="admin-subtitle">セクション</h3>
                   <div class="form-group">
                     <%= f.collection_check_boxes :section_ids, Section.all, :id, :name, class: 'form-control' %>
                   </div>
 
-<h3 class="admin-subtitle">タグ選択</h3>
+      <h3 class="admin-subtitle">タグ選択</h3>
                   <div class="form_group">
                     <%= f.collection_check_boxes :park_tag_ids, ParkTag.all, :id, :name, class: 'form-control, pr-3' %>
                   </div>

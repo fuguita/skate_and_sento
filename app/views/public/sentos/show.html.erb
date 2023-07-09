@@ -1,7 +1,6 @@
 <%= link_to  sentos_path, class: "back-link-park-sento" do %>
   <i class="fas fa-angle-double-left"></i>銭湯LIST
 <% end %>
-
 <div>
   <div class="park-sento-title-row">
     <h2 class="park-sento-name"><%= @sento.name %></h2>
@@ -11,11 +10,6 @@
       </div>
     </div>
   </div>
-<!--<div class="park-sento-title-row">-->
-  <!--<div class="area">-->
-  <!--  <%#= @sento.prefecture_id %>-->
-  <!--</div>-->
-  <!--<div></div>-->
   <div class="park-sento-review">
     <%= render 'public/sentos/rate_average', sento: @sento %>
       <% if user_signed_in? %>

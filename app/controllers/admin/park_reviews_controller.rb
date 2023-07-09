@@ -8,6 +8,6 @@ class Admin::ParkReviewsController < ApplicationController
     def destroy
       park_review = ParkReview.find(params[:id])
       park_review.destroy
-      redirect_to request.referer
+      redirect_to request.referer, notice: "レビューを削除しました"
     end
 end

@@ -8,7 +8,7 @@ class Admin::SentoReviewsController < ApplicationController
   def destroy
     sento_review = SentoReview.find(params[:id])
     sento_review.destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice: "レビューを削除しました"
   end
 
 end

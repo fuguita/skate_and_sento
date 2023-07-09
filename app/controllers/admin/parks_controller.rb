@@ -8,7 +8,7 @@ class Admin::ParksController < ApplicationController
     def create
         @park = Park.new(park_params)
      if @park.save
-         redirect_to admin_park_path(@park)
+         redirect_to admin_park_path(@park), notice: "パークが新規登録されました"
      else
         render :new
      end
@@ -28,9 +28,12 @@ class Admin::ParksController < ApplicationController
     end
 
     def update
-      @park = Park.find(params[:id])
-      @park.update(park_params)
-      redirect_to admin_park_path(@park)
+        @park = Park.find(params[:id])
+     if @park.update(park_params)
+        redirect_to admin_park_path(@park), notice: "変更しました"
+     else
+        render :edit
+     end
     end
 
     private

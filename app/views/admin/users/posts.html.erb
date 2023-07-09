@@ -1,11 +1,11 @@
 <% if @user.posts.count == 0 %>
 <h3>投稿はまだありません</h3>
 <% else %>
-<h2><%= @user.name %>の投稿一覧</h2>
-全<%= @user.posts.count %>件
-  <table class="table table-bordered">
+<h2 class="admin-title"><%= @user.name %>の投稿一覧</h2>
+<h5>全<%= @posts.total_count %>件</h5>
+  <table class="table table-striped">
     <thead>
-      <tr>
+      <tr align="center">
         <td>投稿日</td>
         <td>パーク名</td>
         <td>銭湯名</td>
@@ -17,16 +17,19 @@
     </thead>
     <tbody>
       <% @posts.each do |post| %>
-        <tr>
+        <tr align="center">
           <td><%= l post.created_at, format: :short %></td>
           <td><%= post.park %></td>
           <td><%= post.sento %></td>
           <td><%= post.prefecture_id %></td>
           <td><%= post.likes.count %></td>
           <td><%= post.post_comments.count %></td>
-          <td><%= link_to "表示する", admin_post_path(post.id) %></td>
+          <td><%= link_to "表示する", admin_post_path(post.id), class: 'btn btn-info' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
+<div class="page">
+  <%= paginate @posts %>
+</div>

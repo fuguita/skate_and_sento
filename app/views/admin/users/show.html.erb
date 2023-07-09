@@ -1,4 +1,4 @@
-<h2><%= @user.name %>の詳細</h2>
+<h2 class="admin-title mt-5"><%= @user.name %>の詳細</h2>
 <table class="table">
   <tbody>
     <tr>
@@ -22,8 +22,8 @@
           <% end %>
     </tr>
     <tr>
-      <td><%= link_to "編集する", edit_admin_user_path(@user) %></td>
-      <td><%= link_to "このユーザーの投稿履歴一覧を見る", posts_admin_user_path(@user) %> </td>
+      <td><%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-lg btn-success" %></td>
+      <td><%= link_to "このユーザーの投稿履歴一覧を見る", posts_admin_user_path(@user), class: "btn btn-lg btn-info" %> </td>
 
     </tr>
   </tbody>

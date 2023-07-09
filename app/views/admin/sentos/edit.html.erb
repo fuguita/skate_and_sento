@@ -1,151 +1,165 @@
-<h2>銭湯情報編集</h2>
-  <h3>基本情報</h3>
+<%= link_to  admin_sento_path(@sento), class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>BACK
+<% end %><br>
+<h2 class="admin-title mt-5">銭湯編集</h2>
+  <div class="admin-park-sento-new col-12 mt-3 mb-5">
     <%= form_with model: @sento, url: admin_sento_path, method: :patch do |f| %>
-      <table class="table table-borderless">
+      <%= render 'layouts/errors', obj: @sento %>
+        <table class="table table-borderless">
+          <h3 class="admin-subtitle">基本情報</h3>
            <tbody>
-              <tr>
-                  <div class="form_group">
-                    <td>エリアを選択</td>
-                    <td><%= f.select :prefecture_id, Sento.prefecture_ids.keys, {} %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>画像</td>
-                    <td>
-                        <% if @sento.sento_images.present? %>
-                          <% @sento.sento_images.each do |image| %>
-                            <%= image_tag image, size: '200x200' %>
-                          <% end %>
-                        <% end %>
-                        <%= f.file_field :sento_images, multiple: true %>
-                    </td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>銭湯名</td>
-                    <td><%= f.text_field :name %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>紹介</td>
-                    <td><%= f.text_area :introduction %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>住所</td>
-                    <td><%= f.text_field :address %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>郵便番号</td>
-                    <td>〒<%= f.text_field :postal_code %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>営業時間</td>
-                    <td><%= f.text_field :business_hour %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>定休日</td>
-                    <td><%= f.text_field :holiday %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>TEL</td>
-                    <td><%= f.text_field :telephone_number %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>料金</td>
-                    <td><%= f.text_field :price, placeholder: '大人:490円、子供:390円、サウナ:100円' %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>無料パーキング</td>
-                    <td><%= f.text_field :parking %></td>
-                  </div>
-              </tr>
+            <tr align="center">
+              <div class="form_group">
+                <td>掲載ステータス</td>
+                <td><%= f.radio_button :is_active, true %>
+                    <%= f.label :is_active, "掲載中" %>
+                    <%= f.radio_button :is_active, false %>
+                    <%= f.label :is_active, "掲載停止中" %>
+                </td>
+              </div>
+            </tr>
+            <tr align="center">
+              <div class="form_group">
+                <td>エリアを選択</td>
+                <td><%= f.select :prefecture_id, Sento.prefecture_ids.keys, {}, class: 'form-control col-6' %></td>
+              </div>
+            </tr>
+            <tr align="center">
+              <div class="form_group">
+                <td>画像</td>
+                <td>
+                  <% if @sento.sento_images.present? %>
+                    <% @sento.sento_images.each do |image| %>
+                      <%= image_tag image, size: '200x200' %>
+                    <% end %>
+                  <% end %>
+                  <%= f.file_field :sento_images, multiple: true %>
+                </td>
+              </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>銭湯名</td>
+                  <td><%= f.text_field :name, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>紹介</td>
+                  <td><%= f.text_area :introduction, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>住所</td>
+                  <td><%= f.text_field :address, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>郵便番号</td>
+                  <td>〒<%= f.text_field :postal_code, placeholder: 'ハイフン含める', class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>営業時間</td>
+                  <td><%= f.text_field :business_hour, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>定休日</td>
+                  <td><%= f.text_field :holiday, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>TEL</td>
+                  <td><%= f.text_field :telephone_number, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>料金</td>
+                  <td><%= f.text_field :price, placeholder: '大人:490円、子供:390円、サウナ:100円', class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>無料パーキング</td>
+                  <td><%= f.text_field :parking, class: 'form-control' %></td>
+                </div>
+            </tr>
           </tbody>
         </table>
-  <h3>設備情報</h3>
+      <h3 class="admin-subtitle">設備情報</h3>
         <table class="table table-borderless">
           <tbody>
-              <tr>
-                  <div class="form_group">
-                    <td>サウナ</td>
-                    <td><%= f.radio_button :sauna, true %>
-                        <%= f.label :sauna, "あり" %>
-                        <%= f.radio_button :sauna, false %>
-                        <%= f.label :sauna, "なし" %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>サウナの温度</td>
-                    <td>約<%= f.text_field :temperature %>℃</td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>貸しタオル</td>
-                    <td><%= f.text_field :towel %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>石鹸類</td>
-                    <td><%= f.text_field :soap %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>露天風呂</td>
-                    <td><%= f.radio_button :open_air_bath, true %>
-                        <%= f.label :open_air_bath, "あり" %>
-                        <%= f.radio_button :open_air_bath, false %>
-                        <%= f.label :open_air_bath, "なし" %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>水風呂</td>
-                    <td><%= f.radio_button :cold_bath, true %>
-                        <%= f.label :cold_bath, "あり" %>
-                        <%= f.radio_button :cold_bath, false %>
-                        <%= f.label :cold_bath, "なし" %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>掲載ステータス</td>
-                    <td><%= f.radio_button :is_active, true %>
-                        <%= f.label :is_active, "掲載中" %>
-                        <%= f.radio_button :is_active, false %>
-                        <%= f.label :is_active, "掲載停止中" %></td>
-                  </div>
-              </tr>
-              <tr>
-                  <div class="form_group">
-                    <td>タグを選択</td>
-                    <td><%= f.collection_check_boxes :sento_tag_ids, SentoTag.all, :id, :name %></td>
-                  </div>
+            <tr>
+                <div class="form_group">
+                  <td>サウナ</td>
+                  <td><%= f.radio_button :sauna, true %>
+                      <%= f.label :sauna, "あり" %>
+                      <%= f.radio_button :sauna, false %>
+                      <%= f.label :sauna, "なし" %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>サウナの温度</td>
+                  <td>約<%= f.text_field :temperature, placeholder: 'サウナがない場合は0と記入', class: 'form-control' %>℃</td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>貸しタオル</td>
+                  <td><%= f.text_field :towel, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>石鹸類</td>
+                  <td><%= f.text_field :soap, class: 'form-control' %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>露天風呂</td>
+                  <td><%= f.radio_button :open_air_bath, true %>
+                      <%= f.label :open_air_bath, "あり" %>
+                      <%= f.radio_button :open_air_bath, false %>
+                      <%= f.label :open_air_bath, "なし" %></td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form_group">
+                  <td>水風呂</td>
+                  <td><%= f.radio_button :cold_bath, true %>
+                      <%= f.label :cold_bath, "あり" %>
+                      <%= f.radio_button :cold_bath, false %>
+                      <%= f.label :cold_bath, "なし" %></td>
+                </div>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      <h3 class="admin-subtitle">タグ選択</h3>
+        <table class="table table-borderless">
+        <tbody>
+              <tr align="center">
+                <div class="form_group">
+                  <td><%= f.collection_check_boxes :sento_tag_ids, SentoTag.all, :id, :name %></td>
+                </div>
               </tr>
         </tbody>
       </table>
-<h3>最寄りパーク</h3>
-                  <div class="form_group">
-                    <%= f.collection_select :park_ids, Park.all, :id, :name, options = { include_blank: true }, prompt: '選択してください' %>
-                  </div>
-                        <%= f.submit "変更する" %>
+      <h3 class="admin-subtitle">最寄り銭湯</h3>
+                <div class="form_group">
+                  <%= f.collection_select :park_ids, Park.all, :id, :name, options = { include_blank: true }, prompt: '選択してください' %>
+                </div>
+                <div class="admin-park-sento-submit">
+                  <%= f.submit "変更する", class: 'col-5 btn btn-primary mt-3' %>
+                </div>
     <% end %>
+  </div>

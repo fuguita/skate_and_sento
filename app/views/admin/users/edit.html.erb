@@ -1,5 +1,6 @@
-<h2><%= @user.name %>を編集</h2>
+<h2 class="admin-title mt-5"><%= @user.name %>を編集</h2>
   <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+    <%= render 'layouts/errors', obj: @user %>
     <table class="table">
         <tbody>
             <tr>
@@ -8,11 +9,11 @@
             </tr>
             <tr>
                 <td>ユーザーネーム</td>
-                <td><%= f.text_field :name %></td>
+                <td><%= f.text_field :name, class: 'form-control col-7' %></td>
             </tr>
             <tr>
                 <td>メールアドレス</td>
-                <td><%= f.text_field :email %></td>
+                <td><%= f.text_field :email, class: 'form-control col-7' %></td>
             </tr>
             <tr>
                 <td>会員ステータス</td>
@@ -22,7 +23,7 @@
                     <%= f.label :is_deleted, '退会' %></td>
             </tr>
             <tr>
-                <td><%= f.submit "編集する" %></td>ああ
+                <td><%= f.submit "編集する", class: "btn btn-success col-4" %></td>
             </tr>
         </tbody>
     </table>
