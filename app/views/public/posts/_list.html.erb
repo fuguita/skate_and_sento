@@ -2,9 +2,13 @@
   <% posts.each do |post| %>
       <div class="post-user-info"><i class="fas fa-user"></i>：<%= link_to "#{post.user.name}", posts_user_path(post.user_id), class: 'post-user' %>
         <div class="post-area-date-box">
-            <div class="post-area-date">エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-2" %></div>
-            <div></div>
-            <div class="post-area-date">投稿日：<%= l post.created_at, format: :short %></div>
+          <div class="post-area-date">
+            エリア: <%= link_to "#{post.prefecture_id}", posts_path(prefecture_id: post.prefecture_id), class: "btn btn-outline-warning rounded-pill btn-sm mt-2 mb-2" %>
+          </div>
+          <div></div>
+          <div class="post-area-date">
+            投稿日：<%= l post.created_at, format: :short %>
+          </div>
         </div>
       </div>
     <div class="row post-box">
@@ -15,7 +19,7 @@
           </h4>
           <%= image_tag post.get_post_park_image, class: 'card-img-top', height:'350' %>
           <div class="card-body">
-            <div class="post-spark-sento-explain">
+            <div class="post-park-sento-explain">
              <i class="fas fa-store-alt"></i>:  <strong><%= post.park %></strong><br>
              <i class="fas fa-comment"></i>:  <%= post.park_caption %>
             </div>
@@ -29,7 +33,7 @@
           </h4>
           <%= image_tag post.get_post_sento_image, class: 'card-img-top', height:'350' %>
           <div class="card-body">
-            <div class="post-spark-sento-explain">
+            <div class="post-park-sento-explain">
               <i class="fas fa-store-alt"></i>: <strong><%= post.sento %></strong><br>
               <i class="fas fa-comment"></i>: <%= post.sento_caption %>
             </div>

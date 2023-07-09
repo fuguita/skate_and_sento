@@ -1,3 +1,16 @@
 // Place all the styles related to the admin/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.admin_comment_user {
+  color: #98A44A;
+}
+
+.admin_comment_user:hover {
+  text-decoration: none;
+}
+
+.admin-links-btn {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}

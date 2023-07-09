@@ -1,42 +1,67 @@
-<h2><%= @post.user.name %>の投稿詳細</h2>
-
-<%= link_to "会員情報詳細画面へ", admin_user_path(@user) %>
-<%= link_to "この会員の投稿一覧へ", posts_admin_user_path(@user) %>
-
-<table class="table table-borderless">
-    <tbody>
-      <tr>
-          <td>エリア:<%= @post.prefecture_id %></td>
-          <td></td>
-          <td><%= l @post.created_at, format: :short %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag @post.get_post_park_image, size: '200x200' %></td>
-          <td>パーク名<br>コメント</td>
-          <td><%= @post.park %><br><%= @post.park_caption %></td>
-      </tr>
-      <tr>
-          <td><%= image_tag @post.get_post_sento_image, size: '200x200' %></td>
-          <td>銭湯名<br>コメント</td>
-          <td><%= @post.sento %><br><%= @post.sento_caption %></td>
-     </tr>
-     <tr>
-          <td><%= @post.likes.count %>いいね</td>
-     </tr>
-   <% @post.post_comments.each do |post_comment| %>
-      <tr>
-            <td>
-                <%= link_to admin_user_path(post_comment.user.id) do %>
-                <%= post_comment.user.name %>
-                <% end %>のコメント<br>
-                <%= post_comment.comment %>
-                <%= link_to "コメントを削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
-            </td>
-      </tr>
-<% end %>
-
-
-          <td><%= link_to "投稿を削除する", admin_post_path(@post), method: :delete, data: { confirm: '投稿を削除しますか？'} %></td>
-      </tr>
-    </tbody>
-</table>
+<h2 class="admin-title"><%= @post.user.name %>の投稿詳細</h2>
+<div class="admin-links-btn">
+  <%= link_to "会員情報詳細画面へ", admin_user_path(@user), class: 'btn btn btn-success mr-2' %>
+  <%= link_to "この会員の投稿一覧へ", posts_admin_user_path(@user), class: 'btn btn btn-info mr-2' %>
+  <%= link_to "投稿を削除する", admin_post_path(@post), method: :delete, data: { confirm: '投稿を削除しますか？'}, class: 'btn btn btn-danger'%>
+</div>
+<div class="user-post-list mb-5">
+  <div class="post-area-date-box">
+    <div class="post-area-date">
+      エリア: <%= @post.prefecture_id %>
+    </div>
+    <div></div>
+    <div class="post-area-date">
+      投稿日：<%= l @post.created_at, format: :short %>
+    </div>
+  </div>
+  <div class="row post-box">
+    <div class="col-md-5">
+      <div class="card mb-2">
+        <h4 class="post-park-sento-title">
+          PARK
+        </h4>
+        <%= image_tag @post.get_post_park_image, class: 'card-img-top', height:'350' %>
+        <div class="card-body">
+          <div class="post-park-sento-explain">
+           <i class="fas fa-store-alt"></i>:  <strong><%= @post.park %></strong><br>
+           <i class="fas fa-comment"></i>:  <%= @post.park_caption %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card mb-2">
+        <h4 class="post-park-sento-title">
+          銭湯
+        </h4>
+        <%= image_tag @post.get_post_sento_image, class: 'card-img-top', height:'350' %>
+        <div class="card-body">
+          <div class="post-park-sento-explain">
+            <i class="fas fa-store-alt"></i>: <strong><%= @post.sento %></strong><br>
+            <i class="fas fa-comment"></i>: <%= @post.sento_caption %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="post-tag-list">
+    <i class="fas fa-tag" style="color: #628961;"></i>
+    <% @post.post_tags.each do |post_tag| %>
+      #<%= post_tag.name %>
+    <% end %>
+  </div>
+  <div class="admin-like-comment mb-3">
+    いいね：<%= @post.likes.count %>件<br>
+    コメント:<%= @post.post_comments.count %>件
+  </div>
+  <% @post.post_comments.each do |post_comment| %>
+    <i class="far fa-user"></i>: <%= link_to "#{post_comment.user.name}", admin_user_path(post_comment.user), class: "admin_comment_user"%><br>
+    <div class="comment-list">
+      <%= post_comment.comment %>
+      <div class="comment-post-time">
+        <%= l post_comment.created_at, format: :default %>
+        <%= link_to "コメントを削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'}, class: 'btn btn-sm btn-danger mb-2'%>
+      </div>
+    </div>
+  <% end %>
+</div>
