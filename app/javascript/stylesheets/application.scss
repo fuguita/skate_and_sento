@@ -8,12 +8,14 @@
 
 
 .search {
-  text-align: right;
+  display: flex;
+  justify-content: end;
 }
 
 .main-logo {
   margin-top: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
@@ -113,7 +115,9 @@
   text-decoration: none;
 }
 
-
+.nav-list-position {
+  text-align: center;
+}
 
 .park-sento-info {
   table {

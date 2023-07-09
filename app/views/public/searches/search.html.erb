@@ -4,8 +4,8 @@
    <h3>項目を選択してください</h3>
 <% else %>
     <% if @model == 'Park' %>
-        <h2 class="post-post-list mt-5">"<%= @word %>"の検索結果</h2>
-          <% if @recors.present? %>
+        <h2 class="post-post-list mt-5">"<%= @word %>"の検索結果(全<%= @records.total_count %>件)</h2>
+          <% if @records.present? %>
             <% @records.each do |park| %>
               <%= render 'public/parks/index', park: park %>
             <% end %>
@@ -13,8 +13,8 @@
           <h4>キーワードと一致するものがありません。<h4>
           <% end %>
     <% elsif @model == '銭湯' %>
-        <h2 class="post-post-list mt-5">"<%= @word %>"の検索結果</h2>
-          <% if @recors.present? %>
+        <h2 class="post-post-list mt-5">"<%= @word %>"の検索結果(全<%= @records.total_count %>件)</h2>
+          <% if @records.present? %>
             <% @records.each do |sento| %>
               <%= render 'public/sentos/index', sento: sento %>
             <% end %>
@@ -23,3 +23,6 @@
           <% end %>
     <% end %>
 <% end %>
+<div class="page">
+  <%= paginate @records %>
+</div>

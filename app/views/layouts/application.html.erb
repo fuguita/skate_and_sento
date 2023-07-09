@@ -14,15 +14,22 @@
   <body>
     <div class="container">
       <header>
-        <div class="logo-image mt-3">
-         <img src="/assets/6ae60c544e7133acd317435138e2ec92.png" alt="">
+        <div class="header-logos">
+          <div class="logo-image mt-3">
+           <img src="/assets/6ae60c544e7133acd317435138e2ec92.png" alt="">
+          </div>
+          <div class ="main-logo">
+           <%= link_to "SKATE AND SENTO", root_path, class: "main-logo-link" %>
+          </div>
         </div>
-          <%= render 'layouts/header' %>
+        <%= render 'layouts/header' %>
       </header>
+      <div class="flash-message-bar">
         <%= flash[:notice] %>
         <div id="flash_message">
           <%= render 'layouts/flash' %>
         </div>
+      </div>
         <%= yield %>
     </div>
   </body>

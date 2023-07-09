@@ -1,6 +1,10 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.flash-message-bar {
+  background-color: rgba(247, 192, 29, 0.2);
+}
+
 li {
   list-style: none;
 }

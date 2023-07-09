@@ -6,9 +6,7 @@
   <!--    <%#= link_to "SKATE AND SENTO(管理者用)", root_path, class: "main-logo-link" %>-->
   <!--  </div>-->
   <!--<%# else %>-->
-    <div class ="main-logo">
-      <%= link_to "SKATE AND SENTO", root_path, class: "main-logo-link" %>
-    </div>
+    
   <%# end %>
   <!--        <div class="collapse navbar-collapse justify-content-around">-->
   <!--          <ul class="navbar-nav ml-auto">-->
@@ -22,7 +20,7 @@
   <% if request.fullpath.include? "admin" %>
     <div id="sp-menu">
       <% if admin_signed_in? %>
-        <ul>
+        <ul class="nav-list-position">
           <li><%= link_to "パーク", admin_parks_path, class: 'nav-link' %></li>
           <li><%= link_to "銭湯", admin_sentos_path, class: 'nav-link' %></li>
           <li><%= link_to "ユーザー", admin_users_path, class: 'nav-link' %></li>
@@ -35,7 +33,7 @@
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
         </ul>
       <% else %>
-        <ul>
+        <ul class="nav-list-position">
           <li><%= link_to "ログインする", new_admin_session_path, class: 'nav-link' %></li>
         </ul>
       <% end %>
@@ -43,7 +41,7 @@
   <% else %>
     <div id="sp-menu">
         <% if user_signed_in? %>
-          <ul>
+          <ul class="nav-list-position">
             <li><%= link_to "SKATEPARK", parks_path, class: 'nav-link' %></li>
             <li><%= link_to "銭湯", sentos_path, class: 'nav-link' %></li>
             <li><%= link_to "お気に入りPARK", park_favorites_users_path, class: 'nav-link' %></li>
@@ -55,7 +53,7 @@
             <li>HELLO!!<%= current_user.name %>!</li>
           </ul>
         <% else %>
-          <ul>
+          <ul class="nav-list-position">
             <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %></li>
             <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link' %></li>
             <li><%= link_to "ABOUT", about_path, class: 'nav-link' %></li>
