@@ -29,8 +29,11 @@ class Park < ApplicationRecord
    validates :helmet, presence: true
    validates :park_images, presence: true
    validates :park_tag_ids, presence: true
-   
+
    scope :active, -> { where(is_active: true) }
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   has_many_attached :park_images
 
