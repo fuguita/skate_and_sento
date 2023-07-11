@@ -14,9 +14,9 @@ class Public::SentosController < ApplicationController
 
     def show
       @sento = Sento.find(params[:id])
-      if @sento.is_active == false
-        return render "/public/sentos/not_show"
-      end
+      # if @sento.is_active == false
+      #   return render "/public/sentos/not_show"
+      # end
     end
 
     def reviews
