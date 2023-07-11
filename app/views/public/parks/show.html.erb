@@ -76,23 +76,23 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="info-title mb-3">MAP</h3>
-    <div id="map" style="width: 100%; height: 300px;"></div>
   </div>
-<div>
-  <h3 class="info-title">セクション</h3><br>
 
-        <% Section.all.each do |section| %>
-        <div class="section-list">
-          <% if @park.sections.include?(section) %>
-            <i class="far fa-circle"></i><%= section.name %><br>
-          <% else %>
-            <i class="fas fa-times"></i><%= section.name %><br>
-          <% end %>
-        </div>
-        <% end %>
+<h3 class="info-title">セクション</h3><br>
+  <% Section.all.each do |section| %>
+  <div class="section-list">
+    <% if @park.sections.include?(section) %>
+      <i class="far fa-circle"></i><%= section.name %><br>
+    <% else %>
+      <i class="fas fa-times"></i><%= section.name %><br>
+    <% end %>
+  </div>
+  <% end %>
 
-<div class="near-name">
+<h3 class="info-title mb-3">MAP</h3>
+  <div id="map" style="width: 100%; height: 300px;"></div>
+
+<div class="near-name mt-5 mb-5">
     <h3 class="info-title">最寄り銭湯</h3><br>
     <% if @park.sentos.present? %>
         <% @park.sentos.each do |sento| %>
@@ -137,4 +137,4 @@
 <!--<script src="https://maps.google.com/maps/api/js?key=AIzaSyBd_J-LVlHB9zfgK4GiY2Izzth6Q36-ikM&language=ja&callback=initMap"></script>-->
 <script async defer
               src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&language=ja&callback=initMap">
-              </script>
+</script>

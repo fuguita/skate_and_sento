@@ -26,9 +26,12 @@ class Sento < ApplicationRecord
    validates :soap, presence: true
    validates :sento_images, presence: true
    validates :sento_tag_ids, presence: true
-   
+
    scope :active, -> { where(is_active: true) }
-   
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_many_attached :sento_images
 
   def get_first_sento_image
