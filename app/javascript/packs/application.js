@@ -26,12 +26,13 @@ window.raty = function(elem,opt) {
 }
 
 //= require cocoon
+import "./script.js"
 
 document.addEventListener('turbolinks:load', (e) => {
     $('.menu-trigger').on('click', function(event) {
-        $(this).toggleClass('active');
-        $('#sp-menu').fadeToggle();
-        event.preventDefault();
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
     });
 })
 

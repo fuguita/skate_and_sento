@@ -19,6 +19,9 @@ before_action :authenticate_user!, only: [:reviews]
 
   def show
     @park = Park.find(params[:id])
+    if @park.is_active == false
+     return render "/public/parks/not_show"
+    end
   end
 
   def reviews
