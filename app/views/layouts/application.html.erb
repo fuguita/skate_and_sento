@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
   </head>
-
   <body>
     <div class="container">
       <header>
@@ -20,24 +16,32 @@
           <div class="logo-image mt-3">
            <img src="/assets/6ae60c544e7133acd317435138e2ec92.png" alt="">
           </div>
-          <div class ="main-logo">
-           <%= link_to "SKATE AND SENTO", root_path, class: "main-logo-link" %>
-          </div>
+          <% if request.fullpath.include? "admin" %>
+            <div class ="main-logo">
+             <%= link_to "管理者用SKATE AND SENTO", root_path, class: "admin-main-logo-link" %>
+            </div>
+          <% else %>
+            <div class ="main-logo">
+             <%= link_to "SKATE AND SENTO", root_path, class: "main-logo-link" %>
+            </div>
+          <% end %>
         </div>
         <%= render 'layouts/header' %>
       </header>
-      <div class="flash-message-bar">
-        <%= flash[:notice] %>
-        <div id="flash_message">
-          <%= render 'layouts/flash' %>
+      <main>
+        <div class="flash-message-bar">
+          <%= flash[:notice] %>
+          <div id="flash_message">
+            <%= render 'layouts/flash' %>
+          </div>
         </div>
-      </div>
-      <span id="back">
-        <a href="">
-          <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
-        </a>
-      </span>
-      <%= yield %>
+        <span id="back">
+          <a href="">
+            <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+          </a>
+        </span>
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>

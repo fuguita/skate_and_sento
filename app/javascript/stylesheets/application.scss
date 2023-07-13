@@ -24,10 +24,23 @@
    color: #96a44a;
    font-family: 'Bluesky' !important;
 }
+
 .main-logo-link:hover {
    color: #c6df3a;
    text-decoration: none;
 }
+
+.admin-main-logo-link {
+   font-size: 40px;
+   color: black;
+   font-family: 'Bluesky' !important;
+}
+
+.admin-main-logo-link:hover {
+   text-decoration: none;
+}
+
+
 
 #hm-icon {
   position: fixed;

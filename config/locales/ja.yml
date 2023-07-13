@@ -41,6 +41,9 @@ ja:
         address: 住所
         postal_code: 郵便番号
         telephone_number: 電話番号
+        holiday: 定休日
+        parking: 駐車場情報
+        price: 料金
         business_hour: オープン時間
         helmet: ヘルメットの項目
         park_images: パークのイメージ
@@ -50,12 +53,15 @@ ja:
         introduction: 一言コメント
         address: 住所
         postal_code: 郵便番号
+        holiday: 定休日
+        parking: 駐車場情報
+        price: 料金
         telephone_number: 電話番号
-        business_hour: オープン時間
+        business_hour: 営業時間
         temperature: サウナの温度
         towel: 貸しタオル
         soap: 石鹸類
-        sento_images: パークのイメージ
+        sento_images: 銭湯のイメージ
         sento_tag_ids: タグ
     errors:
       messages:

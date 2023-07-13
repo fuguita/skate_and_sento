@@ -1,4 +1,7 @@
-<h2 class="admin-title">パーク新規登録</h2>
+<%= link_to  admin_parks_path, class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>BACK
+<% end %><br>
+<h2 class="admin-title mt-5">パーク新規登録</h2>
 <div class="admin-park-sento-new col-12 mt-3 mb-5">
     <%= form_with model: @park, url: admin_parks_path, method: :post do |f| %>
       <%= render 'layouts/errors', obj: @park %>

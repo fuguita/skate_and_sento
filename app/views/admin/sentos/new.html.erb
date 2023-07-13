@@ -1,4 +1,7 @@
-<h2 class="admin-title">銭湯新規登録</h2>
+<%= link_to  admin_sentos_path, class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>BACK
+<% end %><br>
+<h2 class="admin-title mt-5">銭湯新規登録</h2>
   <div class="admin-park-sento-new mt-3 mb-5">
     <%= form_with model: @sento, url: admin_sentos_path, method: :post do |f| %>
       <%= render 'layouts/errors', obj: @sento %>

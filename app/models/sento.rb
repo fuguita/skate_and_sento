@@ -13,21 +13,24 @@ class Sento < ApplicationRecord
      大阪:1,京都:2
    }
 
-   validates :name, presence: true
-   validates :prefecture_id, presence: true
-   validates :introduction, presence: true
-   validates :address, presence: true
-   VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
-   validates :postal_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
-   validates :telephone_number, presence: true
-   validates :business_hour, presence: true
-   validates :temperature, presence: true
-   validates :towel, presence: true
-   validates :soap, presence: true
-   validates :sento_images, presence: true
-   validates :sento_tag_ids, presence: true
+  validates :sento_images, presence: true
+  validates :name, presence: true
+  validates :prefecture_id, presence: true
+  validates :introduction, presence: true
+  validates :address, presence: true
+  VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
+  validates :postal_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
+  validates :business_hour, presence: true
+  validates :holiday, presence: true
+  validates :telephone_number, presence: true
+  validates :price, presence: true
+  validates :parking, presence: true
+  validates :temperature, presence: true
+  validates :towel, presence: true
+  validates :soap, presence: true
+  validates :sento_tag_ids, presence: true
 
-   scope :active, -> { where(is_active: true) }
+  scope :active, -> { where(is_active: true) }
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -39,27 +42,27 @@ class Sento < ApplicationRecord
   end
 
   def active_status
-      if is_active == true
-        return '掲載中'
-      else
-        return '掲載停止中'
-      end
+    if is_active == true
+      return '掲載中'
+    else
+      return '掲載停止中'
+    end
   end
 
   def sauna_status
-      if sauna == true
-        return 'あり'
-      else
-        return 'なし'
-      end
+    if sauna == true
+      return 'あり'
+    else
+      return 'なし'
+    end
   end
 
   def open_air_bath_status
-      if open_air_bath == true
-        return 'あり'
-      else
-        return 'なし'
-      end
+    if open_air_bath == true
+      return 'あり'
+    else
+      return 'なし'
+    end
   end
 
   def cold_bath_status
