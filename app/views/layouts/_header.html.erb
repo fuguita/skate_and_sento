@@ -30,7 +30,7 @@
           <li><%= link_to "パークタグ", admin_park_tags_path, class: 'nav-link' %></li>
           <li><%= link_to "銭湯タグ", admin_sento_tags_path, class: 'nav-link' %></li>
           <li><%= link_to "投稿タグ", admin_post_tags_path, class: 'nav-link' %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data:{ confirm: 'ログアウトしますか？'}, class: 'nav-link'%></li>
         </ul>
       <% else %>
         <ul class="nav-list-position">

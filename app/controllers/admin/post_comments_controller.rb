@@ -4,7 +4,7 @@ class Admin::PostCommentsController < ApplicationController
     def destroy
       @comment = PostComment.find(params[:id])
       @comment.destroy
-      redirect_to request.referer
+      redirect_to request.referer, notice: "コメントを削除しました"
     end
 
 end
