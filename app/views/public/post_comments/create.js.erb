@@ -1,5 +1,6 @@
 $(<%= "post_comment_#{@comment.post.id}" %>).val("")
 $('.comment_list').html("<%= j(render 'public/post_comments/comment_list', post: @comment.post) %>")
-$('.count').html("<%= j(render 'public/post_comments/count', post: @comment.post) %>")
+$('.count').html("<%= j(render 'public/post_comments/count', post: @post) %>")
 $('#flash_message').html("<%= j(render 'layouts/flash') %>");
-<!--$("#error").html("<%#= j(render 'layouts/errors', obj: @post, obj: @post_comment) %>");-->
+$('#form_area').html("<%= j(render 'public/post_comments/form', post: @post, post_comment: @post_comment) %>");
+<!--$("#form_area").html("<%#= j(render 'layouts/errors', obj: @post) %>");-->

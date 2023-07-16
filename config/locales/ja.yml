@@ -21,6 +21,8 @@ ja:
         park_caption: パークのコメント
         sento_caption: 銭湯のコメント
         prefecture_id: 都道府県
+        post_park_image: パークのイメージ
+        post_sento_image: 銭湯のイメージ
       park_review:
         comment: レビュー
         star: レビューの評価(星を選択)

@@ -1,9 +1,11 @@
-<div id=<%= "error_#{post.id}" %>>
-    <%= render 'layouts/errors', obj: post, obj: post_comment %>
-</div>
+<div id="form_area">
+    <div id=<%= "error_#{post.id}" %>>
+        <%= render 'layouts/errors', obj: post_comment %>
+    </div>
 <%= form_with model: [post, post_comment], local: false do |f| %>
     <%= f.text_area :comment, placeholder: "コメントをここにしてください", id: "post_comment_#{post.id}", class: 'form-control col-6 mb-2 mt-4' %>
     <div class="review-submit col-6">
         <%= f.submit 'コメントをする', class: 'btn btn-sm btn-secondary' %>
     </div>
 <% end %>
+</div>

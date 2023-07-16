@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
        else
          @user = @post.user if @post.user.present?
          @post_comment = PostComment.new
-         @posts = Post.limit(5).order(created_at: :desc)
+         @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
          render 'index'
        end
     end
@@ -36,7 +36,7 @@ class Public::PostsController < ApplicationController
     def update
       @post = Post.find(params[:id])
    if @post.update(post_params)
-      redirect_to my_page_users_path(current_user)
+      redirect_to my_page_users_path(current_user), notice: '投稿を変更しました'
    else
       render 'edit'
    end
@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
     def destroy
       post = Post.find(params[:id])
       post.destroy
-      redirect_to posts_path
+      redirect_to posts_path, notice: '投稿を削除しました'
     end
 
     private
