@@ -6,7 +6,7 @@ class Public::PostCommentsController < ApplicationController
             @post = Post.find(params[:post_id])
             @comment = current_user.post_comments.new(post_comment_params)
             @comment.post_id = @post.id
-         if @comment.save!
+         if @comment.save
             @post_comment = PostComment.new
             flash.now[:notice_message] = 'コメントを投稿しました！'
             render :create
@@ -17,16 +17,15 @@ class Public::PostCommentsController < ApplicationController
     end
 
     def destroy
-      @comment = PostComment.find(params[:id])
+        @comment = PostComment.find(params[:id])
       if @comment.destroy!
         flash.now[:notice_message] = 'コメントを削除しました！'
         @post = Post.find(params[:post_id])
         @post_comment = current_user.post_comments.new
-      else 
+      else
         flash.now[:notice_message] = 'コメントを削除できませんでした。！'
       end
-      
-      render :create
+        render :create
     end
 
     private
