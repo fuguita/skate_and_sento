@@ -1,7 +1,7 @@
 <% if @word == "" %>
    <h3>キーワードが入力されてません。</h3>
 <% elsif @model == "" %>
-   <h3>項目を選択してください</h3>
+   <h3>項目を選択してください。</h3>
 <% else %>
     <% if @model == 'Park' %>
         <h2 class="post-post-list mt-5">"<%= @word %>"の検索結果(全<%= @records.total_count %>件)</h2>

@@ -15,7 +15,7 @@ class Park < ApplicationRecord
      大阪:1,京都:2
    }
 
-  validates :park_images, presence: true
+  validates :park_images, presence: { message: 'を選択してください' }
   validates :name, presence: true
   validates :introduction, presence: true
   validates :address, presence: true
@@ -27,7 +27,7 @@ class Park < ApplicationRecord
   validates :price, presence: true
   validates :parking, presence: true
   validates :helmet, presence: true
-  validates :park_tag_ids, presence: true
+  validates :park_tag_ids, presence: { message: 'を選択してください' }
 
   scope :star_count, -> {order(star: :desc)}
   scope :active, -> { where(is_active: true) }

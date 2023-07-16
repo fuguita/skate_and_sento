@@ -1,4 +1,10 @@
-$(<%= "post_comment_#{@comment.post.id}" %>).val("");
+<!--if(($<%#="post_comment_#{@comment.post.id}" %>).length) {-->
+<!--$(<%#= "post_comment_#{@comment.post.id}" %>).val("");-->
+<!--}-->
+var form = $('<%= "#post_comment_#{@comment.post.id}" %>');
+if (form) {
+  form.val("");
+}
 $('<%= "#comment_list_#{@post.id}" %>').html("<%= j(render 'public/post_comments/comment_list', post: @post) %>");
 $('<%= "#count_#{@post.id}" %>').html("<%= j(render 'public/post_comments/count', post: @post) %>");
 $('#flash_message').html("<%= j(render 'layouts/flash') %>");

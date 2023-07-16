@@ -61,12 +61,11 @@
       <div id="like_buttons_<%= post.id %>">
         <%= render 'public/likes/like', post: post %>
       </div>
-      <span class="count">
+      <span class="count" id="count_<%= post.id %>">
         <%= render 'public/post_comments/count', post: post %>
       </span>
     </div>
-
-    <div class="comment_list">
+    <div class="comment_list" id="comment_list_<%= post.id %>">
       <%= render 'public/post_comments/comment_list', post: post %>
     </div>
     <div class="post-edit">

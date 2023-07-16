@@ -13,7 +13,7 @@ class Sento < ApplicationRecord
      大阪:1,京都:2
    }
 
-  validates :sento_images, presence: true
+  validates :sento_images, presence: { message: 'を選択してください' }
   validates :name, presence: true
   validates :prefecture_id, presence: true
   validates :introduction, presence: true
@@ -28,7 +28,7 @@ class Sento < ApplicationRecord
   validates :temperature, presence: true
   validates :towel, presence: true
   validates :soap, presence: true
-  validates :sento_tag_ids, presence: true
+  validates :sento_tag_ids, presence: { message: 'を選択してください' }
 
   scope :active, -> { where(is_active: true) }
 

@@ -3,5 +3,5 @@
 退会する場合は、「退会する」をクリックして下さい。</p>
 <div class="cancel-or">
   <%= link_to 'キャンセルする', my_page_users_path, class: " mr-5 btn btn-sm btn-outline-secondary" %>
-  <%= link_to '退会する', withdraw_users_path, method: :patch, class: "btn btn-sm btn-outline-secondary" %>
+  <%= link_to '退会する', withdraw_users_path, method: :patch, data: { confirm: '本当に退会しますか？'}, class: "btn btn-sm btn-outline-secondary" %>
 </div>
