@@ -11,24 +11,24 @@
 <% if @favorite_parks.present? %>
   <div class="row favorite-box">
     <% @favorite_parks.each do |favorite_park| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <%= image_tag favorite_park.park.park_images.first, height:'250' %>
-          <div class="card-body">
-            <h5 class="card-title mt-2 text-left">
-              <%= link_to park_path(favorite_park.park.id), class: 'favarite-park-sento-name-link' do %>
-                <%= favorite_park.park.name %>
-              <% end %>
-            </h5>
-            <ul class="list-unstyled">
-              <li>エリア：<%= favorite_park.park.prefecture_id %></li>
-            </ul>
-            <div id="park-btn-<%= favorite_park.park.id %>">
-              <%= render 'public/parks/park_favorite_buttun', park: favorite_park.park %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <%= image_tag favorite_park.park.park_images.first, height:'250' %>
+            <div class="card-body">
+              <h5 class="card-title mt-2 text-left">
+                <%= link_to park_path(favorite_park.park.id), class: 'favarite-park-sento-name-link' do %>
+                  <%= favorite_park.park.name %>
+                <% end %>
+              </h5>
+              <ul class="list-unstyled">
+                <li>エリア：<%= favorite_park.park.prefecture_id %></li>
+              </ul>
+              <div id="park-btn-<%= favorite_park.park.id %>">
+                <%= render 'public/parks/park_favorite_buttun', park: favorite_park.park %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     <% end %>
   </div>
 <% else %>

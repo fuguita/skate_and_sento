@@ -11,11 +11,12 @@ class Public::UsersController < ApplicationController
   end
 
   def park_favorites
-    @favorite_parks = current_user.park_favorites.page(params[:page]).per(9).order(created_at: :desc)
+    @favorite_parks = ParkFavorite.eager_load(:park).where(parks: { is_active: true }).where(user_id: current_user.id).page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def sento_favorites
-    @favorite_sentos = current_user.sento_favorites.page(params[:page]).per(9).order(created_at: :desc)
+    @favorite_sentos = SentoFavorite.eager_load(:sento).where(sentos: { is_active: true }).where(user_id: current_user.id).page(params[:page]).per(9).order(created_at: :desc)
+    
   end
 
   def edit

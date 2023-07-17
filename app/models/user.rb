@@ -13,10 +13,12 @@ class User < ApplicationRecord
   has_many :favorite_sentos, through: :sento_favorites, source: :sento
   has_many :park_reviews, dependent: :destroy
   has_many :sento_reviews, dependent: :destroy
-  
+
 
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :email, presence: true, uniqueness: true
+
+  # scope :active_park, -> { joins(:park_favorites).where(parks: { is_active: true }) }
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name:'ゲストユーザー') do |user|
