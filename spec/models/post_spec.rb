@@ -15,39 +15,35 @@ RSpec.describe Post, "モデルに関するテスト", type: :model do
     end
     it "sentoが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
       post = (FactoryBot.build(:post, sento: ""))
-      # post = Post.new(park:'hoge', sento: '', park_caption:'hoge', sento_caption:'hoge')
       expect(post).to be_invalid
       expect(post.errors[:sento]).to include("を入力してください")
     end
     it "park_captionが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
       post = (FactoryBot.build(:post, park_caption: ""))
-      # post = Post.new(park: 'hoge', sento:'hoge', park_caption:'', sento_caption:'hoge')
       expect(post).to be_invalid
       expect(post.errors[:park_caption]).to include("を入力してください")
     end
     it "sento_captionが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
       post = (FactoryBot.build(:post, sento_caption: ""))
-      # post = Post.new(park: 'hoge', sento:'hoge', park_caption:'hoge', sento_caption:'')
       expect(post).to be_invalid
       expect(post.errors[:sento_caption]).to include("を入力してください")
     end
-    # it "prefecture_idが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
-    #   # post = (FactoryBot.build(:post, sento_caption: ""))
-    #   post = Post.new(park:'hoge', sento:'hoge', park_caption:'hoge', sento_caption:'hoge', prefecture_id: nil, post_park_image:'hoge', post_sento_image:'hoge')
-    #   expect(post).to be_invalid
-    #   expect(post.errors[:prefecture_id]).to include("を選択してください")
-    # end
-    # it "post_park_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
-    #   # post = (FactoryBot.build(:post, sento_caption: ""))
-    #   post = Post.new(park:'hoge', sento:'hoge', park_caption:'hoge', sento_caption:'hoge', prefecture_id: 1, post_park_image: '', post_sento_image:'hoge')
-    #   expect(post).to be_invalid
-    #   expect(post.errors[:post_park_image]).to include("を選択してください")
-    # end
-    # it "post_sento_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
-    #   # post = (FactoryBot.build(:post, sento_caption: ""))
-    #   post = Post.new(park:'hoge', sento:'hoge', park_caption:'hoge', sento_caption:'hoge', prefecture_id: to_s, post_park_image:'hoge', post_sento_image: '')
-    #   expect(post).to be_invalid
-    #   expect(post.errors[:post_sento_image]).to include("を選択してください")
-    # end
+    it "prefecture_idが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
+      post = (FactoryBot.build(:post, prefecture_id: nil))
+      expect(post).to be_invalid
+      expect(post.errors[:prefecture_id]).to include("を選択してください")
+    end
+    it "post_park_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
+      post = FactoryBot.build(:post)
+      post.post_park_image.attach(nil)
+      expect(post).to be_invalid
+      expect(post.errors[:post_park_image]).to include("を選択してください")
+    end
+     it "post_sento_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
+      post = FactoryBot.build(:post)
+      post.post_sento_image.acctach(nil)
+      expecr(post).to be_invalid
+      expect(post.errors[:post_sento_image]).to include("を選択してください")
+    end
   end
 end
