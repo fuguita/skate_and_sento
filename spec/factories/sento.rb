@@ -1,9 +1,9 @@
 FactoryBot.define do
-  factory :park do
+  factory :sento do
     id {1}
     prefecture_id {1}
-    name { '大阪パーク' }
-    introduction { 'パークコメント' }
+    name { '大阪銭湯' }
+    introduction { '銭湯コメント' }
     address {Faker::Lorem.characters(number:15)}
     postal_code {123-4567}
     business_hour { '月曜日' }
@@ -11,7 +11,8 @@ FactoryBot.define do
     telephone_number { '123456789' }
     price { '100円' }
     parking { 'あり' }
-    helmet { 'あり' }
-    # park_tag_ids {1}
+    temperature {100}
+    towel { 'あり'}
+    soap { 'あり' }
   end
 end
