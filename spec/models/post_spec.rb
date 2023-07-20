@@ -41,8 +41,8 @@ RSpec.describe Post, "モデルに関するテスト", type: :model do
     end
      it "post_sento_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
       post = FactoryBot.build(:post)
-      post.post_sento_image.acctach(nil)
-      expecr(post).to be_invalid
+      post.post_sento_image.attach(nil)
+      expect(post).to be_invalid
       expect(post.errors[:post_sento_image]).to include("を選択してください")
     end
   end
