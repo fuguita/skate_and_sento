@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
 
+before_action :check_guest_user, only: [:edit]
+
   def posts
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(5).order(created_at: :desc)
@@ -16,7 +18,7 @@ class Public::UsersController < ApplicationController
 
   def sento_favorites
     @favorite_sentos = SentoFavorite.eager_load(:sento).where(sentos: { is_active: true }).where(user_id: current_user.id).page(params[:page]).per(9).order(created_at: :desc)
-    
+
   end
 
   def edit
@@ -47,6 +49,12 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def check_guest_user
+    if current_user.email == "guest@example.com"
+      redirect_to request.referer, notice: "ゲストユーザーはアカウントの編集はできません"
+    end
   end
 
 end

@@ -50,6 +50,7 @@ ja:
         helmet: ヘルメットの項目
         park_images: パークのイメージ
         park_tag_ids: タグ
+        prefecture_id: エリア
       sento:
         name: 銭湯名
         introduction: 一言コメント
@@ -65,6 +66,7 @@ ja:
         soap: 石鹸類
         sento_images: 銭湯のイメージ
         sento_tag_ids: タグ
+        prefecture_id: エリア
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

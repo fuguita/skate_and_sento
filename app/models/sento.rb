@@ -13,6 +13,7 @@ class Sento < ApplicationRecord
      大阪:1,京都:2
    }
 
+  validate :check_prefecture_id
   validates :sento_images, presence: { message: 'を選択してください' }
   validates :name, presence: true
   validates :prefecture_id, presence: true
@@ -81,6 +82,12 @@ class Sento < ApplicationRecord
   # end
   def sento_favorited_by?(user)
     sento_favorites.exists?(user_id: user.id)
+  end
+
+  def check_prefecture_id
+    if prefecture_id == "エリアを選択"
+      errors.add(:prefecture_id, "を選択して下さい")
+    end
   end
 
 end

@@ -15,6 +15,7 @@ class Park < ApplicationRecord
      大阪:1,京都:2
    }
 
+  validate :check_prefecture_id
   validates :park_images, presence: { message: 'を選択してください' }
   validates :name, presence: true
   validates :introduction, presence: true
@@ -28,6 +29,8 @@ class Park < ApplicationRecord
   validates :parking, presence: true
   validates :helmet, presence: true
   validates :park_tag_ids, presence: { message: 'を選択してください' }
+
+
 
   scope :star_count, -> {order(star: :desc)}
   scope :active, -> { where(is_active: true) }
@@ -55,4 +58,10 @@ class Park < ApplicationRecord
   # def self.count_active_park
   #   Park.where(is_active: true).count
   # end
+
+  def check_prefecture_id
+    if prefecture_id == "エリアを選択"
+      errors.add(:prefecture_id, "を選択して下さい")
+    end
+  end
 end

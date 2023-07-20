@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :park do
     park_image {ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/1e80cefbed8226738a100374efec915d.png"), filename:"sample-user3.jpg")}
     name '大阪パーク'
+    prefecture_id '大阪'
     introduction 'パークコメント'
     address {Faker::Lorem.characters(number:15)}
     postal_code {123-4567}
