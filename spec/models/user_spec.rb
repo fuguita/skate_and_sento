@@ -7,7 +7,7 @@ RSpec.describe User, "Userモデルに関するテスト", type: :model do
       let(:user) { build (:user)}
 
       context 'nameカラム' do
-        it '空欄でないこと' do
+        it '空欄でないこと、エラーメッセージが返される' do
           user.name = ''
           is_expected.to eq false
           expect(user.errors[:name]).to include("は2文字以上で入力してください")
