@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_132344) do
     t.integer "sento_id", null: false
     t.integer "user_id", null: false
     t.text "comment", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", preciscion: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "star"
   end
