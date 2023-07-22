@@ -21,41 +21,43 @@
     <% end %>
 </div>
 <div class="review-title-box">
+  <%# active_user_reviews = @sento_reviews.reject { |review| review.user.is_deleted } %>
+  <!--<h2 class="review-title">ユーザーのレビュー(<%#= reviews.total_count %>件)</h2>-->
   <h2 class="review-title">ユーザーのレビュー(<%= @sento_reviews.total_count %>件)</h2>
-  <h5><%= render 'public/sentos/rate_average', sento: @sento %></h5>
+  <h5><%= render 'public/sentos/rate_average', average_score: @average_score %></h5>
 </div>
 
 <div>
   <% if @sento_reviews.present? %>
     <% @sento_reviews.each do |sento_review| %>
-      <div class="review-comment-box">
-          <div class="reviewer-name-date">
-            <div class="reviewer-name">
-              <i class="fas fa-user"></i>：<%= sento_review.user.name %>
+        <div class="review-comment-box">
+            <div class="reviewer-name-date">
+              <div class="reviewer-name">
+                <i class="fas fa-user"></i>：<%= sento_review.user.name %>
+              </div>
+              <span class="review-date"><%= l sento_review.created_at, format: :default %></span>
             </div>
-            <span class="review-date"><%= l sento_review.created_at, format: :default %></span>
-          </div>
-          <span class="reviewer-star">
-          <div id="rate_<%= sento_review.id %>"></div>
-            <script>
-              $(document).on('turbolinks:load', function() {
-              let elem = document.querySelector('#rate_<%= sento_review.id %>');
-              if (elem == null) return;
-              elem.innerHTML = "";
-              let opt = {
-                starOn: "<%= asset_path('star-on.png') %>",
-                starOff: "<%= asset_path('star-off.png') %>",
-                score: "<%= sento_review.star %>",
-                readOnly: true,
-                };
-                raty(elem, opt);
-                });
-            </script>
-            </span>
-          <div class="review-comment">
-            <%= sento_review.comment %><br>
-          </div>
-      </div>
+            <span class="reviewer-star">
+            <div id="rate_<%= sento_review.id %>"></div>
+              <script>
+                $(document).on('turbolinks:load', function() {
+                let elem = document.querySelector('#rate_<%= sento_review.id %>');
+                if (elem == null) return;
+                elem.innerHTML = "";
+                let opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  score: "<%= sento_review.star %>",
+                  readOnly: true,
+                  };
+                  raty(elem, opt);
+                  });
+              </script>
+              </span>
+            <div class="review-comment">
+              <%= sento_review.comment %><br>
+            </div>
+        </div>
     <% end %>
   <% else %>
       <h4>レビューがありません</h4>

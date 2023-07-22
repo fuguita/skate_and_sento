@@ -22,13 +22,13 @@
 </div>
 <div class="review-title-box">
   <h2 class="review-title">ユーザーのレビュー(<%= @park_reviews.total_count %>件)</h2>
-  <h5><%= render 'public/parks/rate_average', park: @park %></h5>
+  <h5><%= render 'public/parks/rate_average', average_score: @average_score %></h5>
 </div>
 
 <div>
   <% if @park_reviews.present? %>
     <% @park_reviews.each do |park_review| %>
-      <div class="review-comment-box">
+        <div class="review-comment-box">
           <div class="reviewer-name-date">
             <div class="reviewer-name">
               <i class="fas fa-user"></i>：<%= park_review.user.name %>
@@ -36,27 +36,27 @@
             <span class="review-date"><%= l park_review.created_at, format: :default %></span>
           </div>
           <span class="reviewer-star">
-          <div id="star-rate<%= park_review.id%>"></div>
-          <script>
-            $("#star-rate<%= park_review.id%>").empty();
-            raty(document.getElementById("star-rate<%= park_review.id%>"),
-            {
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            score: '<%= park_review.star %>',
-            half: false,
-            readOnly: true,
-            });
-          </script>
+            <div id="star-rate<%= park_review.id %>"></div>
+            <script>
+              $("#star-rate<%= park_review.id %>").empty();
+              raty(document.getElementById("star-rate<%= park_review.id %>"),
+                {
+                  size     : 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  score: '<%= park_review.star %>',
+                  half: false,
+                  readOnly: true,
+                });
+            </script>
           </span>
           <div class="review-comment">
             <%= park_review.comment %><br>
           </div>
-      </div>
+        </div>
     <% end %>
   <% else %>
-      <h4>レビューがありません</h4>
+    <h4>レビューがありません</h4>
   <% end %>
 </div>
 

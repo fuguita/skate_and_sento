@@ -1,4 +1,4 @@
-<i class="far fa-file-alt fa-lg"></i> レビュー評価:<span class="rate_number"><%= sento.sento_reviews.average(:star).to_f.round(1) %></spn>
+<i class="far fa-file-alt fa-lg"></i> レビュー評価:<span class="rate_number"><%= average_score %></spn>
        <div id="average_rate"></div>
           <script>
               $(document).on('turbolinks:load', function() {
@@ -11,7 +11,7 @@
                   starHalf: "<%= asset_path('star-half.png') %>",
                   half: true,
                   readOnly: true,
-                  score: "<%= sento.sento_reviews.average(:star).to_f.round(1) %>",
+                  score: "<%= average_score %>",
                   };
                   raty(elem, opt);
                   });

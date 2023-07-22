@@ -109,7 +109,7 @@
                   </div>
       <h3 class="admin-subtitle">最寄り銭湯</h3>
                   <div class="form_group">
-                    <%= f.collection_select :sento_ids, Sento.all, :id, :name, options = { include_blank: true }, prompt: '選択してください' %>
+                    <%= f.collection_select :sento_ids, Sento.all, :id, :name, options = { include_blank: true }, prompt: '選択してください', class: "form-control col-6" %>
                   </div>
                   <div class="admin-park-sento-submit">
                     <%= f.submit "銭湯を追加、変更を保存する", class: 'col-5 btn btn-success mt-3' %>

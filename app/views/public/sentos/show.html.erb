@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="park-sento-review">
-    <%= render 'public/sentos/rate_average', sento: @sento %>
+    <%= render 'public/sentos/rate_average', average_score: @average_score %>
       <% if user_signed_in? %>
         <div>
           </i><%= link_to "レビューを見る、投稿する", reviews_sento_path(@sento), class: 'mt-2 btn btn-sm btn-outline-secondary' %>

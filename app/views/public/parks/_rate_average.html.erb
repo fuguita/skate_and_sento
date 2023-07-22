@@ -1,4 +1,4 @@
-<i class="far fa-file-alt fa-lg"></i> レビュー評価:<span class="rate_number"><%= park.park_reviews.average(:star).to_f.round(1) %></span>
+<i class="far fa-file-alt fa-lg"></i> レビュー評価:<span class="rate_number"><%= average_score %></span>
 <div id="average_rate"></div>
   <script>
     $(document).on('turbolinks:load', function() {
@@ -11,7 +11,7 @@
         starHalf: "<%= asset_path('star-half.png') %>",
         half: true,
         readOnly: true,
-        score: "<%= park.park_reviews.average(:star).to_f.round(1) %>",
+        score: "<%= average_score %>",
       };
       raty(elem, opt);
     });

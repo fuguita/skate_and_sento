@@ -40,10 +40,10 @@ before_action :check_guest_user, only: [:edit]
   end
 
   def withdraw
-   current_user.update(is_deleted: true)
-   reset_session
-   redirect_to root_path
-  end
+    current_user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end    
 
   private
 

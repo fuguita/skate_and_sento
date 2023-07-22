@@ -20,12 +20,14 @@ class Public::PostsController < ApplicationController
         @post_comment = PostComment.new
         # @posts = params[:prefecture_id].present? ? Post.where(prefecture_id: params[:prefecture_id]) : Post.all.order(created_at: :desc)
       if params[:prefecture_id].present?
-        @posts = Post.where(prefecture_id: params[:prefecture_id]).page(params[:page]).per(5).order(created_at: :desc)
+        # @posts = Post.where(prefecture_id: params[:prefecture_id]).page(params[:page]).per(5).order(created_at: :desc)
+        @posts = Post.left_joins(:user).where(prefecture_id: params[:prefecture_id]).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
       elsif params[:post_tag_id].present?
         @tag = PostTag.find(params[:post_tag_id])
-        @posts = @tag.posts.page(params[:page]).per(5).order(created_at: :desc)
+        @posts = Post.left_joins(:user).where(post_tag_id: @tag.id).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
+        # @posts = @tag.posts.page(params[:page]).per(5).order(created_at: :desc)
       else
-        @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
+        @posts = Post.left_joins(:user).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
       end
     end
 

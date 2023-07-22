@@ -6,6 +6,7 @@
     </div>
     <div class="card-body login-card-body">
       <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <%= render 'admin/shared/flash_messages' %>
          <div class="input-group mb-3">
            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
              <div class="input-group-append">

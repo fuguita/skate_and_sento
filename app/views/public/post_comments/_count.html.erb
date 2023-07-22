@@ -1,1 +1,2 @@
-コメント：<%= post.post_comments.count %>件
+<% active_user_comment = post.post_comments.reject { |review| review.user.is_deleted } %>
+コメント：<%= active_user_comment.count %>件

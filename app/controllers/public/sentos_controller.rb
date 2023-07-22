@@ -14,6 +14,7 @@ class Public::SentosController < ApplicationController
 
     def show
       @sento = Sento.find(params[:id])
+      @average_score = SentoReview.left_joins(:user).where(sento_id: @sento.id).where(user:{is_deleted: false}).average(:star).to_f.round(1)
       # if @sento.is_active == false
       #   return render "/public/sentos/not_show"
       # end
@@ -23,7 +24,8 @@ class Public::SentosController < ApplicationController
       @sento = Sento.find(params[:id])
       @sento_review = SentoReview.new
       @user = @sento_review.user
-      @sento_reviews = @sento.sento_reviews.page(params[:page]).per(5).order(created_at: :desc)
+      @average_score = SentoReview.left_joins(:user).where(sento_id: @sento.id).where(user:{is_deleted: false}).average(:star).to_f.round(1)
+      @sento_reviews = SentoReview.left_joins(:user).where(sento_id: @sento.id).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
     end
 
 end
