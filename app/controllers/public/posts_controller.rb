@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
         @posts = Post.left_joins(:user).where(prefecture_id: params[:prefecture_id]).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
       elsif params[:post_tag_id].present?
         @tag = PostTag.find(params[:post_tag_id])
-        @posts = Post.left_joins(:user).where(post_tag_id: @tag.id).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
+        @posts = Post.left_joins(:user).left_joins(:post_tags).where(post_tags: {id: @tag.id}).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
         # @posts = @tag.posts.page(params[:page]).per(5).order(created_at: :desc)
       else
         @posts = Post.left_joins(:user).where(user:{is_deleted: false}).page(params[:page]).per(5).order(created_at: :desc)
