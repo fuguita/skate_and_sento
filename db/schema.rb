@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_132344) do
     t.integer "sento_id", null: false
     t.integer "user_id", null: false
     t.text "comment", null: false
-    t.datetime "created_at", preciscion: 6, null: false
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "star"
   end
@@ -184,8 +184,6 @@ ActiveRecord::Schema.define(version: 2023_07_11_132344) do
     t.integer "sento_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sento_id"], name: "index_sento_sento_tags_on_sento_id"
-    t.index ["sento_tag_id"], name: "index_sento_sento_tags_on_sento_tag_id"
   end
 
   create_table "sento_tags", force: :cascade do |t|
@@ -238,6 +236,4 @@ ActiveRecord::Schema.define(version: 2023_07_11_132344) do
   add_foreign_key "park_park_tags", "parks"
   add_foreign_key "post_post_tags", "post_tags"
   add_foreign_key "post_post_tags", "posts"
-  add_foreign_key "sento_sento_tags", "sento_tags"
-  add_foreign_key "sento_sento_tags", "sentos"
 end
