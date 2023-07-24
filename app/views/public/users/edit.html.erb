@@ -1,10 +1,13 @@
+<%= link_to my_page_users_path(current_user), class: "back-link-park-sento" do %>
+  <i class="fas fa-angle-double-left"></i>戻る
+<% end %>
 <h2 class="edit-title mt-5">アカウント編集</h2>
 
 <div class="card-block">
-    <div class="card col-5 mb-5">
-      <div class="card-title">
-        Edit Profile
-      </div>
+  <div class="card col-5 mb-5">
+    <div class="card-title">
+      Edit Profile
+    </div>
     <div class="card-body login-card-body">
       <%= form_with model: current_user, url: users_path, method: :patch do |f| %>
       <%= render "public/shared/error_messages", resource: current_user %>
@@ -33,6 +36,7 @@
       <div class="signin-link-caption">退会はこちらから→
         <%= link_to '会員を退会する', unsubscribe_users_path, class: "signin-login-out-link" %>
       </div>
+    </div>
   </div>
 </div>
 
