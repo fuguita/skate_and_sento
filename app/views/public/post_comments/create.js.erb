@@ -7,6 +7,6 @@ if (form) {
 }
 $('<%= "#comment_list_#{@post.id}" %>').html("<%= j(render 'public/post_comments/comment_list', post: @post) %>");
 $('<%= "#count_#{@post.id}" %>').html("<%= j(render 'public/post_comments/count', post: @post) %>");
-$('#flash_message').html("<%= j(render 'layouts/flash') %>");
-$('#form_area').html("<%= j(render 'public/post_comments/form', post: @post, post_comment: @post_comment) %>");
+$('#flash_message_<%= @post.id %>').html("<%= j(render 'layouts/flash') %>");
+$('#form_area_<%= @post.id %>').html("<%= j(render 'public/post_comments/form', post: @post, post_comment: @post_comment) %>");
 <!--$("#form_area").html("<%#= j(render 'layouts/errors', obj: @post) %>");-->
