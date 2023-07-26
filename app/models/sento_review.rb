@@ -8,7 +8,4 @@ class SentoReview < ApplicationRecord
   # def average(star)
   #   calculate(:average, star)
   #   end
-
-
-
 end

@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Post, "モデルに関するテスト", type: :model do
-  describe 'POSTモデルのテスト' do
+  describe "POSTモデルのテスト" do
     it "有効な投稿内容の場合は保存されるか" do
       expect(FactoryBot.build(:post)).to be_valid
     end
@@ -39,11 +39,11 @@ RSpec.describe Post, "モデルに関するテスト", type: :model do
       expect(post).to be_invalid
       expect(post.errors[:post_park_image]).to include("を選択してください")
     end
-     it "post_sento_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
-      post = FactoryBot.build(:post)
-      post.post_sento_image.attach(nil)
-      expect(post).to be_invalid
-      expect(post.errors[:post_sento_image]).to include("を選択してください")
-    end
+    it "post_sento_imageが空白の場合にバリデーションチェックされ空白に対してエラーメッセージが返ってきているか" do
+     post = FactoryBot.build(:post)
+     post.post_sento_image.attach(nil)
+     expect(post).to be_invalid
+     expect(post.errors[:post_sento_image]).to include("を選択してください")
+   end
   end
 end

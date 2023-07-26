@@ -49,8 +49,8 @@ https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-
 - 非同期通信
 - 外部API(Google MapAPI)
 - HTTPS接続 (Certbot)
-- Rubocop-airbnb（予定）
-- Git action(予定)
+- Rubocop-airbnb
+- GitHub Actions
 ## 使用素材
 画像使用元URL一覧
 - 自身で撮影した画像

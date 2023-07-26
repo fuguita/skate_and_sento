@@ -3,5 +3,4 @@ class ParkFavorite < ApplicationRecord
   belongs_to :park
 
   validates :user_id, uniqueness: { scope: :park_id }
-
 end

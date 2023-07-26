@@ -1,6 +1,5 @@
 class Park < ApplicationRecord
-
-  has_many :park_sections,dependent: :destroy
+  has_many :park_sections, dependent: :destroy
   has_many :sections, through: :park_sections
   has_many :park_sentos, dependent: :destroy
   has_many :sentos, through: :park_sentos
@@ -10,13 +9,13 @@ class Park < ApplicationRecord
   has_many :park_tags, through: :park_park_tags
   has_many :park_reviews, dependent: :destroy
 
-  enum prefecture_id:{
-     "エリアを選択":0,
-     大阪:1,京都:2
+  enum prefecture_id: {
+     "エリアを選択": 0,
+     大阪: 1, 京都: 2
    }
 
   validate :check_prefecture_id
-  validates :park_images, presence: { message: 'を選択してください' }
+  validates :park_images, presence: { message: "を選択してください" }
   validates :name, presence: true
   validates :introduction, presence: true
   validates :address, presence: true
@@ -28,11 +27,11 @@ class Park < ApplicationRecord
   validates :price, presence: true
   validates :parking, presence: true
   validates :helmet, presence: true
-  validates :park_tag_ids, presence: { message: 'を選択してください' }
+  validates :park_tag_ids, presence: { message: "を選択してください" }
 
 
 
-  scope :star_count, -> {order(star: :desc)}
+  scope :star_count, -> { order(star: :desc) }
   scope :active, -> { where(is_active: true) }
 
   geocoded_by :address
@@ -41,15 +40,15 @@ class Park < ApplicationRecord
   has_many_attached :park_images
 
   def active_status
-      if is_active == true
-        return '掲載中'
-      else
-        return '掲載停止中'
-      end
+    if is_active == true
+      "掲載中"
+    else
+      "掲載停止中"
+    end
   end
 
   def self.search_for(word)
-    Park.where('name LIKE ?', '%'+word+'%')
+    Park.where("name LIKE ?", "%" + word + "%")
   end
 
   def park_favorited_by?(user)

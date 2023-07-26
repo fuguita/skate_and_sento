@@ -1,7 +1,6 @@
 class CreateSentos < ActiveRecord::Migration[6.1]
   def change
     create_table :sentos do |t|
-      
       t.integer :prefecture_id, null: false
       t.string :name, null: false
       t.text :introduction, null: false
@@ -20,7 +19,7 @@ class CreateSentos < ActiveRecord::Migration[6.1]
       t.boolean :cold_bath, null: false, default: true
       t.boolean :is_active, null: false, default: true
       # t.string :near_sento, null: false
-      
+
 
       t.timestamps
     end

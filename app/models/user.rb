@@ -21,7 +21,7 @@ class User < ApplicationRecord
   # scope :active_park, -> { joins(:park_favorites).where(parks: { is_active: true }) }
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com', name:'ゲストユーザー') do |user|
+    find_or_create_by!(email: "guest@example.com", name: "ゲストユーザー") do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
@@ -41,5 +41,4 @@ class User < ApplicationRecord
   def unsento_favorite(sento)
     favorite_sentos.destroy(sento)
   end
-
 end

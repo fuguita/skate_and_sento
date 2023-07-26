@@ -10,5 +10,4 @@ class Admin::SentoReviewsController < ApplicationController
     sento_review.destroy
     redirect_to request.referer, notice: "レビューを削除しました"
   end
-
 end

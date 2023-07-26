@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :post_comment do
-    comment {'コメント'}
+    comment { "コメント" }
   end
-end  
+end
