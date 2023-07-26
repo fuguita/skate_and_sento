@@ -8,7 +8,7 @@
           <p><%= link_to "My Favotite Park", park_favorites_users_path(current_user), class: 'btn  btn-outline-secondary' %></p>
           <p><%= link_to "My Favotite 銭湯", sento_favorites_users_path(current_user), class: 'btn  btn-outline-secondary' %></p>
           <p><%= link_to "アカウント情報を変更", edit_information_user_path(current_user), class: 'btn  btn-outline-secondary' %></p>
-          <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete, class: 'btn  btn-outline-secondary' %></p>
+          <p><%= link_to "Log-Out", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: 'btn  btn-outline-secondary' %></p>
       </div>
 
   <h2 class="post-post-list mt-5">My Skate And Sento Posts(全<%= @posts.total_count %>件)</h2>
