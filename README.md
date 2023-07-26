@@ -1,12 +1,14 @@
-# SKATE AND 銭湯
-<img width="182" alt="1d5fd3cbf56612e68e641217fcbc9fb4" src="https://github.com/fuguita/skate_and_sento/assets/126998671/48652591-3213-47a1-bef4-0213a33423da">
+# SKATE AND SENTO
+<img width="543" alt="top-90981b7af55a4b82064d98f2160550d2a92a8961c4b59a457a823fbfea657daa" src="https://github.com/fuguita/skate_and_sento/assets/126998671/3e11ad61-b629-4a00-bccf-ea922b621f95">
 <img width="1049" alt="b2d40b04f9412726eb36941b9d22e9a9" src="https://github.com/fuguita/skate_and_sento/assets/126998671/5182cdd7-7195-4dd8-81e5-5e91781e55a8">
 
 ## サイト概要
 ### URL
-https://skate-and-sento.jp
 ログイン画面より'ゲストユーザー'としてログインできます。<br>
-管理者側は、https://skate-and-sento.jp/admin/sign_in でアクセスしてください。(メールアドレス:sb.fsk8@gmail.com)(パスワード:925411)
+https://skate-and-sento.jp<br>
+管理者側:<br>
+https://skate-and-sento.jp/admin/sign_in<br>
+(メールアドレス:sb.fsk8@gmail.com)(パスワード:925411)
 ### サイトテーマ
 特定の地域(大阪、京都）での各スケートボードのパーク情報とそれに付随したパーク付近の銭湯情報の閲覧、お気に入り登録、コメント、レビュー閲覧投稿ができ、
 またユーザーが特定のエリア外にいった時、そのスケートパークと銭湯の投稿ができ、情報共有できるコミュニティーサイト。
@@ -37,8 +39,10 @@ https://skate-and-sento.jp
 
 
 ## 設計書
-### 実装機能リストURL
+### 実装機能リスト
 https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-MTw/edit?usp=sharing
+### ER図
+
 
 ## 環境・使用技術
 ### 開発環境
