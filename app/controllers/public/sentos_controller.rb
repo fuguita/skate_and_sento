@@ -5,9 +5,9 @@ class Public::SentosController < ApplicationController
     # @sentos = params[:sento_tag_id].present? ? SentoTag.find(params[:sento_tag_id]).sentos : Sento.all
     if params[:sento_tag_id].present?
       @tag = SentoTag.find(params[:sento_tag_id])
-      @sentos = @tag.sentos.active.page(params[:page]).per(10).order(created_at: :desc)
+      @sentos = @tag.sentos.active.page(params[:page]).per(6).order(created_at: :desc)
     else
-      @sentos = Sento.active.page(params[:page]).per(10).order(created_at: :desc)
+      @sentos = Sento.active.page(params[:page]).per(6).order(created_at: :desc)
       @active_sento_count = Sento.active.count
     end
   end
