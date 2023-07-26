@@ -55,6 +55,6 @@ https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-
 画像使用元URL一覧
 - 自身で撮影した画像
 - Pixabay(https://pixabay.com/ja/)
-###アプリケーションを作ってみて
+### アプリケーションを作ってみて
 制限をかけて表示・非表示や条件に合った件数の表示など細かな部分や今まで実装したことがなかった<br>
 部分には苦労しました。それに伴い新しい多くの発見、学びがあり非常に楽しい制作になりました。
