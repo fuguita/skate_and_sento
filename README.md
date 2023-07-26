@@ -42,7 +42,7 @@ https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ### 本番環境
-- AWS (EC2、RDS for MySQL、Route53、CloudWatch、S3、Lambda)
+- AWS (EC2、RDS、Route53、CloudWatch、S3、Lambda)
 - MySQL
 - Nginx、 Puma
 ### その他使用技術
