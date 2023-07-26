@@ -45,13 +45,13 @@ https://docs.google.com/spreadsheets/d/1j8Fz5R7dJ8FcKShHYTUUL16fmkNoU30n2THZ8nq-
 https://drive.google.com/file/d/16kR3tag_KZSZh8XlMxeXHBG0k62xZH9x/view?usp=sharing
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/1xBXcEmT8bCuUD_H-64jm3XCfuC3Po1M9FwWY5NRyvrI/edit?usp=sharing
-###アプリケーション詳細設計
+### アプリケーション詳細設計
 https://docs.google.com/spreadsheets/d/1gnH0a-M_rXGNwsNiJ3_9NnkvIl4kbAuU4GnDjZ1fItI/edit?usp=sharing
 ### ワイヤーフレーム
-ユーザーサイド:https://drive.google.com/file/d/16xm8ZubtDlCHNv8_esTf2z4N_2eOp9F-/view?usp=sharing
+ユーザーサイド:https://drive.google.com/file/d/16xm8ZubtDlCHNv8_esTf2z4N_2eOp9F-/view?usp=sharing<br>
 管理者サイド:https://drive.google.com/file/d/1ynX-Un57J92iQKvDt_gBURwjqOcXHisw/view?usp=sharing
 ### Ul Flow
-ユーザー:https://drive.google.com/file/d/19MRfqaHEKmn8AXxbSFD_2s4WfhSD_Ff2/view?usp=sharing
+ユーザー:https://drive.google.com/file/d/19MRfqaHEKmn8AXxbSFD_2s4WfhSD_Ff2/view?usp=sharing<br>
 管理者:https://drive.google.com/file/d/1GsAfNymSlCxNYaa1fsAEEOH-KyGqVKKM/view?usp=sharing
 
 
