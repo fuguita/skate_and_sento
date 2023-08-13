@@ -23,7 +23,7 @@
                     <%= f.label :is_deleted, '退会' %></td>
             </tr>
             <tr>
-                <td><%= f.submit "編集する", class: "btn btn-success col-4" %></td>
+                <td><%= f.submit "編集する", data: { confirm: "内容を変更しますか？"}, class: "btn btn-success col-4" %></td>
             </tr>
         </tbody>
     </table>
