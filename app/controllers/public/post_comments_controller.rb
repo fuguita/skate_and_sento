@@ -1,5 +1,6 @@
 class Public::PostCommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user, only: [:destroy]
 
   def create
     # byebug
@@ -27,8 +28,16 @@ class Public::PostCommentsController < ApplicationController
     render :create
   end
 
-    private
-      def post_comment_params
-        params.require(:post_comment).permit(:comment)
-      end
+  private
+  def post_comment_params
+    params.require(:post_comment).permit(:comment)
+  end
+
+  def ensure_user
+    @comment = PostComment.find(params[:id])
+    if current_user.id != @comment.user_id
+      redirect_to posts_path
+    end
+  end
+
 end

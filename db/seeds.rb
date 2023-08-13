@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
-  email: "sb.fsk8@gmail.com",
-  password: "925411"
+  email: ENV["ADMIN_EMAIL"],
+  password: ENV["ADMIN_PASSWORD"]
 )
 
 sections = %w(レッジ フラットレール スラッピーカーブ ダウンレール マニュアル台 フラットバンク ステア ダウンレッジ ウォール クォーター ミニランプ ボール バーチ スパイン ピラミッド)
