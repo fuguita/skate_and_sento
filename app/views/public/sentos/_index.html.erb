@@ -1,7 +1,9 @@
 <div class="park-sento-list">
+  <%= link_to sento_path(sento.id) do %>
   <div class="park-sento-image-index">
         <%= image_tag sento.sento_images.first, size: '600x400', class: "park_sento_image" %>
   </div>
+  <% end %>
       <h4>
         <%= link_to sento_path(sento.id), class: "park_sento_name_index" do %><%= sento.name %><% end %>
       </h4>
