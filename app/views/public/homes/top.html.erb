@@ -2,16 +2,24 @@
 <h5 class="introduction">大阪、京都のスケートパーク、銭湯の情報をご紹介！！</h5>
 
 <div class="park-sento">
+  <%= link_to parks_path, class: 'text-decoration-none' do %>
   <div class="park-visual">
       <div class="park-visual-link">
-        <%= link_to "スケートパークから探す", parks_path, class: 'park_visual_link' %>
+        <div class="park_visual_link">
+        スケートパークから探す
+        </div>
       </div>
   </div>
+  <% end %>
+  <%= link_to sentos_path, class: 'text-decoration-none' do %>
   <div class="sento-visual">
       <div class="sento-visual-link">
-        <%= link_to "銭湯から探す", sentos_path, class: 'sento_visual_link' %>
+        <div class="sento_visual_link">
+        銭湯から探す
+        </div>
       </div>
   </div>
+  <% end %>
 </div>
 
 <div class="log-or-sign">
